@@ -1,0 +1,347 @@
+* {
+  outline: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 10px 0;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.17em;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+h5 {
+  font-size: 0.83em;
+}
+
+h5 {
+  font-size: 0.75em;
+}
+
+a {
+  font-size: 1.15em;
+}
+
+/* Padding */
+.p-0 {
+  padding: 0;
+}
+
+.p-t-10 {
+  padding-top: 10px;
+}
+
+.p-b-10 {
+  padding-bottom: 10px;
+}
+
+.p-t-15 {
+  padding-top: 15px;
+}
+
+.p-b-15 {
+  padding-bottom: 15px;
+}
+
+.p-l-30 {
+  padding-left: 30px;
+}
+
+/* Margins */
+.m-0 {
+  margin: 0;
+}
+
+.m-r-5 {
+  margin-right: 5px;
+}
+
+.m-r-10 {
+  margin-right: 10px;
+}
+
+.m-r-15 {
+  margin-right: 15px;
+}
+
+.m-r-20 {
+  margin-right: 15px;
+}
+
+.m-l-10 {
+  margin-left: 10px;
+}
+
+.m-l-15 {
+  margin-left: 15px;
+}
+
+.m-l-20 {
+  margin-left: 20px;
+}
+
+.m-t-5 {
+  margin-top: 5px;
+}
+
+.m-t-10 {
+  margin-top: 10px;
+}
+
+.m-t-15 {
+  margin-top: 15px;
+}
+
+.m-t-20 {
+  margin-top: 20px;
+}
+
+.m-t-30 {
+  margin-top: 30px;
+}
+
+.m-t-40 {
+  margin-top: 40px;
+}
+
+.m-b-5 {
+  margin-bottom: 5px;
+}
+
+.m-b-10 {
+  margin-bottom: 10px;
+}
+
+.m-b-15 {
+  margin-bottom: 15px;
+}
+
+.m-b-20 {
+  margin-bottom: 20px;
+}
+
+.m-b-30 {
+  margin-bottom: 30px;
+}
+
+.m-b-60 {
+  margin-bottom: 60px;
+}
+
+/* Font Size */
+.font-12 {
+  font-size: 12px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.font-20 {
+  font-size: 20px;
+}
+
+.font-32 {
+  font-size: 32px;
+}
+
+.font-40 {
+  font-size: 40px;
+}
+
+.font-3em {
+  font-size: 3em;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  border-radius: 4px;
+  line-height: 30px;
+  padding: 4px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-round {
+  border-radius: 50%;
+}
+
+.btn-block {
+  width: 100%;
+  display: block;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-leaf {
+  background-color: #28a745;
+}
+
+.btn-info {
+  background-color: #007bff;
+}
+
+.btn-gold {
+  background-color: #ff9900;
+}
+
+.btn-gold-r {
+  border: 1px solid #ff9900;
+  background-color: #ffffff;
+  color: #ff9900;
+}
+
+.btn-disabled {
+  cursor: not-allowed;
+  opacity: 0.67;
+}
+
+.btn-danger,
+.btn-info,
+.btn-leaf,
+.btn-gold {
+  color: #ffffff;
+  transition: ease .9s;
+}
+
+.btn-leaf:hover {
+  background-color: #037b1e;
+}
+
+.btn-info:hover {
+  background-color: #165aa2;
+}
+
+.btn-danger:hover {
+  background-color: #9a0a18;
+}
+
+.t-white {
+  color: #ffffff;
+}
+
+header.header {
+  width: 100%;
+  height: 75px;
+  position: fixed;
+  z-index: 4;
+  transition: 0.5s ease-in-out;
+}
+
+header nav.navbar {
+  margin: 2.13% 5% 1% 17%;
+  /* border: 1px solid red; */
+}
+
+header>h1 {
+  float: left;
+  padding: 16px 2em;
+  margin: 0;
+  font-family: 'Dancing Script', cursive;
+}
+
+.nav-list {
+  list-style-type: none;
+  display: flex;
+  /* border: 1px solid blue; */
+  height: inherit;
+  justify-content: flex-end;
+  /* width: 20%; */
+  align-items: center;
+}
+
+nav ul>li>a {
+  font-size: 1em;
+  margin-right: 50px;
+  text-decoration: none;
+}
+
+.hero {
+  position: relative;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)), url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=847&q=80");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 500px;
+}
+
+.hero-text {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.hero-text p:nth-child(3) {
+  padding-bottom: 20px;
+}
+
+.hero-text button {
+  width: 163px;
+  height: 54px;
+}
+
+.content-margin {
+  margin: 0 12%;
+}
+
+.slides {
+  display: flex;
+  min-width: 100%;
+  min-height: 305px;
+  overflow-x: auto;
+  border: 1px solid red;
+}
+.slides-contain {
+  /* border: 0.06em solid black; */
+  border: 2px solid black;
+  margin: 26px 12px 4px;
+  border-radius: 6px;
+}
+
+.slide {
+  position: relative;
+  /* background-color: #e74c3c; */
+  min-width: 180px;
+  border-radius: inherit;
+}
