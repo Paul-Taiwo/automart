@@ -302,6 +302,11 @@ a {
   background-color: #9a0a18;
 }
 
+.mobile-btn,
+.close-btn {
+  display: none;
+}
+
 .card {
   position: relative;
   display: flex;
@@ -339,7 +344,7 @@ header.header {
 }
 
 header nav.navbar {
-  margin: 2.13% 5% 1% 17%;
+  margin: 32px 5% 1% 17%;
   /* border: 1px solid red; */
 }
 
@@ -348,6 +353,11 @@ header>h1 {
   padding: 16px 2em;
   margin: 0;
   font-family: 'Dancing Script', cursive;
+}
+
+.onscroll {
+  background-color: #0f0f12;
+  box-shadow: 1px 3px 6px #333;
 }
 
 .section-header {
@@ -516,6 +526,19 @@ section.brand {
   position: relative;
 }
 
+/* Footer */
+.footer {
+  position: absolute;
+  background-color: #f9f9f9;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: #2d3b48;
+  text-align: center;
+  padding: 20px 30px;
+}
+
 /* Custom, iPhone Retina */
 
 @media only screen and (min-width: 320px) {
@@ -558,6 +581,7 @@ section.brand {
   .contact-form-wrap {
     max-width: 37em;
   }
+
   .contact-svg {
     margin-bottom: 30px;
   }
@@ -582,6 +606,56 @@ section.brand {
     text-align: left;
   } */
 
+  .mobile-btn {
+    display: block;
+    width: 48px;
+    height: 50px;
+    margin: 15px;
+    border-radius: 12px;
+    background: #3cab94;
+    font-size: 1.5em;
+    border: none;
+    color: #ffffff;
+    float: right;
+  }
+
+  .close-btn {
+    border: none;
+    z-index: 1;
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    background-color: #dc3545;
+    color: #ffffff;
+    height: 40px;
+    width: 40px;
+    font-size: 1.5em;
+  }
+
+  .nav-list {
+    display: block;
+    position: fixed;
+    right: -243px;
+    background-color: #111111;
+    top: 0;
+    bottom: 0;
+    width: 190px;
+    padding: 34px 10px;
+    transition: .5s ease;
+  }
+
+  nav ul>li>a {
+    display: block;
+    padding: 13px;
+    width: 100%;
+    color: #b9b8b8 !important;
+    transition: .3s ease;
+  }
+
+  nav ul>li>a:hover {
+    color: #ffffff !important;
+  }
 }
 
 /* Medium Devices, Desktops */
@@ -619,19 +693,6 @@ section.brand {
   .card-content {
     text-align: left;
   }
-}
-
-/* Footer */
-.footer {
-  position: absolute;
-  background-color: #f9f9f9;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  bottom: 0;
-  right: 0;
-  left: 0;
-  color: #2d3b48;
-  text-align: center;
-  padding: 20px 30px;
 }
 
 /* Large Devices, Wide Screens */
