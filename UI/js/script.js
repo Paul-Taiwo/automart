@@ -18,6 +18,15 @@ document.querySelector("#hideMenu").addEventListener("click", (e) => {
   sideMenu.style.right = "-240px";
 });
 
+document.querySelectorAll('nav ul>li>a').forEach(function(x) {
+  x.addEventListener("click", function() {
+    let current = document.querySelector(".active");
+    console.log(this);
+    current.className = current.className.replace(" active", "");
+    this.className += " active";
+  })
+})
+
 const modalFunction = () => {
   let loginButton = document.querySelector("#login-button"),
       signupButton = document.querySelector("#signup-button"),

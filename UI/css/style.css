@@ -392,6 +392,12 @@ nav ul>li>a {
   font-size: 1em;
   margin-right: 50px;
   text-decoration: none;
+  transition: .5s ease;
+}
+
+nav ul>li>a.active,
+nav ul>li>a:hover {
+  color: #ff9900;
 }
 
 .hero {
