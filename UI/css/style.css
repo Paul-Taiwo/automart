@@ -307,6 +307,21 @@ a {
   display: none;
 }
 
+.modal-btn {
+  display: block;
+  border: none;
+  z-index: 1;
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  background-color: #dc3545;
+  color: #ffffff;
+  height: 40px;
+  width: 40px;
+  font-size: 1.5em;
+}
+
 .card {
   position: relative;
   display: flex;
@@ -337,20 +352,20 @@ a {
 
 header.header {
   width: 100%;
-  height: 75px;
+  height: 60px;
   position: fixed;
   z-index: 4;
   transition: 0.5s ease-in-out;
 }
 
 header nav.navbar {
-  margin: 32px 5% 1% 17%;
+  margin: 20px 5% 1% 17%;
   /* border: 1px solid red; */
 }
 
 header>h1 {
   float: left;
-  padding: 16px 2em;
+  padding: 4px 72px;
   margin: 0;
   font-family: 'Dancing Script', cursive;
 }
@@ -526,6 +541,65 @@ section.brand {
   position: relative;
 }
 
+.control-input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 16px;
+  padding-left: 10px;
+  border: 2px solid #ddd;
+}
+
+.control-input:focus,
+.checkbox-input:focus {
+  outline: 2px solid #3074ec;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 6;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  padding-top: 60px;
+}
+
+.wrapper {
+  margin: 7.5% auto;
+  max-width: 500px;
+  position: relative;
+}
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0)
+  }
+
+  to {
+    -webkit-transform: scale(1)
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
 /* Footer */
 .footer {
   position: absolute;
@@ -610,7 +684,7 @@ section.brand {
     display: block;
     width: 48px;
     height: 50px;
-    margin: 15px;
+    margin: 5px;
     border-radius: 12px;
     background: #3cab94;
     font-size: 1.5em;
