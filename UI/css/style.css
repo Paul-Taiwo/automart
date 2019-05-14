@@ -628,11 +628,23 @@ section.brand {
   .contact-svg {
     text-align: center;
   }
+
+  header>h1 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 /* Extra Small Devices, Phones */
 
 @media only screen and (min-width: 480px) {}
+
+@media only screen and (max-width: 480px) {
+  .wrapper {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
 
 /* Small Devices, Tablets */
 
@@ -667,7 +679,7 @@ section.brand {
   }
 
   .card-wrap {
-    padding: 10px;
+    padding: 24px;
   }
 
   .brands-slide {
