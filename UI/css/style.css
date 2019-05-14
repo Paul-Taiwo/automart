@@ -14,7 +14,6 @@ html {
 
 body {
   background: #eff3f6;
-
 }
 
 section {
@@ -59,6 +58,7 @@ a {
 }
 
 /* Padding */
+
 .p-0 {
   padding: 0;
 }
@@ -84,6 +84,7 @@ a {
 }
 
 /* Margins */
+
 .m-0 {
   margin: 0;
 }
@@ -165,6 +166,7 @@ a {
 }
 
 /* Font Size */
+
 .font-12 {
   font-size: 12px;
 }
@@ -217,11 +219,14 @@ a {
 .c-sm-6,
 .c-sm-7,
 .c-sm-12, */
+
 .c-md-6,
 .c-md-12,
 .c-12,
 .c-lg-4,
+.c-lg-5,
 .c-lg-6,
+.c-lg-7,
 .c-xl-4,
 .c-xl-6 {
   position: relative;
@@ -346,7 +351,7 @@ header>h1 {
 }
 
 .section-header {
-  margin: 45px 0 25px;
+  margin: 45px 0 35px;
 }
 
 .nav-list {
@@ -403,6 +408,7 @@ nav ul>li>a {
   -webkit-overflow-scrolling: touch;
   list-style-type: none;
   scroll-snap-type: x mandatory;
+  padding-left: 5px;
 }
 
 .slides::-webkit-scrollbar {
@@ -436,7 +442,7 @@ section.brand {
 }
 
 .slide {
-  width: 372px;
+  width: 284px;
 }
 
 .brands-slide {
@@ -454,7 +460,7 @@ section.brand {
 
 .slide-img {
   background-image: url("https://pictures.dealer.com/v/victorytoyotascioncanton/0643/7d607a614ba466cb09182cdd96f5e6e7x.jpg?impolicy=resize&w=650");
-  height: 250px;
+  height: 200px;
   background-size: cover;
   background-position: top;
 }
@@ -478,15 +484,62 @@ section.brand {
   width: 200px;
 }
 
+#contact-form {
+  display: inline-grid;
+  /* padding-left: 46px; */
+}
+
+#contact-form input,
+#contact-form textarea {
+  border: 1px solid #eee;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+#contact-form input {
+  border-radius: 50px;
+  height: 43px;
+}
+
+#contact-form textarea {
+  border-radius: 22px;
+  padding: 14px;
+}
+
+.contact-svg svg {
+  width: 85%;
+  height: 290px;
+}
+
+.contact-form-wrap {
+  margin: 0 auto;
+  position: relative;
+}
 
 /* Custom, iPhone Retina */
-@media only screen and (min-width : 320px) {}
+
+@media only screen and (min-width: 320px) {
+  .contact-form-wrap {
+    max-width: 300px;
+  }
+
+  #contact-form input,
+  #contact-form textarea {
+    width: 300px;
+  }
+
+  .contact-svg {
+    text-align: center;
+  }
+}
 
 /* Extra Small Devices, Phones */
-@media only screen and (min-width : 480px) {}
+
+@media only screen and (min-width: 480px) {}
 
 /* Small Devices, Tablets */
-@media only screen and (min-width : 768px) {
+
+@media only screen and (min-width: 768px) {
   .c-md-12 {
     flex: 0 0 100%;
     max-width: 100%;
@@ -496,9 +549,21 @@ section.brand {
     flex: 0 0 50%;
     max-width: 50%;
   }
+
+  #contact-form input,
+  #contact-form textarea {
+    width: 43em;
+  }
+
+  .contact-form-wrap {
+    max-width: 37em;
+  }
+  .contact-svg {
+    margin-bottom: 30px;
+  }
 }
 
-@media only screen and (max-width : 768px) {
+@media only screen and (max-width: 768px) {
   .row {
     flex-direction: column;
   }
@@ -506,10 +571,22 @@ section.brand {
   .card-wrap {
     padding: 10px;
   }
+
+  .brands-slide {
+    width: calc(707px/5.999);
+  }
+
+  /* .card-content:nth-child(2) {
+    margin: 0 auto;
+    max-width: 56%;
+    text-align: left;
+  } */
+
 }
 
 /* Medium Devices, Desktops */
-@media only screen and (min-width : 992px) {
+
+@media only screen and (min-width: 992px) {
   .c-lg-6 {
     flex: 0 0 50%;
     max-width: 50%;
@@ -519,10 +596,47 @@ section.brand {
     flex: 0 0 33.3%;
     max-width: 33.3%;
   }
+
+  .c-lg-5 {
+    flex: 0 0 44%;
+    max-width: 44%;
+  }
+
+  .c-lg-7 {
+    flex: 0 0 56%;
+    max-width: 56%;
+  }
+
+  .brands-slide {
+    width: calc(942px/7.0);
+  }
+
+  #contact-form input,
+  #contact-form textarea {
+    width: 28em;
+  }
+
+  .card-content {
+    text-align: left;
+  }
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  background-color: #f9f9f9;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  bottom: 0;
+  right: 0;
+  left: 0;
+  color: #2d3b48;
+  text-align: center;
+  padding: 20px 30px;
 }
 
 /* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
+
+@media only screen and (min-width: 1200px) {
   .c-xl-6 {
     flex: 0 0 50%;
     max-width: 50%;
@@ -535,5 +649,13 @@ section.brand {
 
   .content-margin {
     padding: 0 10%;
+  }
+
+  .brands-slide {
+    width: calc(1152px/6.8);
+  }
+
+  .contact-form-wrap {
+    max-width: 20em;
   }
 }
