@@ -534,6 +534,7 @@ section.brand {
 #contact-form textarea {
   border-radius: 22px;
   padding: 14px;
+  resize: none;
 }
 
 .contact-svg svg {
