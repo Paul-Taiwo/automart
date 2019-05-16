@@ -141,6 +141,10 @@ a {
   margin-top: 40px;
 }
 
+.m-t-75 {
+  margin-top: 75px;
+}
+
 .m-b-5 {
   margin-bottom: 5px;
 }
@@ -354,6 +358,7 @@ header.header {
   height: 60px;
   position: fixed;
   z-index: 4;
+  top: 0;
   transition: 0.5s ease-in-out;
 }
 
@@ -376,6 +381,10 @@ header>h1 {
 
 .section-header {
   margin: 45px 0 35px;
+}
+
+.content-header {
+  margin: 45px 0 10px;
 }
 
 .nav-list {
@@ -579,6 +588,14 @@ section.brand {
   margin: 7.5% auto;
   max-width: 500px;
   position: relative;
+}
+
+.all-cars-container {
+  display: flex;
+}
+
+.filter-options {
+  border: 1px solid red;
 }
 
 .animate {

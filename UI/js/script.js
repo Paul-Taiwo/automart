@@ -44,7 +44,6 @@ const modalFunction = () => {
     document.querySelector("#signup-modal.modal").style.display = "block";
   });
 
-
   closeModal[0].addEventListener("click", (e) => {
     e.preventDefault();
     document.querySelector("#login-modal.modal").style.display = "none";
