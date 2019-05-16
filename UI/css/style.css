@@ -502,7 +502,8 @@ section.brand {
 }
 
 .slide-img,
-.brands {
+.brands,
+.car-image {
   position: relative;
   background-repeat: no-repeat;
   width: 100%;
@@ -603,18 +604,83 @@ section.brand {
   position: relative;
 }
 
-.all-cars-container {
+.all-cars-container,
+.car-ads {
   display: flex;
 }
 
+.all-cars-container {
+  justify-content: space-between;
+}
+
 .all-cars {
-  border: 1px solid darkblue;
-  width: 80%;
+  width: 78%;
+  margin-top: 40px;
+}
+
+.car-ads-container {
+  list-style-type: none;
+  margin: 0;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.car-ads {
+  position: relative;
+  padding: 0.8em;
+  -webkit-box-shadow: 0 8px 10px 4px #e6e6e6;
+  box-shadow: 0 8px 10px 4px #e6e6e6;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  background-color: #fff;
+}
+
+.car-image {
+  background-image: url("https://pictures.dealer.com/v/victorytoyotascioncanton/0643/7d607a614ba466cb09182cdd96f5e6e7x.jpg?impolicy=resize&w=650");
+  height: 216px;
+  width: 40.3%;
+  /* border: 1px solid red; */
+  background-size: cover;
+  border-radius: 0;
+  background-position: top;
+}
+
+.car-info {
+  width: 36%;
+  padding: 4px 30px;
+  border-right: 1px solid #eee;
+}
+
+.car-info p {
+  font-size: 1.4em;
+}
+
+.car-price {
+  padding: 8px 30px;
+}
+
+.car-price a {
+  text-decoration: none;
+  bottom: 15px;
+  right: 39px;
+  position: absolute;
+}
+
+.filter-header h2 {
+  padding: 11px 0;
+  background-color: #3f51b5;
+  margin: 0;
+  color: #fff;
+}
+
+.filter-header svg {
+  margin-top: 10px;
 }
 
 .filter-options {
   width: 20%;
   margin-top: 40px;
+  height: fit-content;
   box-shadow: 0 5px 17px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24);
 }
 
