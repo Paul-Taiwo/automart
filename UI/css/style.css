@@ -387,7 +387,8 @@ header>h1 {
   font-family: 'Dancing Script', cursive;
 }
 
-.onscroll {
+.onscroll,
+.fix-header {
   background-color: #0f0f12;
   box-shadow: 1px 3px 6px #333;
 }
