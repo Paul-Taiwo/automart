@@ -239,6 +239,19 @@ a {
   padding-left: 15px;
 }
 
+.lnr {
+  display: inline-block;
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.05em;
+}
+
+.lnr-apartment {
+  color: #0F52BA;
+  font-size: 40px;
+}
+
 .btn {
   display: inline-block;
   text-align: center;
@@ -612,11 +625,18 @@ section.brand {
   border: none;
   background: #F2F2F2;
   outline: initial;
+  text-align: left;
+  padding: 0.623em 2em;
   border-bottom: 1px solid #e6e6e6
 }
 
+.accordion svg {
+  float: right;
+  margin-top: 4px;
+}
+
 .accordion:nth-child(2) {
- border-top: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
 }
 
 .accordion-content {
