@@ -650,11 +650,13 @@ section.brand {
 }
 
 .all-cars-container,
-.car-ads {
+.car-ads,
+.specific-header {
   display: flex;
 }
 
-.all-cars-container {
+.all-cars-container,
+.specific-header {
   justify-content: space-between;
 }
 
@@ -681,7 +683,7 @@ section.brand {
 
 .car-image {
   background-image: url("https://pictures.dealer.com/v/victorytoyotascioncanton/0643/7d607a614ba466cb09182cdd96f5e6e7x.jpg?impolicy=resize&w=650");
-  height: 216px;
+  height: 200px;
   width: 40.3%;
   /* border: 1px solid red; */
   background-size: cover;
@@ -790,6 +792,78 @@ section.brand {
   height: 35px;
   margin-bottom: 10px;
 }
+
+.specific-header {
+  padding: 25px;
+  background-color: #D43900;
+  color: #fff;
+}
+
+.specific-container {
+  border: 1px solid red;
+}
+
+.img-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.imgSlides {
+  display: none;
+}
+
+.listing-header p svg {
+  margin-top: 2px;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.column {
+  flex: 0 0 16.4%;
+}
+
+.thumbnail {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.active,
+.thumbnail:hover {
+  opacity: 1;
+}
+
 .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s

@@ -1,5 +1,7 @@
 let header = document.querySelector("header.header"),
+    slideIndex = 1,
     sideMenu = document.querySelector(".nav-list");
+
 window.onscroll = () => {
 	if (window.pageYOffset > 50) {
 		header.classList.add("onscroll");
@@ -84,4 +86,38 @@ const modalFunction = () => {
     document.querySelector("#signup-modal.modal").style.display = "none";
   });
 }
+
+const plusSlides = (n) => {
+  showSlides(slideIndex += n);
+}
+
+const currentSlide = (n) => {
+  showSlides(slideIndex = n);
+}
+
+const showSlides = (n) => {
+  let i = 0,
+      slides = document.querySelectorAll(".imgSlides"),
+      thumbnails = document.querySelectorAll(".thumbnail");
+
+      if (n > slides.length) {
+        slideIndex = 1
+      }
+      if (n < 1) {
+        slideIndex = slides.length
+      }
+
+      slides.forEach((x) => {
+        x.style.display = "none";
+      });
+
+      thumbnails.forEach((x) => {
+        x.className = x.className.replace(" active", "");
+      });
+
+       slides[slideIndex - 1].style.display = "block";
+       thumbnails[slideIndex - 1].className += " active";
+}
+
+showSlides(slideIndex);
 modalFunction();
