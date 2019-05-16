@@ -21,11 +21,23 @@ document.querySelector("#hideMenu").addEventListener("click", (e) => {
 document.querySelectorAll('nav ul>li>a').forEach(function(x) {
   x.addEventListener("click", function() {
     let current = document.querySelector(".active");
-    console.log(this);
     current.className = current.className.replace(" active", "");
     this.className += " active";
-  })
-})
+  });
+});
+
+document.querySelectorAll(".accordion").forEach(function (x) {
+  x.addEventListener("click", function (e) {
+    e.preventDefault();
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+});
 
 const modalFunction = () => {
   let loginButton = document.querySelector("#login-button"),
