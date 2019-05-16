@@ -18,6 +18,12 @@ document.querySelector("#hideMenu").addEventListener("click", (e) => {
   sideMenu.style.right = "-240px";
 });
 
+// Dropdown toggle
+document.querySelector("#toggleDropdown").addEventListener("click", (e) => {
+  e.preventDefault();
+  document.querySelector("#myDropdown").classList.toggle("show");
+});
+
 document.querySelectorAll('nav ul>li>a').forEach(function(x) {
   x.addEventListener("click", function() {
     let current = document.querySelector(".active");
