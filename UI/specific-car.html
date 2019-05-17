@@ -189,7 +189,7 @@
             </div>
           </div>
           <div class="ads-action">
-            <button class="btn btn-danger" onclick="callReportForm()"><svg class="lnr lnr-warning">
+            <button class="btn btn-danger" onclick="reportAds()"><svg class="lnr lnr-warning">
                 <use xlink:href="#lnr-warning"></use>
               </svg> Report Ads</button>
             <button class="btn btn-gold">Purchase</button>
@@ -215,6 +215,54 @@
     </div>
 
     </section>
+  </div>
+
+  <div id="report-ads" class="modal">
+    <div class="wrapper animate">
+      <div class="card">
+        <div class="card-wrap">
+          <form method="POST" action="">
+            <div class="field">
+              <label class=""> Name <span class="required-symbol">*</span>
+                <input class="control-input" required="" name="name" type="text" value="">
+              </label>
+            </div>
+            <div class="field">
+              <label class=""> Phone Number <span class="required-symbol">*</span>
+                <input class="control-input" required="" name="abuse_mobile_number" type="tel" value="">
+              </label>
+            </div>
+            <div class="field">
+              <label class=""> Email
+                <input class="control-input" name="email" type="email" placeholder="e.g jaccky@gmail.com" value="">
+              </label>
+            </div>
+            <label for="">Abuse Type<span class="required-symbol">*</span></label>
+            <select class="control-select" required="" id="abuse_type_id" name="abuse_type_id">
+              <option value="" selected="selected">Select...</option>
+              <option value="1">Other</option>
+              <option value="2">Offensive</option>
+              <option value="3">Fraudulent/Misleading</option>
+              <option value="4">Poorly Classified</option>
+              <option value="5">Missing Images</option>
+              <option value="6">Vehicle Sold</option>
+              <option value="7">Content Violation</option>
+            </select>
+            <div class="field">
+              <label class=""> Comments <textarea id="abuse_comment" class="control-textarea" name="comment" cols="50"
+                  rows="10"></textarea>
+              </label>
+            </div>
+
+              <div class="report-action">
+              <a class="btn btn-danger" onclick="closeReportAds()" aria-label="Close">Cancel</a>
+              <input class="btn btn-leaf" id="abuse_submit" type="submit" value="Submit">
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 
   <footer class="footer">

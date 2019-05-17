@@ -25,8 +25,8 @@
         <li><a class="t-white" href="#how_it-works">How it Works</a></li>
         <li><a class="t-white" href="#popular-brand">Popular Brands</a></li>
         <li><a class="t-white" href="#contact_us">Contact Us</a></li>
-        <li><a id="login-button" class="t-white" href="#">Log In</a></li>
-        <li><a id="signup-button" class="t-white" href="#">Sign Up</a></li>
+        <li><a id="login-button" onclick="showLoginForm()" class="t-white" href="#">Log In</a></li>
+        <li><a id="signup-button" onclick="showSignupForm()" class="t-white" href="#">Sign Up</a></li>
       </ul>
     </nav>
   </header>
@@ -764,7 +764,7 @@
   <div id="login-modal" class="modal">
     <div class="wrapper animate">
       <div class="card">
-          <button type="button" id="modalClose" class="btn modal-btn close-btn"><i class="lnr lnr-cross"></i></button>
+          <button type="button" id="modalClose" onclick="closeLoginForm()" class="btn modal-btn close-btn"><i class="lnr lnr-cross"></i></button>
         <div class="card-wrap">
           <h1 class="t-center mt-0 m-b-15">AutoMart</h1>
 
@@ -799,7 +799,7 @@
               <div class="m-b-20 m-t-10 mb-0 row">
 
                 <div class="c-sm-6 m-t-20">
-                  <a id="no-account" href="#" class="t-muted"><i class="lnr lnr-user"></i> <small>Don't have an
+                  <a id="no-account" href="#" onclick="noAccount()" class="t-muted"><i class="lnr lnr-user"></i> <small>Don't have an
                       account?</small></a>
                 </div>
                 <div class="c-sm-6 m-t-20">
@@ -818,7 +818,7 @@
   <div id="signup-modal" class="modal">
     <div class="wrapper animate">
       <div class="card">
-        <button type="button" id="modalClose" class="btn modal-btn close-btn"><i class="lnr lnr-cross"></i></button>
+        <button type="button" id="modalClose" onclick="closeSignupForm()" class="btn modal-btn close-btn"><i class="lnr lnr-cross"></i></button>
           <div class="card-wrap">
             <h1 class="t-center mt-0 m-b-15">AutoMart</h1>
 
@@ -858,7 +858,7 @@
 
                 <div class="m-b-20 t-center row m-t-20">
                   <div class="c-12">
-                    <button class="btn btn-danger btn-block" onsubmit="location.href='index.html'" type="submit">Create
+                    <button class="btn btn-danger btn-block" type="submit">Create
                       Account</button>
                   </div>
                 </div>
@@ -866,7 +866,7 @@
                 <div class="m-b-20 m-t-10 mb-0 row">
 
                   <div class="c-12 m-t-20">
-                    <a href="#" id="have-account" class="t-muted"><i class="lnr lnr-user"></i> <small>Already have an
+                    <a href="#" id="have-account" onclick="haveAccount()" class="t-muted"><i class="lnr lnr-user"></i> <small>Already have an
                         account?</small></a>
                   </div>
                 </div>

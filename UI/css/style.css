@@ -457,10 +457,8 @@ header>h1 {
 .nav-list {
   list-style-type: none;
   display: flex;
-  /* border: 1px solid blue; */
   height: inherit;
   justify-content: flex-end;
-  /* width: 20%; */
   align-items: center;
 }
 
@@ -601,10 +599,15 @@ section.brand {
 }
 
 #contact-form input,
-#contact-form textarea {
+#contact-form textarea,
+.control-textarea {
   border: 1px solid #eee;
   padding-left: 10px;
   margin-bottom: 10px;
+}
+
+.control-textarea {
+  width: 100%;
 }
 
 #contact-form input {
@@ -641,6 +644,10 @@ section.brand {
 .control-input:focus,
 .checkbox-input:focus {
   outline: 2px solid #3074ec;
+}
+
+.field {
+  margin-bottom: 20px;
 }
 
 .modal {
@@ -802,7 +809,7 @@ section.brand {
   background-color: #fff;
 }
 
-.filters-section select {
+.control-select {
   width: 100%;
   height: 35px;
   margin-bottom: 10px;
@@ -900,6 +907,10 @@ section.brand {
 .com_logo a img {
   width: 200px;
   border-radius: 50%;
+}
+
+.report-action {
+  float: right;
 }
 
 .animate {
