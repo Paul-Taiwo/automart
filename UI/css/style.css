@@ -30,11 +30,11 @@ h6 {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 1.8em;
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 h3 {
@@ -141,6 +141,10 @@ a {
   margin-top: 40px;
 }
 
+.m-t-75 {
+  margin-top: 75px;
+}
+
 .m-b-5 {
   margin-bottom: 5px;
 }
@@ -222,6 +226,7 @@ a {
 .c-md-6,
 .c-md-12,
 .c-12,
+.c-lg-3,
 .c-lg-4,
 .c-lg-5,
 .c-lg-6,
@@ -233,6 +238,19 @@ a {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+}
+
+.lnr {
+  display: inline-block;
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.05em;
+}
+
+.lnr-apartment {
+  color: #0F52BA;
+  font-size: 40px;
 }
 
 .btn {
@@ -268,6 +286,10 @@ a {
 
 .btn-gold {
   background-color: #ff9900;
+}
+
+.btn-dark-orange {
+  background-color: #D43900;
 }
 
 .btn-gold-r {
@@ -321,6 +343,10 @@ a {
   font-size: 1.5em;
 }
 
+.show {
+  display: block !important;
+}
+
 .card {
   position: relative;
   display: flex;
@@ -336,6 +362,10 @@ a {
   padding: 35px;
 }
 
+.card-wrap a {
+  text-decoration: none;
+}
+
 .card svg {
   width: 200px;
   height: 160px;
@@ -343,6 +373,10 @@ a {
 
 .t-white {
   color: #ffffff;
+}
+
+.t-dark-orange {
+  color: #D43900;
 }
 
 .t-center {
@@ -354,38 +388,82 @@ header.header {
   height: 60px;
   position: fixed;
   z-index: 4;
+  top: 0;
   transition: 0.5s ease-in-out;
 }
 
 header nav.navbar {
-  margin: 20px 5% 1% 17%;
+  margin: 13px 5% 1% 17%;
   /* border: 1px solid red; */
 }
 
 header>h1 {
   float: left;
-  padding: 4px 72px;
+  padding: 12px 72px;
   margin: 0;
   font-family: 'Dancing Script', cursive;
 }
 
-.onscroll {
+.onscroll,
+.fix-header {
   background-color: #0f0f12;
   box-shadow: 1px 3px 6px #333;
+}
+
+.dropdown {
+  position: absolute;
+  right: 2%;
+  top: -13px;
+  z-index: 1;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  color: white;
+  padding: 8px 16px;
+  background-color: inherit;
+  float: right;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn svg {
+  color: #fff;
+}
+
+.dropdown-content {
+  min-width: 200px;
+  margin-top: 65px;
+  display: none;
+  z-index: 2;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px 16px;
+  color: #212529;
+  background: #fff;
+  text-decoration: none;
 }
 
 .section-header {
   margin: 45px 0 35px;
 }
 
+.content-header {
+  margin: 45px 0 10px;
+}
+
 .nav-list {
   list-style-type: none;
   display: flex;
-  /* border: 1px solid blue; */
   height: inherit;
   justify-content: flex-end;
-  /* width: 20%; */
   align-items: center;
+}
+
+nav ul>li:nth-child(2) {
+  margin-right: 25px
 }
 
 nav ul>li>a {
@@ -480,7 +558,8 @@ section.brand {
 }
 
 .slide-img,
-.brands {
+.brands,
+.car-image {
   position: relative;
   background-repeat: no-repeat;
   width: 100%;
@@ -520,10 +599,15 @@ section.brand {
 }
 
 #contact-form input,
-#contact-form textarea {
+#contact-form textarea,
+.control-textarea {
   border: 1px solid #eee;
   padding-left: 10px;
   margin-bottom: 10px;
+}
+
+.control-textarea {
+  width: 100%;
 }
 
 #contact-form input {
@@ -562,6 +646,10 @@ section.brand {
   outline: 2px solid #3074ec;
 }
 
+.field {
+  margin-bottom: 20px;
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -579,6 +667,250 @@ section.brand {
   margin: 7.5% auto;
   max-width: 500px;
   position: relative;
+}
+
+.all-cars-container,
+.car-ads,
+.specific-header,
+.ads-action {
+  display: flex;
+}
+
+.all-cars-container,
+.specific-header,
+.ads-action {
+  justify-content: space-between;
+}
+
+.all-cars {
+  width: 78%;
+}
+
+.car-ads-container {
+  list-style-type: none;
+  margin: 0;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.car-ads {
+  position: relative;
+  padding: 0.8em;
+  -webkit-box-shadow: 0 8px 10px 4px #e6e6e6;
+  box-shadow: 0 8px 10px 4px #e6e6e6;
+  border-radius: 5px;
+  margin-bottom: 30px;
+  background-color: #fff;
+}
+
+.car-image {
+  background-image: url("https://pictures.dealer.com/v/victorytoyotascioncanton/0643/7d607a614ba466cb09182cdd96f5e6e7x.jpg?impolicy=resize&w=650");
+  height: 200px;
+  width: 40.3%;
+  /* border: 1px solid red; */
+  background-size: cover;
+  border-radius: 0;
+  background-position: top;
+}
+
+.car-info {
+  width: 36%;
+  padding: 4px 30px;
+  border-right: 1px solid #eee;
+}
+
+.car-info p {
+  font-size: 1.14em;
+}
+
+.car-price {
+  padding: 8px 30px;
+}
+
+.car-price a {
+  text-decoration: none;
+  bottom: 15px;
+  right: 39px;
+  position: absolute;
+}
+
+.filter-header h2 {
+  padding: 11px 0;
+  background-color: #3f51b5;
+  margin: 0;
+  color: #fff;
+}
+
+.filter-header svg {
+  margin-top: 10px;
+}
+
+.filter-options {
+  width: 20%;
+  height: fit-content;
+  box-shadow: 0 5px 17px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24);
+}
+
+.accordion {
+  display: block;
+  width: 100%;
+  height: 45px;
+  border: none;
+  background: #F2F2F2;
+  outline: initial;
+  text-align: left;
+  padding: 0.623em 2em;
+  border-bottom: 1px solid #e6e6e6
+}
+
+.accordion svg {
+  float: right;
+  margin-top: 4px;
+}
+
+.accordion:nth-child(2) {
+  border-top: 1px solid #e6e6e6;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: .5s ease;
+}
+
+.checklist li {
+  display: block;
+  position: relative;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #ffffff;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checklist li a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 700;
+
+}
+
+.checklist li a label input[type=checkbox] {
+  float: right;
+  margin-top: 6px;
+}
+
+.filters-section {
+  padding: 15px;
+  background-color: #fff;
+}
+
+.control-select {
+  width: 100%;
+  height: 35px;
+  margin-bottom: 10px;
+}
+
+.specific-header {
+  padding: 25px;
+  background-color: #D43900;
+  color: #fff;
+}
+
+.specific-container {
+  border: 1px solid #eee;
+  width: 75%;
+  margin-right: 20px;
+}
+
+.img-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.imgSlides {
+  display: none;
+}
+
+.listing-header p svg {
+  margin-top: 2px;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.column {
+  flex: 0 0 16.4%;
+}
+
+.thumbnail {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.active,
+.thumbnail:hover {
+  opacity: 1;
+}
+
+.car-description {
+  padding: 20px;
+  background-color: #fff;
+}
+
+.ads-action {
+  padding: 0 117px;
+  margin-top: 20px;
+  background-color: #fff;
+}
+
+.com_logo {
+  text-align: center;
+}
+
+.com_logo a img {
+  width: 200px;
+  border-radius: 50%;
+}
+
+.report-action {
+  float: right;
 }
 
 .animate {
@@ -759,9 +1091,9 @@ section.brand {
 /* Medium Devices, Desktops */
 
 @media only screen and (min-width: 992px) {
-  .c-lg-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
+  .c-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
   }
 
   .c-lg-4 {
@@ -772,6 +1104,11 @@ section.brand {
   .c-lg-5 {
     flex: 0 0 44%;
     max-width: 44%;
+  }
+
+  .c-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 
   .c-lg-7 {
