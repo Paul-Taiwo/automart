@@ -14,16 +14,19 @@
 
   <header class="header fix-header">
     <h1 class="t-white">AutoMart</h1>
-    <button type="button" id="toggler" class="btn mobile-btn"><i class="lnr lnr-menu"></i></button>
+    <button type="button" id="toggler" onclick="openSideMenu()" class="btn mobile-btn"><i
+        class="lnr lnr-menu"></i></button>
     <nav class="navbar">
       <ul class="nav-list">
-        <button type="button" id="hideMenu" class="btn close-btn"><i class="lnr lnr-cross"></i></button>
+        <button type="button" id="hideMenu" onclick="closeSideMenu()"" class=" btn close-btn"><i
+            class="lnr lnr-cross"></i></button>
 
         <!-- <li><a class="t-white active" href="#home">Home</a></li> -->
         <li><a href="#" class="btn btn-leaf">Sell a car</a></li>
         <li class="dropdown">
           <p>Welcome</p>
-          <button id="toggleDropdown" class="btns dropbtn">Paulot <svg class="lnr lnr-chevron-down">
+          <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">Paulot <svg
+              class="lnr lnr-chevron-down">
               <use xlink:href="#lnr-chevron-down"></use>
             </svg></button>
           <div id="myDropdown" class="dropdown-content">
