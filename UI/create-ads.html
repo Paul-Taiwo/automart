@@ -46,9 +46,16 @@
   </header>
 
   <section class="content-margin m-t-75">
+
+    <div class="t-center m-b-20">
+      <button class="btn btn-round t-white tablinks active">1</button>
+      <button class="btn btn-round t-white tablinks">2</button>
+      <button class="btn btn-round t-white tablinks">3</button>
+      <!-- <button class="btns btn-round t-white tablinks">3</button> -->
+    </div>
     <div class="card">
       <div class="card-wrap">
-        <form action="">
+        <form action="" id="create-ads-form">
 
           <div class="tabpanel">
             <div class="inline-form">
@@ -1135,8 +1142,8 @@
           </div>
 
           <div class="left-right p-t-15">
-            <button class="btn btn-danger">Cancel</button>
-            <button class="btn btn-leaf">Next</button>
+            <button id="create-ads-prev" onclick="nextPrev(-1)" class="btn btn-danger">Previous</button>
+            <button id="create-ads-next" onclick="nextPrev(1)" class="btn btn-leaf">Next</button>
           </div>
         </form>
       </div>

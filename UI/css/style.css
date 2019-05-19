@@ -954,6 +954,20 @@ section.brand {
   float: right;
 }
 
+.tabpanel {
+  display: none;
+}
+
+.tablinks {
+  width: 40px;
+}
+
+.tablinks.active {
+  background-color: #dc3545;
+  outline: none;
+}
+
+/* Animations */
 .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
