@@ -924,7 +924,6 @@ section.brand {
 }
 
 .ads-action {
-  padding: 0 117px;
   margin-top: 20px;
   background-color: #fff;
 }
@@ -1043,6 +1042,22 @@ section.brand {
     flex: 0 0 50%;
     max-width: 50%;
   }
+
+  .all-cars-container {
+    flex-direction: column;
+  }
+
+  .specific-container {
+    width: unset;
+    margin-right: unset;
+  }
+
+  .ads-action {
+    padding: unset;
+  }
+  .specific-container {
+    margin-bottom: 20px;
+  }
 }
 
 /* Small Devices, Tablets */
@@ -1140,6 +1155,21 @@ section.brand {
 
   nav ul>li>a:hover {
     color: #ffffff !important;
+  }
+
+  .filter-options {
+    display: none;
+  }
+
+  .all-cars {
+    width: 100%;
+  }
+  .inline-form {
+    flex-direction: column;
+  }
+
+  .inline-field {
+    width: 100%;
   }
 }
 
