@@ -14,12 +14,17 @@
 
   <header class="header fix-header">
     <h1 class="t-white">AutoMart</h1>
-    <button type="button" id="toggler" onclick="openSideMenu()" class="btn mobile-btn"><i
-        class="lnr lnr-menu"></i></button>
+    <button type="button" id="toggler" onclick="openSideMenu()" class="btn mobile-btn">
+      <svg class="lnr lnr-menu">
+        <use xlink:href="#lnr-menu"></use>
+      </svg></i></button>
     <nav class="navbar">
       <ul class="nav-list">
-        <button type="button" id="hideMenu" onclick="closeSideMenu()"" class=" btn close-btn"><i
-            class="lnr lnr-cross"></i></button>
+        <button type="button" id="hideMenu" onclick="closeSideMenu()"" class=" btn close-btn">
+          <svg
+            class="lnr lnr-cross">
+            <use xlink:href="#lnr-cross"></use>
+          </svg></button>
         <li class="dropdown">
 
           <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">Paulot <svg

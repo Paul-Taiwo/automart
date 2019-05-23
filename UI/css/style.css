@@ -518,6 +518,10 @@ nav ul>li:nth-child(4) {
   margin-right: 35px
 }
 
+nav ul>li:nth-child(6) {
+  display: none;
+}
+
 nav ul>li>a {
   font-size: 1em;
   margin-right: 35px;
@@ -1072,6 +1076,7 @@ th.width-35 {
   display: flex;
   justify-content: center;
 }
+
 /* Animations */
 .animate {
   -webkit-animation: animatezoom 0.6s;
@@ -1140,7 +1145,7 @@ th.width-35 {
 
 @media only screen and (max-width: 480px) {
 
-  .nf-row {
+  .sm-row {
     flex-direction: column;
   }
 
@@ -1159,10 +1164,6 @@ th.width-35 {
     max-width: 50%;
   }
 
-  .all-cars-container {
-    flex-direction: column;
-  }
-
   .specific-container {
     width: unset;
     margin-right: unset;
@@ -1170,9 +1171,6 @@ th.width-35 {
 
   .ads-action {
     padding: unset;
-  }
-  .specific-container {
-    margin-bottom: 20px;
   }
 
   li.car-ads {
@@ -1191,6 +1189,7 @@ th.width-35 {
   .admin.car-price a {
     margin-top: unset;
   }
+
   .car-price a {
     bottom: 28px;
   }
@@ -1203,6 +1202,7 @@ th.width-35 {
     flex: 0 0 50%;
     max-width: 50%;
   }
+
   .c-md-12 {
     flex: 0 0 100%;
     max-width: 100%;
@@ -1226,6 +1226,10 @@ th.width-35 {
 @media only screen and (max-width: 768px) {
   .row {
     flex-direction: column;
+  }
+
+  nav ul>li:nth-child(6) {
+    display: block;
   }
 
   .card-wrap {
@@ -1300,12 +1304,19 @@ th.width-35 {
   .all-cars {
     width: 100%;
   }
-  .inline-form {
+
+  .inline-form,
+  .all-cars-container {
     flex-direction: column;
   }
 
   .inline-field {
     width: 100%;
+  }
+
+  .specific-container {
+    width: 100%;
+    margin-right: unset;
   }
 
   .dropdown {
@@ -1315,6 +1326,10 @@ th.width-35 {
   nav ul>li:nth-child(2) {
     margin-right: 0;
     margin-top: 15px;
+  }
+
+  .specific-container {
+    margin-bottom: 20px;
   }
 
   .table-mobile {
