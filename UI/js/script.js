@@ -77,6 +77,14 @@ const closeReportAds = () => {
   document.querySelector("#report-ads.modal").style.display = "none";
 }
 
+const editAdsPrice = () => {
+  document.querySelector("#update-price.modal").style.display = "block";
+}
+
+const closeEditPrice = () => {
+  document.querySelector("#update-price.modal").style.display = "none";
+}
+
 const plusSlides = (n) => {
   showSlides(slideIndex += n);
 }

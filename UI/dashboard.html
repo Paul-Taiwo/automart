@@ -100,8 +100,7 @@
                   <th class="width-35">Vehicles</th>
                   <th class="width-15">Status</th>
                   <th class="width-15">Created</th>
-                  <th>Action
-                  </th>
+                  <th>Action</th>
                 </tr>
               </thead>
 
@@ -118,7 +117,7 @@
                     <h3 class="t-center">2019-04-16</h3>
                   </td>
                   <td class="t-center del-record">
-                    <button class="btn btn-info b-t-r-0 b-b-r-0">Edit Price</button>
+                    <button class="btn btn-info b-t-r-0 b-b-r-0" onclick="editAdsPrice()">Edit Price</button>
                     <button class="btn btn-leaf b-t-l-0 b-b-l-0">Sold</button>
                   </td>
                 </tr>
@@ -164,7 +163,7 @@
             </div>
 
             <div class="report-action">
-              <a class="btn btn-danger" onclick="" aria-label="Close">Cancel</a>
+              <a class="btn btn-danger" onclick="closeEditPrice()" aria-label="Close">Cancel</a>
               <input class="btn btn-leaf" id="" type="submit" value="Submit">
             </div>
           </form>
