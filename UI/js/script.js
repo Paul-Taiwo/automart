@@ -1,4 +1,5 @@
 let header = document.querySelector("header.header"),
+  slideIndex = 1,
   currentTab = 0;
 
 window.onscroll = () => {
@@ -176,5 +177,8 @@ const nextPrev = (n) => {
 window.on = ()=> {
   console.log('YEs');
 }
-// showSlides(slideIndex);
+
+if (document.querySelector("#view-vehicle")) {
+  showSlides(slideIndex);
+}
 showCurrentTab(currentTab);

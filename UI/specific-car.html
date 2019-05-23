@@ -10,21 +10,28 @@
   <title>Auto Mart | No 1 Market Place for automobiles</title>
 </head>
 
-<body onload="showSlides(1)">
+<body>
 
   <header class="header fix-header">
     <h1 class="t-white">AutoMart</h1>
-    <button type="button" id="toggler" class="btn mobile-btn"><i class="lnr lnr-menu"></i></button>
+    <button type="button" id="toggler" onclick="openSideMenu()" class="btn mobile-btn">
+      <svg class="lnr lnr-menu">
+        <use xlink:href="#lnr-menu"></use>
+      </svg></i></button>
     <nav class="navbar">
       <ul class="nav-list">
-        <button type="button" id="hideMenu" class="btn close-btn"><i class="lnr lnr-cross"></i></button>
+        <button type="button" id="hideMenu" onclick="closeSideMenu()"" class=" btn close-btn">
+          <svg
+            class="lnr lnr-cross">
+            <use xlink:href="#lnr-cross"></use>
+          </svg></button>
 
         <li><a class="t-white active" href="./dashboard.html">Home</a></li>
         <li><a class="t-white" href="./vehicles.html">See Cars</a></li>
         <li><a href="./create-ads.html" class="btn btn-leaf">Sell a car</a></li>
         <li class="dropdown">
-          <p>Welcome</p>
-          <button id="toggleDropdown" class="btns dropbtn">Paulot <svg class="lnr lnr-chevron-down">
+
+          <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">Paulot <svg class="lnr lnr-chevron-down">
               <use xlink:href="#lnr-chevron-down"></use>
             </svg></button>
           <div id="myDropdown" class="dropdown-content">
@@ -37,11 +44,12 @@
             <a href="#"><svg class="lnr lnr-phone">
                 <use xlink:href="#lnr-phone"></use>
               </svg> Contact Us</a>
-            <a href="index.html"><svg class="lnr lnr-power-switch">
+           <a href="index.html"><svg class="lnr lnr-power-switch">
                 <use xlink:href="#lnr-power-switch"></use>
               </svg></i> Logout</a>
           </div>
         </li>
+        <li><a class="t-white" href="./vehicles.html">Log Out</a></li>
       </ul>
     </nav>
   </header>
@@ -110,7 +118,7 @@
             <a class="next" onclick="plusSlides(1)"><svg class="lnr lnr-chevron-right"><use xlink:href="#lnr-chevron-right"></use></svg></a>
 
             <!-- Thumbnail images -->
-            <div class="row">
+            <div class="nf-row">
               <div class="column">
                 <img class="thumbnail"
                   src="https://pictures.dealer.com/v/victorytoyotascioncanton/0643/thumb_7d607a614ba466cb09182cdd96f5e6e7x.jpg"
