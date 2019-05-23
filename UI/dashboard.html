@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script:700|Poppins" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Auto Mart | No 1 Market Place for automobiles</title>
+</head>
+
+<body>
+
+  <header class="header fix-header">
+    <h1 class="t-white">AutoMart</h1>
+    <button type="button" id="toggler" class="btn mobile-btn"><i class="lnr lnr-menu"></i></button>
+    <nav class="navbar">
+      <ul class="nav-list">
+        <button type="button" id="hideMenu" class="btn close-btn"><i class="lnr lnr-cross"></i></button>
+
+        <!-- <li><a class="t-white active" href="#home">Home</a></li> -->
+        <li><a href="create-ads.html" class="btn btn-leaf">Sell a car</a></li>
+        <li class="dropdown">
+          <p>Welcome</p>
+          <button id="toggleDropdown" class="btns dropbtn">Paulot <svg class="lnr lnr-chevron-down">
+              <use xlink:href="#lnr-chevron-down"></use>
+            </svg></button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="#"><svg class="lnr lnr-user">
+                <use xlink:href="#lnr-user"></use>
+              </svg></i> My account</a>
+            <a href="#"><svg class="lnr lnr-database">
+                <use xlink:href="#lnr-database"></use>
+              </svg></i> Manage Ads</a>
+            <a href="#"><svg class="lnr lnr-phone">
+                <use xlink:href="#lnr-phone"></use>
+              </svg> Contact Us</a>
+            <a href="index.html"><svg class="lnr lnr-power-switch">
+                <use xlink:href="#lnr-power-switch"></use>
+              </svg></i> Logout</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="content-margin m-t-75">
+    <h2>Dashboard</h2>
+
+    <div class="nf-row m-b-30">
+      <div class="c-md-6 c-xl-3 c-lg-3 m-b-30">
+        <div class="card">
+          <div class="card-wrap t-center">
+            <img class="svg" src="./svg/car.svg" alt="">
+            <h4 class="bg-info t-white">Total Car Ads (2)</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-md-6 c-xl-3 c-lg-3 m-b-30">
+        <div class="card">
+          <div class="card-wrap t-center">
+            <img class="svg" src="./svg/sand-clock.svg" alt="">
+            <h4 class="bg-success t-white">Pending Car Ads (0)</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-md-6 c-xl-3 c-lg-3 m-b-30">
+        <div class="card">
+          <div class="card-wrap t-center">
+            <img class="svg" src="./svg/lock.svg" alt="">
+            <h4 class="bg-warning t-white">Active Ads (1)</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-md-6 c-lg-3 c-xl-3">
+        <div class="card">
+          <div class="card-wrap t-center">
+            <img class="svg" src="./svg/remove.svg" alt="">
+            <h4 class="bg-danger t-white">Expired Ads (0)</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="c-md-12 m-b-30">
+        <div class="card">
+          <div class="card-wrap table-mobile">
+            <h4 class="t-center">Red Flag Records</h4>
+            <table>
+
+              <thead>
+                <tr>
+                  <th class="num">ID</th>
+                  <th class="width-35">Vehicles</th>
+                  <th class="width-15">Status</th>
+                  <th class="width-15">Created</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td>100234</td>
+                  <td>
+                    2010 Blue Automatic Toyota Highlander</td>
+                  <td>
+                    <h5 class="bg-info t-white t-center">Available</h5>
+                  </td>
+                  <td>
+                    <h3 class="t-center">2019-04-16</h3>
+                  </td>
+                  <td class="t-center del-record">
+                    <button class="btn btn-info b-t-r-0 b-b-r-0" onclick="editAdsPrice()">Edit Price</button>
+                    <button class="btn btn-leaf b-t-l-0 b-b-l-0">Sold</button>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>100765</td>
+                  <td>2015 Toyota Venza XLE AWD</td>
+                  <td>
+                    <h5 class="bg-warning t-white t-center">Sold</h5>
+                  </td>
+                  <td>
+                    <h3 class="t-center">2019-04-16</h3>
+                  </td>
+                  <td class="t-center del-record">
+                    <button class="btn btn-info b-t-r-0 b-b-r-0 btn-disabled">Edit Price</button>
+                    <button class="btn btn-leaf b-t-l-0 b-b-l-0 btn-disabled">Sold</button>
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="update-price" class="modal">
+    <div class="wrapper animate">
+      <div class="card">
+        <div class="card-wrap">
+          <form method="POST" action="">
+            <div class="field">
+              <label class=""> Old Price <span class="required-symbol">*</span>
+                <input class="control-input" required="" name="old-price" type="text" value="">
+              </label>
+            </div>
+            <div class="field">
+              <label class=""> New Price <span class="required-symbol">*</span>
+                <input class="control-input" required="" name="new-price" type="tel" value="">
+              </label>
+            </div>
+
+            <div class="report-action">
+              <a class="btn btn-danger" onclick="closeEditPrice()" aria-label="Close">Cancel</a>
+              <input class="btn btn-leaf" id="" type="submit" value="Submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p> © 2019 Andela-AutoMart</p>
+  </footer>
+  <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+  <script src="./js/script.js"></script>
+</body>
