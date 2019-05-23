@@ -19,8 +19,9 @@
       <ul class="nav-list">
         <button type="button" id="hideMenu" class="btn close-btn"><i class="lnr lnr-cross"></i></button>
 
-        <!-- <li><a class="t-white active" href="#home">Home</a></li> -->
-        <li><a href="create-ads.html" class="btn btn-leaf">Sell a car</a></li>
+        <li><a class="t-white active" href="./dashboard.html">Home</a></li>
+        <li><a class="t-white" href="./vehicles.html">See Cars</a></li>
+        <li><a href="./create-ads.html" class="btn btn-leaf">Sell a car</a></li>
         <li class="dropdown">
           <p>Welcome</p>
           <button id="toggleDropdown" class="btns dropbtn">Paulot <svg class="lnr lnr-chevron-down">
@@ -87,11 +88,11 @@
 
     </div>
 
+    <h2>All Car Sale Ads</h2>
     <div class="row">
       <div class="c-md-12 m-b-30">
         <div class="card">
           <div class="card-wrap table-mobile">
-            <h4 class="t-center">Red Flag Records</h4>
             <table>
 
               <thead>
@@ -144,6 +145,47 @@
         </div>
       </div>
     </div>
+
+    <h2>All Purchsed Order</h2>
+    <div class="row">
+      <div class="c-md-12 m-b-30">
+        <div class="card">
+          <div class="card-wrap table-mobile">
+            <table>
+
+              <thead>
+                <tr>
+                  <th class="num">ID</th>
+                  <th class="width-35">Name</th>
+                  <th class="width-15">Price</th>
+                  <th class="width-15">Price Offered</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td>100234</td>
+                  <td>2010 Blue Toyota Highlander</td>
+                  <td>
+                    <h3 class="t-center">5,200,300</h3>
+                  </td>
+                  <td>
+                    <h3 class="t-center">5,000,000</h3>
+                  </td>
+                  <td class="t-center del-record">
+                    <button class="btn btn-info" onclick="reviewPrice()">Review Price</button>
+                  </td>
+                </tr>
+
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <div id="update-price" class="modal">
@@ -164,6 +206,32 @@
 
             <div class="report-action">
               <a class="btn btn-danger" onclick="closeEditPrice()" aria-label="Close">Cancel</a>
+              <input class="btn btn-leaf" id="" type="submit" value="Submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="review-price" class="modal">
+    <div class="wrapper animate">
+      <div class="card">
+        <div class="card-wrap">
+          <form method="POST" action="">
+            <div class="field">
+              <label class="">Vehicle Price
+                <input class="control-input" required="" name="old-price" type="text" value="5,200,300" disabled>
+              </label>
+            </div>
+            <div class="field">
+              <label class="">Price Offered<span class="required-symbol">*</span>
+                <input class="control-input" required="" name="new-price" type="tel" value="">
+              </label>
+            </div>
+
+            <div class="report-action">
+              <a class="btn btn-danger" onclick="closeReviewPrice()" aria-label="Close">Cancel</a>
               <input class="btn btn-leaf" id="" type="submit" value="Submit">
             </div>
           </form>

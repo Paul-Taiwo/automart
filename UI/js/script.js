@@ -85,6 +85,22 @@ const closeEditPrice = () => {
   document.querySelector("#update-price.modal").style.display = "none";
 }
 
+const reviewPrice = () => {
+  document.querySelector("#review-price.modal").style.display = "block";
+}
+
+const closeReviewPrice = () => {
+  document.querySelector("#review-price.modal").style.display = "none";
+}
+
+const purchase = () => {
+  document.querySelector("#purchase-order.modal").style.display = "block";
+}
+
+const closePurchase = () => {
+  document.querySelector("#purchase-order.modal").style.display = "none";
+}
+
 const plusSlides = (n) => {
   showSlides(slideIndex += n);
 }

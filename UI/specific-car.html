@@ -19,8 +19,9 @@
       <ul class="nav-list">
         <button type="button" id="hideMenu" class="btn close-btn"><i class="lnr lnr-cross"></i></button>
 
-        <!-- <li><a class="t-white active" href="#home">Home</a></li> -->
-        <li><a href="#" class="btn btn-leaf">Sell a car</a></li>
+        <li><a class="t-white active" href="./dashboard.html">Home</a></li>
+        <li><a class="t-white" href="./vehicles.html">See Cars</a></li>
+        <li><a href="./create-ads.html" class="btn btn-leaf">Sell a car</a></li>
         <li class="dropdown">
           <p>Welcome</p>
           <button id="toggleDropdown" class="btns dropbtn">Paulot <svg class="lnr lnr-chevron-down">
@@ -192,7 +193,7 @@
             <button class="btn btn-danger" onclick="reportAds()"><svg class="lnr lnr-warning">
                 <use xlink:href="#lnr-warning"></use>
               </svg> Report Ads</button>
-            <button class="btn btn-gold">Purchase</button>
+            <button class="btn btn-gold" onclick="purchase()">Purchase</button>
           </div>
         </div>
       </div>
@@ -256,6 +257,43 @@
 
               <div class="report-action">
               <a class="btn btn-danger" onclick="closeReportAds()" aria-label="Close">Cancel</a>
+              <input class="btn btn-leaf" id="abuse_submit" type="submit" value="Submit">
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="purchase-order" class="modal">
+    <div class="wrapper animate">
+      <div class="card">
+        <div class="card-wrap">
+          <form method="POST" action="">
+            <div class="field">
+              <label class=""> Name <span class="required-symbol">*</span>
+                <input class="control-input" required="" name="name" type="text" value="">
+              </label>
+            </div>
+            <div class="field">
+              <label class=""> Phone Number <span class="required-symbol">*</span>
+                <input class="control-input" required="" name="" type="tel" value="">
+              </label>
+            </div>
+            <div class="field">
+              <label class=""> Email
+                <input class="control-input" name="email" type="email" placeholder="e.g jaccky@gmail.com" value="">
+              </label>
+            </div>
+
+            <div class="field">
+              <label for="">Amount<span class="required-symbol">*</span></label>
+              <input class="control-input" name="amount" type="text" placeholder="How much do you want to pay" value="">
+            </div>
+
+              <div class="report-action">
+              <a class="btn btn-danger" onclick="closePurchase()" aria-label="Close">Cancel</a>
               <input class="btn btn-leaf" id="abuse_submit" type="submit" value="Submit">
 
             </div>
