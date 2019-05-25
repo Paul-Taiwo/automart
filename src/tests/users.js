@@ -22,8 +22,9 @@ describe('User can sign up', () => {
       })
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.body.status).to.equals(201);
+        expect(res.statusCode).to.equals(201);
         expect(res.body.data).to.be.an('object');
+        expect(res.body.status).to.equals(201);
         done();
       });
   });
