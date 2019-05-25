@@ -7,17 +7,11 @@
     "dev": "nodemon ./src/app --exec babel-node",
     "lint": "eslint ./src",
     "fix": "eslint ./src --fix",
-<<<<<<< HEAD
     "build": "babel ./src -d ./build --source-maps",
     "start": "npm run db:migrate && node ./build/app",
     "db:migrate": "babel-node ./src/database/migrations",
     "pretest": "cross-env NODE_ENV=test npm run db:migrate",
     "test": "nyc cross-env NODE_ENV=test --reporter=html  mocha --require babel-register ./src/tests/* --timeout 10000 --no-deprecation --exit",
-=======
-    "prestart": "babel ./src -d ./build --source-maps",
-    "start": "node ./build/app",
-    "test": "nyc cross-env NODE_ENV=test --reporter=html mocha --compilers js:babel-register ./src/tests/* --no-deprecation --exit",
->>>>>>> chore(test): write test for main api
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build"
   },
