@@ -203,7 +203,34 @@ a {
   font-size: 3em;
 }
 
+/* Backgrounds */
+.bg-success {
+  background-color: #28a745 !important;
+}
+
+.bg-info {
+  background-color: #007bff !important;
+}
+
+.bg-warning {
+  background-color: #f8af10 !important;
+}
+
+.bg-danger {
+  background-color: #dc3545 !important;
+}
+
+.bg-black {
+  background-color: #0f0f12;
+}
+
 .row {
+  display: flex;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.nf-row {
   display: flex;
   margin-right: -15px;
   margin-left: -15px;
@@ -343,6 +370,31 @@ a {
   font-size: 1.5em;
 }
 
+/* Border */
+.no-border {
+  border: none;
+}
+
+.no-border-radius {
+  border-radius: unset;
+}
+
+.b-t-r-0 {
+  border-top-right-radius: 0;
+}
+
+.b-b-r-0 {
+  border-bottom-right-radius: 0;
+}
+
+.b-t-l-0 {
+  border-top-left-radius: 0;
+}
+
+.b-b-l-0 {
+  border-bottom-left-radius: 0;
+}
+
 .show {
   display: block !important;
 }
@@ -413,7 +465,7 @@ header>h1 {
 .dropdown {
   position: absolute;
   right: 2%;
-  top: -13px;
+  top: 9px;
   z-index: 1;
 }
 
@@ -462,8 +514,12 @@ header>h1 {
   align-items: center;
 }
 
-nav ul>li:nth-child(2) {
-  margin-right: 25px
+nav ul>li:nth-child(4) {
+  margin-right: 35px
+}
+
+nav ul>li:nth-child(6) {
+  display: none;
 }
 
 nav ul>li>a {
@@ -471,6 +527,7 @@ nav ul>li>a {
   margin-right: 35px;
   text-decoration: none;
   transition: .5s ease;
+  color: #fff;
 }
 
 nav ul>li>a.active,
@@ -615,7 +672,8 @@ section.brand {
   height: 43px;
 }
 
-#contact-form textarea {
+#contact-form textarea,
+.control-textarea {
   border-radius: 22px;
   padding: 14px;
   resize: none;
@@ -641,13 +699,40 @@ section.brand {
   border: 2px solid #ddd;
 }
 
+#price.control-input {
+  display: table-cell;
+  width: 41%;
+  margin-left: -6px;
+}
+
 .control-input:focus,
 .checkbox-input:focus {
   outline: 2px solid #3074ec;
 }
 
-.field {
+.input-addon b {
+  padding: 11px 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  color: #555;
+  text-align: center;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.field,
+.inline-field {
   margin-bottom: 20px;
+}
+
+.inline-field {
+  width: 50%;
+}
+
+.inline-field:nth-child(1) {
+  margin-right: 30px;
 }
 
 .modal {
@@ -672,7 +757,8 @@ section.brand {
 .all-cars-container,
 .car-ads,
 .specific-header,
-.ads-action {
+.ads-action,
+.inline-form {
   display: flex;
 }
 
@@ -684,6 +770,10 @@ section.brand {
 
 .all-cars {
   width: 78%;
+}
+
+.admin-all-cars {
+  width: 100%;
 }
 
 .car-ads-container {
@@ -732,6 +822,11 @@ section.brand {
   bottom: 15px;
   right: 39px;
   position: absolute;
+}
+
+.admin.car-price a {
+  margin-top: 90px;
+  position: unset;
 }
 
 .filter-header h2 {
@@ -895,7 +990,6 @@ section.brand {
 }
 
 .ads-action {
-  padding: 0 117px;
   margin-top: 20px;
   background-color: #fff;
 }
@@ -909,10 +1003,81 @@ section.brand {
   border-radius: 50%;
 }
 
+.left-right .btn {
+  width: 100px;
+}
+
+.left-right .btn:nth-child(1) {
+  float: left;
+}
+
+.left-right .btn:nth-child(2) {
+  float: right;
+}
+
 .report-action {
   float: right;
 }
 
+.tabpanel {
+  display: none;
+}
+
+.tablinks {
+  width: 40px;
+}
+
+.tablinks.active {
+  background-color: #dc3545;
+  outline: none;
+}
+
+.svg {
+  width: 100px;
+}
+
+/* Tables */
+table {
+  width: 100%;
+}
+
+thead {
+  background: #eeeeee;
+}
+
+tr {
+  border-bottom-color: #0f0f12;
+}
+
+td,
+th.num,
+th.nt-num {
+  text-align: left;
+  padding: 10px 15px
+}
+
+th.num {
+  width: 10%;
+}
+
+th.nt-num {
+  width: 68%;
+}
+
+th.width-15 {
+  width: 15%;
+}
+
+th.width-35 {
+  width: 35%;
+}
+
+.del-record {
+  display: flex;
+  justify-content: center;
+}
+
+/* Animations */
 .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
@@ -968,11 +1133,21 @@ section.brand {
   }
 }
 
+@media only screen and (max-width: 320px) {
+  .car-price a {
+    position: unset;
+  }
+}
+
 /* Extra Small Devices, Phones */
 
 @media only screen and (min-width: 480px) {}
 
 @media only screen and (max-width: 480px) {
+
+  .sm-row {
+    flex-direction: column;
+  }
 
   header>h1 {
     padding-left: 16px;
@@ -988,20 +1163,51 @@ section.brand {
     flex: 0 0 50%;
     max-width: 50%;
   }
+
+  .specific-container {
+    width: unset;
+    margin-right: unset;
+  }
+
+  .ads-action {
+    padding: unset;
+  }
+
+  li.car-ads {
+    flex-direction: column;
+  }
+
+  li.car-ads .car-image {
+    width: 100%;
+  }
+
+  div.car-info {
+    border-right: none;
+    width: 100%;
+  }
+
+  .admin.car-price a {
+    margin-top: unset;
+  }
+
+  .car-price a {
+    bottom: 28px;
+  }
 }
 
 /* Small Devices, Tablets */
 
 @media only screen and (min-width: 768px) {
+  .c-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
   .c-md-12 {
     flex: 0 0 100%;
     max-width: 100%;
   }
 
-  .c-md-6 {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
 
   #contact-form input,
   #contact-form textarea {
@@ -1020,6 +1226,10 @@ section.brand {
 @media only screen and (max-width: 768px) {
   .row {
     flex-direction: column;
+  }
+
+  nav ul>li:nth-child(6) {
+    display: block;
   }
 
   .card-wrap {
@@ -1067,7 +1277,7 @@ section.brand {
     display: block;
     position: fixed;
     right: -243px;
-    background-color: #111111;
+    background-color: #222d32;
     top: 0;
     bottom: 0;
     width: 190px;
@@ -1085,6 +1295,45 @@ section.brand {
 
   nav ul>li>a:hover {
     color: #ffffff !important;
+  }
+
+  .filter-options {
+    display: none;
+  }
+
+  .all-cars {
+    width: 100%;
+  }
+
+  .inline-form,
+  .all-cars-container {
+    flex-direction: column;
+  }
+
+  .inline-field {
+    width: 100%;
+  }
+
+  .specific-container {
+    width: 100%;
+    margin-right: unset;
+  }
+
+  .dropdown {
+    display: none;
+  }
+
+  nav ul>li:nth-child(2) {
+    margin-right: 0;
+    margin-top: 15px;
+  }
+
+  .specific-container {
+    margin-bottom: 20px;
+  }
+
+  .table-mobile {
+    overflow-x: auto;
   }
 }
 
@@ -1133,6 +1382,11 @@ section.brand {
 /* Large Devices, Wide Screens */
 
 @media only screen and (min-width: 1200px) {
+  .c-xl-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
   .c-xl-6 {
     flex: 0 0 50%;
     max-width: 50%;
