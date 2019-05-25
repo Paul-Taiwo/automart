@@ -5,6 +5,7 @@ import cors from 'cors';
 import log from 'fancy-log';
 // import dotenv from 'dotenv';
 import indexRoutes from './routes/index';
+import userRoutes from './routes/users';
 
 
 const app = express();
@@ -18,7 +19,7 @@ app.use(logger('dev'));
 
 const PORT = process.env.port || 8080;
 
-app.use('/api/v1/', indexRoutes);
+app.use('/api/v1/', [indexRoutes, userRoutes]);
 app.all('*', (req, res) => res.status(404).json({
   status: 404,
   error: 'Bad request',
