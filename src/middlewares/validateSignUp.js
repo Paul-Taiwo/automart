@@ -22,23 +22,23 @@ class Validate {
         case !firstname || !lastname:
           return res.status(400).json({
             status: 400,
-            message: 'Name fields cannot be empty',
+            error: 'Name fields cannot be empty',
           });
         case firstname.trim().length <= 2
         || lastname.trim().length <= 2:
           return res.status(400).json({
             status: 400,
-            message: 'Name fields cannot be less than 2 characters',
+            error: 'Name fields cannot be less than 2 characters',
           });
         case !password:
           return res.status(400).json({
             status: 400,
-            message: 'Password field cannot be empty',
+            error: 'Password field cannot be empty',
           });
         case password.trim().length < 8:
           return res.status(400).json({
             status: 400,
-            message: 'Password cannot be less than 8 characters',
+            error: 'Password cannot be less than 8 characters',
           });
 
         default:
