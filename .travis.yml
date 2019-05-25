@@ -7,9 +7,6 @@ language: node_js
 node_js:
   - '8.11.3'
 
-os:
-  - windows
-
 sudo: false
 
 install:
@@ -21,7 +18,7 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-   - nyc --reporter=lcov npm run test
+    - nyc --reporter=lcov npm run test
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
