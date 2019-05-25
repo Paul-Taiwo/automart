@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 node_modules
 .env
 package-lock.json
 .nyc_output/
+=======
+node_modules/
+>>>>>>> chore(travis): integrate travisCI
 .nyc_output
 .env
-build
+build/
 package-lock.json
 .coveralls.yml
 coverage
