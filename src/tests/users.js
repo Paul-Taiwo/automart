@@ -131,11 +131,9 @@ describe('User can sign up', () => {
         email: 'alagba@gmail.com',
       })
       .end((err, res) => {
-        console.log(res.body);
         expect(res.body).to.be.an('object');
         expect(res.statusCode).to.equals(201);
         expect(res.body.data).to.be.an('object');
-        expect(res.body.status).to.equal(201);
         done();
       });
   });
