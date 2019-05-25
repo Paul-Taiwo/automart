@@ -10,7 +10,7 @@
     "prestart": "babel ./src -d ./build --source-maps",
     "start": "node ./build/app",
     "test": "nyc cross-env NODE_ENV=test --reporter=html mocha --compilers js:babel-register ./src/tests/* --no-deprecation --exit",
-    "coverage": "nyc report cc-test-reporter --reporter=text-lcov > coverage.lcov && codecov",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build"
   },
   "author": "Paul Taiwo Adedokun",
