@@ -11,17 +11,21 @@ const {
 
 class Users {
   static createUser(req, res) {
-    const {
+    let {
       firstname,
       lastname,
-      password,
       address,
-      email,
     } = req.body;
+
+    const { email, password } = req.body;
+
+    firstname = firstname.trim();
+    lastname = lastname.trim();
+    address = address.trim();
 
     const encryptedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
-    const create = User.createUser({
+    const user = User.createUser({
       firstname,
       lastname,
       encryptedPassword,
@@ -29,16 +33,17 @@ class Users {
       email,
     });
 
-    const token = jwt.sign({ create }, process.env.SECRETKEY, { expiresIn: '3h' });
+    const token = jwt.sign({ user }, process.env.SECRETKEY, { expiresIn: '3h' });
 
     return res.status(201).json({
       status: 201,
       data: {
         token,
-        id: create.id,
-        firstname: create.firstname,
-        lastname: create.lastname,
-        email: create.email,
+        id: user.id,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        address: user.address,
       },
     });
   }
