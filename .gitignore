@@ -1,1 +1,8 @@
 node_modules
+.nyc_output
+.env
+build
+package-lock.json
+.coveralls.yml
+coverage
+coverage.lcov
