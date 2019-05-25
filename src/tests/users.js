@@ -6,30 +6,6 @@ import app from '../app';
 chai.use(chaiHttp);
 
 describe('User can sign up', () => {
-  it('Should create an account', (done) => {
-    chai
-      .request(app)
-      .post('/api/v1/auth/signup')
-      .set({
-        'Content-type': 'application/json',
-      })
-      .send({
-        firstname: 'Tester',
-        lastname: 'Obodokuna',
-        password: 'testTest12345',
-        address: '13, qeerrfkf kfkmfkm kfmkfmkkmfmkf',
-        email: 'alagba@gmail.com',
-      })
-      .end((err, res) => {
-        console.log(res.body);
-        expect(res.body).to.be.an('object');
-        expect(res.statusCode).to.equals(201);
-        expect(res.body.data).to.be.an('object');
-        expect(res.body.status).to.equal(201);
-        done();
-      });
-  });
-
   it('Should return an error message if firstname is empty', (done) => {
     chai
       .request(app)
@@ -136,6 +112,30 @@ describe('User can sign up', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
         expect(res.body.error).to.equals('Please provide a valid email address');
+        done();
+      });
+  });
+
+  it('Should create an account', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/auth/signup')
+      .set({
+        'Content-type': 'application/json',
+      })
+      .send({
+        firstname: 'Tester',
+        lastname: 'Obodokuna',
+        password: 'testTest12345',
+        address: '13, qeerrfkf kfkmfkm kfmkfmkkmfmkf',
+        email: 'alagba@gmail.com',
+      })
+      .end((err, res) => {
+        console.log(res.body);
+        expect(res.body).to.be.an('object');
+        expect(res.statusCode).to.equals(201);
+        expect(res.body.data).to.be.an('object');
+        expect(res.body.status).to.equal(201);
         done();
       });
   });
