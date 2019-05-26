@@ -21,6 +21,7 @@ describe('Test Sign up endpoint', () => {
         email: 'alagba@gmail.com',
       })
       .end((err, res) => {
+        console.log(res);
         expect(res.statusCode).to.equal(201);
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(201);
