@@ -35,6 +35,13 @@ class Users {
 
     const token = jwt.sign({ user }, process.env.SECRETKEY, { expiresIn: '3h' });
 
+    if (Object.keys(user).length < 1) {
+      return res.status(500).json({
+        status: 500,
+        error: 'Unexpected server error occured.',
+      });
+    }
+
     return res.status(201).json({
       status: 201,
       data: {
