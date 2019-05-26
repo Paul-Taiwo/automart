@@ -11,11 +11,7 @@ const {
 
 class Users {
   static createUser(req, res) {
-    let {
-      firstname,
-      lastname,
-      address,
-    } = req.body;
+    let { firstname, lastname, address } = req.body;
 
     const { email, password } = req.body;
 

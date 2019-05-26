@@ -1,10 +1,7 @@
 class Validate {
   static validate(req, res, next) {
     const {
-      firstname,
-      lastname,
-      email,
-      password,
+      firstname, lastname, email, password,
     } = req.body;
 
     // eslint-disable-next-line no-useless-escape

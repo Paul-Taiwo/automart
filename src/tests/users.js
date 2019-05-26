@@ -144,3 +144,29 @@ describe('Test Sign up endpoint', () => {
       });
   });
 });
+
+describe('Test sign in endpoint', () => {
+  it('should log the user in', (done) => {
+    chai
+      .request(app)
+      .post('api/v1/auth/signin')
+      .set({
+        'Content-Type': 'application/json',
+      })
+      .send({
+        email: 'alagba @gmail.com',
+        password: 'testTest12345',
+      })
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.statusCode).to.equal(200);
+        expect(res.body.status).to.equal(200);
+        expect(res.body.data).to.be.an('object');
+        expect(res.body.data.token).to.be.a('string');
+        expect(res.body.data.id).to.be.an('integer');
+        expect(res.body.data.firstname).to.be.a('string');
+        expect(res.body.data.lastname).to.be.a('string');
+        done();
+      });
+  });
+});
