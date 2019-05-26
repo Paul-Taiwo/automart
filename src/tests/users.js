@@ -11,7 +11,7 @@ describe('Test Sign up endpoint', () => {
       .request(app)
       .post('/api/v1/auth/signup')
       .set({
-        'Content-type': 'application/json',
+        'Content-Type': 'application/json',
       })
       .send({
         firstname: 'Testernio',
