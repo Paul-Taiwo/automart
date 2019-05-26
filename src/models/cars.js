@@ -9,7 +9,7 @@ const createCarAds = (data = null) => {
   const carData = {
     id,
     ...data,
-    created_on: new Date().toISOString(),
+    createdOn: new Date().toISOString(),
     status: 'available',
   };
 
