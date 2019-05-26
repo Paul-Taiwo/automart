@@ -10,7 +10,9 @@ describe('Test Sign up endpoint', () => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
-      .set('content-type', 'application/json')
+      .set({
+        'Content-type': 'application/json',
+      })
       .send({
         firstname: 'Testernio',
         lastname: 'Obodokuna',
@@ -19,7 +21,6 @@ describe('Test Sign up endpoint', () => {
         email: 'alagba@gmail.com',
       })
       .end((err, res) => {
-        console.log(res);
         expect(res.statusCode).to.equal(201);
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(201);
