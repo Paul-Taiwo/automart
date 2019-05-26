@@ -1,6 +1,7 @@
 env:
   global:
     - CC_TEST_REPORTER_ID=5cea74285558a23f091a5586da12930ec1d701781670ad6730fa383eb06a6aa0
+    - SECRETKEY=automart1234455
 
 language: node_js
 
