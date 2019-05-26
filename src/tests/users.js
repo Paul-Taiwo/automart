@@ -6,6 +6,27 @@ import app from '../app';
 chai.use(chaiHttp);
 
 describe('Test Sign up endpoint', () => {
+  let newU;
+  before((done) => {
+    chai
+      .request(app)
+      .post('/api/v1/auth/signup')
+      .set({
+        'Content-type': 'application/json',
+      })
+      .send({
+        firstname: 'Testertester',
+        lastname: 'Obodokuna',
+        password: 'testTest12345',
+        address: '13, qeerrfkf kfkmfkm kfmkfmkkmfmkf',
+        email: 'alagba@gmail.com',
+      })
+      .end((err, res) => {
+        newU = res.body.data;
+        expect(res.statusCode).to.equal(201);
+        done();
+      });
+  });
   it('Should create an account', (done) => {
     chai
       .request(app)
