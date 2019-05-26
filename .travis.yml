@@ -20,6 +20,7 @@ before_script:
   -H "Authorization: token xe29_eVLeM2R4Yrpa4gEbQ" \
   -d "{\"quiet\": true}" \
   https://api.travis-ci.com/job/${203082677}/debug
+  
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
