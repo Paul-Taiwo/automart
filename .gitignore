@@ -6,3 +6,4 @@ package-lock.json
 .coveralls.yml
 coverage
 coverage.lcov
+.eslintignore
