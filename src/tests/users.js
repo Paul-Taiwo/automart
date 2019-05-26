@@ -10,7 +10,7 @@ describe('Test Sign up endpoint', () => {
     chai
       .request(app)
       .post('/api/v1/auth/signup')
-      .set('Content-Type', 'application/json')
+      .set('content-type', 'application/json')
       .send({
         firstname: 'Testernio',
         lastname: 'Obodokuna',
