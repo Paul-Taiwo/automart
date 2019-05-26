@@ -6,6 +6,29 @@ import app from '../app';
 chai.use(chaiHttp);
 
 describe('Test Sign up endpoint', () => {
+  it('should create a user', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/auth/signup')
+      .set({
+        'Content-type': 'application/json',
+      })
+      .send({
+        firstname: 'Testernio',
+        lastname: 'Obodokuna',
+        password: 'testTest12345',
+        address: '13, qeerrfkf kfkmfkm kfmkfmkkmfmkf',
+        email: 'alagba@gmail.com',
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(201);
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equal(201);
+        expect(res.body.data).to.be.an('object');
+        done();
+      });
+  });
+
   it('Should return an error message if firstname is empty', (done) => {
     chai
       .request(app)
@@ -46,6 +69,7 @@ describe('Test Sign up endpoint', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
+        expect(res.statusCode).to.equal(400);
         expect(res.body.error).to.equals('Name fields cannot be empty');
         done();
       });
@@ -68,6 +92,7 @@ describe('Test Sign up endpoint', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
+        expect(res.statusCode).to.equal(400);
         expect(res.body.error).to.equals('Password field cannot be empty');
         done();
       });
@@ -89,6 +114,7 @@ describe('Test Sign up endpoint', () => {
       })
       .end((err, res) => {
         expect(res.body).to.be.an('object');
+        expect(res.statusCode).to.equal(400);
         expect(res.body.status).to.equals(400);
         expect(res.body.error).to.equals('Password cannot be less than 8 characters');
         done();
@@ -112,6 +138,7 @@ describe('Test Sign up endpoint', () => {
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
+        expect(res.statusCode).to.equal(400);
         expect(res.body.error).to.equals('Please provide a valid email address');
         done();
       });
