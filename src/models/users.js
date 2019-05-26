@@ -5,8 +5,10 @@ const createUser = (data = null) => {
     throw new Error('Please provide an object');
   }
 
+  const id = parseInt(allUsers.length + 1000, 10);
+
   const userData = {
-    id: allUsers.length + 1000,
+    id,
     ...data,
     isAdmin: false,
   };
@@ -16,7 +18,10 @@ const createUser = (data = null) => {
   return userData;
 };
 
+const findEmail = email => allUsers.find(user => user.email === email);
+
 export {
   createUser,
+  findEmail,
   allUsers,
 };
