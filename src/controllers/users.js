@@ -33,7 +33,7 @@ class Users {
       email,
     });
 
-    const token = jwt.sign({ user }, process.env.SECRETKEY, { expiresIn: '3h' });
+    // const token = jwt.sign({ user }, process.env.SECRETKEY, { expiresIn: '3h' });
 
     if (Object.keys(user).length < 1) {
       return res.status(500).json({
@@ -45,7 +45,7 @@ class Users {
     return res.status(201).json({
       status: 201,
       data: {
-        token,
+        // token,
         id: user.id,
         firstname: user.firstname,
         lastname: user.lastname,
