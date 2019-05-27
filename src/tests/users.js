@@ -25,6 +25,10 @@ describe('Test Sign up endpoint', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(201);
         expect(res.body.data).to.be.an('object');
+        expect(res.body.data.token).to.be.a('string');
+        expect(res.body.data.id).to.be.an('number');
+        expect(res.body.data.firstname).to.be.a('string');
+        expect(res.body.data.lastname).to.be.a('string');
         done();
       });
   });
@@ -120,7 +124,6 @@ describe('Test Sign up endpoint', () => {
         done();
       });
   });
-
 
   it('Should return an error message if password is empty', (done) => {
     chai
