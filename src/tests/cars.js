@@ -134,6 +134,7 @@ describe('Test for update car AD status', () => {
         expect(res.body.data.model).to.be.a('string');
         expect(res.body.data.price).to.be.a('number');
         expect(res.body.data.state).to.be.a('string');
+        expect(res.body.data.status).to.equal('sold');
         expect(res.body.data.year).to.be.a('number');
         done();
       });
@@ -142,7 +143,7 @@ describe('Test for update car AD status', () => {
   it('Should return an error if request is not authorized', (done) => {
     chai
       .request(app)
-      .patch(`/api/v1/car/${carAd.id}/price`)
+      .patch(`/api/v1/car/${carAd.id}/status`)
       .set({
         'Content-Type': 'application/json',
       })
@@ -161,7 +162,7 @@ describe('Test for update car AD status', () => {
   it('Should return an error if token is not valid', (done) => {
     chai
       .request(app)
-      .patch(`/api/v1/car/${carAd.id}/price`)
+      .patch(`/api/v1/car/${carAd.id}/status`)
       .set({
         'Content-Type': 'application/json',
         Authorization: 'Bearer ayJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJPYm9kb2t1bmEiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCRyMWN2ZFhDQ0s1bldaa2oycmQ0NlZlRUpTeEd6SmNOcG9CaWp5RXhYTFRGLm1oeC4uZXdIZSIsImFkZHJlc3MiOiIxMywgcWVlcnJma2Yga2ZrbWZrbSBrZm1rZm1ra21mbWtmIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU4OTEyODA4LCJleHAiOjE1NTg5MjM2MDh9.ZS813EEUegCYU3suHV1NwunqEZ4RvRzaKyoJ96iwl6E',
