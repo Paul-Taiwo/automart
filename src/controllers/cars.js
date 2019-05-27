@@ -5,14 +5,15 @@ const { Cars } = models;
 class CarAds {
   static createAd(req, res) {
     let {
-      email, manufacturer, model, price, state, year, bodyType,
+      manufacturer, model, price, state, year, bodyType,
     } = req.body;
 
+    const { email } = req.authData.user;
     manufacturer = manufacturer.trim();
     model = model.trim();
-    price = price.trim();
+    price = parseFloat(price.trim());
     state = state.trim();
-    year = year.trim();
+    year = parseInt(year.trim(), 10);
     bodyType = bodyType.trim();
 
     const adsData = Cars.createCarAds({
