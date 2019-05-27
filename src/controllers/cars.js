@@ -42,6 +42,27 @@ class CarAds {
       },
     });
   }
+
+  static updateStatus(req, res) {
+    const id = parseInt(req.params.id, 10);
+    const updatedAd = Cars.updateStatus(id, req.body.status);
+
+    return res.status(200).json({
+      status: 200,
+      data: {
+        id: updatedAd.id,
+        email: updatedAd.email,
+        createdOn: updatedAd.createdOn,
+        manufacturer: updatedAd.manufacturer,
+        model: updatedAd.model,
+        price: updatedAd.price,
+        state: updatedAd.state,
+        status: updatedAd.status,
+        year: updatedAd.year,
+        bodyType: updatedAd.bodyType,
+      },
+    });
+  }
 }
 
 export default CarAds;
