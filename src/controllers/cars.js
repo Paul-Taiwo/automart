@@ -45,7 +45,7 @@ class CarAds {
 
   static updateStatus(req, res) {
     const id = parseInt(req.params.id, 10);
-    const updatedAd = Cars.updateStatus(id, req.body.status);
+    const updatedAd = Cars.updateStatus(id, req.body.status.trim());
 
     return res.status(200).json({
       status: 200,
