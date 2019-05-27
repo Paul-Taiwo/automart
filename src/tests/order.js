@@ -76,4 +76,26 @@ describe('Test for create order endpoint', () => {
         done();
       });
   });
+
+  it('Should update price of purchase order', (done) => {
+    chai
+      .request(app)
+      .patch('/api/v1/order/:id/price')
+      .set({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ayJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJPYm9kb2t1bmEiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCRyMWN2ZFhDQ0s1bldaa2oycmQ0NlZlRUpTeEd6SmNOcG9CaWp5RXhYTFRGLm1oeC4uZXdIZSIsImFkZHJlc3MiOiIxMywgcWVlcnJma2Yga2ZrbWZrbSBrZm1rZm1ra21mbWtmIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU4OTEyODA4LCJleHAiOjE1NTg5MjM2MDh9.ZS813EEUegCYU3suHV1NwunqEZ4RvRzaKyoJ96iwl6E',
+      })
+      .send({
+        new_price_offered: '1580000',
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equal(200);
+        expect(res.body.data.id).to.be.a('number');
+        expect(res.body.data.car_id).to.be.a('number');
+        expect(res.body.data.status).to.be.a('string');
+        done();
+      });
+  });
 });
