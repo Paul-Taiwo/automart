@@ -5,7 +5,7 @@ import app from '../app';
 
 chai.use(chaiHttp);
 
-describe('Test for create odrer endpoint', () => {
+describe('Test for create order endpoint', () => {
   it('Should create an order', (done) => {
     chai
       .request(app)
