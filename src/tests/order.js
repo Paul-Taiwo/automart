@@ -114,9 +114,10 @@ describe('Test for update order price', () => {
         expect(res.body.status).to.be.equal(200);
         expect(res.body.data.id).to.be.a('number');
         expect(res.body.data.car_id).to.be.a('number');
-        expect(res.body.data.car_id).to.be.a('number');
         expect(res.body.data.status).to.be.a('string');
-        done(err);
+        expect(res.body.data.old_price_offered).to.be.a('number');
+        expect(res.body.data.new_price_offered).to.be.a('number');
+        done();
       });
   });
 
