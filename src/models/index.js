@@ -1,5 +1,7 @@
 import { createUser, findEmail, allUsers } from './users';
-import { createCarAds, updateStatus, allCarsAds } from './cars';
+import {
+  createCarAds, updateStatus, updateCarAdPrice, allCarsAds,
+} from './cars';
 import { createOrder, updatePrice, allOrder } from './order';
 
 const models = {
@@ -11,6 +13,7 @@ const models = {
   Cars: {
     createCarAds,
     updateStatus,
+    updateCarAdPrice,
     allCarsAds,
   },
   Orders: {

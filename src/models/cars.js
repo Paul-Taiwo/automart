@@ -30,8 +30,18 @@ const updateStatus = (id, data) => {
   return carAd;
 };
 
+const updateCarAdPrice = (id, data) => {
+  // Find the car AD
+  const carAd = findOneCarAd(id);
+
+  carAd.price = parseFloat(data);
+
+  return carAd;
+};
+
 export {
   createCarAds,
   updateStatus,
+  updateCarAdPrice,
   allCarsAds,
 };
