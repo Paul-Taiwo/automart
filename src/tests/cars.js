@@ -227,7 +227,7 @@ describe('Test for update car AD price', () => {
         expect(res.body.data.model).to.be.a('string');
         expect(res.body.data.price).to.be.a('number');
         expect(res.body.data.state).to.be.a('string');
-        expect(res.body.data.status).to.equal('sold');
+        expect(res.body.data.status).to.equal('available');
         expect(res.body.data.year).to.be.a('number');
         done();
       });
