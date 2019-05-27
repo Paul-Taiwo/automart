@@ -9,8 +9,8 @@ const createOrder = (data = null) => {
   const orderData = {
     id,
     ...data,
-    createdOn: new Date().toISOString(),
-    status: 'available',
+    created_on: new Date().toISOString(),
+    status: 'pending',
   };
 
   allOrder.push(orderData);
