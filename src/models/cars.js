@@ -2,7 +2,7 @@ const allCarsAds = [];
 
 const createCarAds = (data = null) => {
   if (!data) {
-    throw new Error('Please provide an object');
+    throw new Error('Please provide an Object');
   }
 
   const id = parseInt(allCarsAds.length + 1123420, 10);
