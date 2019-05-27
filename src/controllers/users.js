@@ -27,7 +27,7 @@ class Users {
       email,
     });
 
-    const token = jwt.sign({ user }, process.env.SECRETKEY, { expiresIn: '3h' });
+    const token = jwt.sign({ user }, process.env.SECRETKEY, { expiresIn: '48h' });
 
     return res.status(201).json({
       status: 201,
@@ -67,7 +67,7 @@ class Users {
       });
     }
 
-    const token = jwt.sign({ user }, process.env.SECRETKEY, { expiresIn: '3h' });
+    const token = jwt.sign({ user }, process.env.SECRETKEY, { expiresIn: '48h' });
 
     return res.status(200).json({
       status: 200,

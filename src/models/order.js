@@ -18,7 +18,22 @@ const createOrder = (data = null) => {
   return orderData;
 };
 
+// Find one order
+const findOneOrder = id => allOrder.find(order => order.id === id);
+
+const updatePrice = (id, data) => {
+  // Find the order
+  const order = findOneOrder(id);
+
+  if (order.status === 'pending') {
+    order.newPriceOffered = data;
+  }
+
+  return order;
+};
+
 export {
   createOrder,
+  updatePrice,
   allOrder,
 };

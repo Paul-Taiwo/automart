@@ -29,6 +29,29 @@ class Order {
       },
     });
   }
+
+  static updateOrder(req, res) {
+    const id = parseInt(req.params.id, 10);
+    const updatedOrder = Orders.updatePrice(id, req.body.newPriceOffered);
+
+    if (updatedOrder.status === 'accepted' || updatedOrder.status === 'rejected') {
+      return res.status(400).json({
+        status: 400,
+        error: 'Cannot update price because order status is either accepted or rejected',
+      });
+    }
+
+    return res.status(200).json({
+      status: 200,
+      data: {
+        id: updatedOrder.id,
+        car_id: updatedOrder.carId,
+        status: updatedOrder.status,
+        old_price_offered: updatedOrder.priceOffered,
+        new_price_offered: updatedOrder.newPriceOffered,
+      },
+    });
+  }
 }
 
 export default Order;

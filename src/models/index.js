@@ -1,6 +1,6 @@
 import { createUser, findEmail, allUsers } from './users';
 import { createCarAds, allCarsAds } from './cars';
-import { createOrder, allOrder } from './order';
+import { createOrder, updatePrice, allOrder } from './order';
 
 const models = {
   User: {
@@ -14,6 +14,7 @@ const models = {
   },
   Orders: {
     createOrder,
+    updatePrice,
     allOrder,
   },
 };
