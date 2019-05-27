@@ -26,7 +26,7 @@ const updatePrice = (id, data) => {
   const order = findOneOrder(id);
 
   if (order.status === 'pending') {
-    order.newPriceOffered = data;
+    order.newPriceOffered = parseFloat(data);
   }
 
   return order;
