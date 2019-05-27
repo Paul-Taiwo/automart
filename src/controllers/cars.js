@@ -84,6 +84,23 @@ class CarAds {
       },
     });
   }
+
+  static findSpecificCar(req, res) {
+    const id = parseInt(req.params.id, 10);
+    const carAd = Cars.allCarsAds.find(car => car.id === id);
+    return res.status(200).json({
+      id: carAd.id,
+      email: carAd.email,
+      createdOn: carAd.createdOn,
+      manufacturer: carAd.manufacturer,
+      model: carAd.model,
+      price: carAd.price,
+      state: carAd.state,
+      status: carAd.status,
+      year: carAd.year,
+      bodyType: carAd.bodyType,
+    });
+  }
 }
 
 export default CarAds;
