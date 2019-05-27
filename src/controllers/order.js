@@ -42,11 +42,14 @@ class Order {
     }
 
     return res.status(200).json({
-      id: updatedOrder.id,
-      car_id: updatedOrder.carId,
-      status: updatedOrder.status,
-      old_price_offered: updatedOrder.priceOffered,
-      new_price_offered: updatedOrder.newPriceOffered,
+      status: 200,
+      data: {
+        id: updatedOrder.id,
+        car_id: updatedOrder.carId,
+        status: updatedOrder.status,
+        old_price_offered: updatedOrder.priceOffered,
+        new_price_offered: updatedOrder.newPriceOffered,
+      },
     });
   }
 }
