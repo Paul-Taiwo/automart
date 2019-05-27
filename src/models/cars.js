@@ -18,7 +18,20 @@ const createCarAds = (data = null) => {
   return carData;
 };
 
+// Find one car AD
+const findOneCarAd = id => allCarsAds.find(carAd => carAd.id === id);
+
+const updateStatus = (id, data) => {
+  // Find the car AD
+  const carAd = findOneCarAd(id);
+
+  carAd.status = data;
+
+  return carAd;
+};
+
 export {
   createCarAds,
+  updateStatus,
   allCarsAds,
 };
