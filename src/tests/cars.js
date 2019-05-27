@@ -273,4 +273,29 @@ describe('Test for car AD endpoint', () => {
         });
     });
   });
+
+  describe('Test for view a specific car', () => {
+    it('Should get a specific car', (done) => {
+      chai
+        .request(app)
+        .get('/api/v1/car/:id')
+        .set({
+          'Content-Type': 'application/json',
+        })
+        .end((err, res) => {
+          expect(res.statusCode).to.equal(200);
+          expect(res.body).to.be.an('object');
+          expect(res.body.status).to.equal(200);
+          expect(res.body.data).to.be.an('object');
+          expect(res.body.id).to.be.a('number');
+          expect(res.body.createdOn).to.be.a('string');
+          expect(res.body.manufacturer).to.be.a('string');
+          expect(res.body.model).to.be.a('string');
+          expect(res.body.price).to.be.a('number');
+          expect(res.body.state).to.be.a('string');
+          expect(res.body.year).to.be.a('number');
+          done();
+        });
+    });
+  });
 });
