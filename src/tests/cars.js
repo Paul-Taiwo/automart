@@ -463,4 +463,76 @@ describe('Test for car AD endpoint', () => {
         done();
       });
   });
+
+  it('Should delete an AD if user is an admin', (done) => {
+    chai
+      .request(app)
+      .delete(`/api/v1/car/${carAd.id}`)
+      .set({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJPYm9kb2t1bmEiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCRsa05FMndkVXJJMGtYWkN2WEpkajh1NzhTNWUycUtPUkxjaG05NnpHRXVIU2Faa09KMHl0QyIsImFkZHJlc3MiOiIxMywgcWVlcnJma2Yga2ZrbWZrbSBrZm1rZm1ra21mbWtmIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWV9LCJpYXQiOjE1NTkwNTk0OTUsImV4cCI6MTU1OTIzMjI5NX0.YI6kYMZJi3yQfh9T517i32k0bocjf49QqrXQG4Efu2I',
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.equal('Car Ad successfully deleted');
+        expect(res.body.data).to.be.a('string');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isString(res.body.data, 'Data is not a string');
+        assert.strictEqual(res.body.data,
+          'Car Ad successfully deleted',
+          'Data is not equal to Car Ad successfully deleted');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should return a message if record is not found', (done) => {
+    chai
+      .request(app)
+      .delete('/api/v1/car/11111045')
+      .set({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJPYm9kb2t1bmEiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCRsa05FMndkVXJJMGtYWkN2WEpkajh1NzhTNWUycUtPUkxjaG05NnpHRXVIU2Faa09KMHl0QyIsImFkZHJlc3MiOiIxMywgcWVlcnJma2Yga2ZrbWZrbSBrZm1rZm1ra21mbWtmIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWV9LCJpYXQiOjE1NTkwNTk0OTUsImV4cCI6MTU1OTIzMjI5NX0.YI6kYMZJi3yQfh9T517i32k0bocjf49QqrXQG4Efu2I',
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.equal('No record found');
+        expect(res.body.data).to.be.a('string');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isString(res.body.data, 'Data is not a string');
+        assert.strictEqual(res.body.data,
+          'No record found',
+          'Data is not equal to No record found');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should return an error if user is not an admin', (done) => {
+    chai
+      .request(app)
+      .delete(`/api/v1/car/${carAd.id}`)
+      .set({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJPYm9kb2t1bmEiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCQyZFFldFgwcGlzV3o4NXN3Zk1QY0UuLzQzQVpYTEF6OTJHM01sb2w5QWZnUDA1RnZZeGNmYSIsImFkZHJlc3MiOiIxMywgcWVlcnJma2Yga2ZrbWZrbSBrZm1rZm1ra21mbWtmIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU4OTMzNjc5LCJleHAiOjE1NTkxMDY0Nzl9.hDYLLjNdBiss5ljRB_rjn5Iz2-AY5aihFDCbYSsUxwE',
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(403);
+        expect(res.body).to.be.an('object');
+        expect(res.body.error).to.be.equal('Forbidden: Only Admin can delete an AD');
+        expect(res.body.error).to.be.a('string');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 403, 'Status code is not 403');
+        assert.isString(res.body.error, 'Data is not a string');
+        assert.strictEqual(res.body.error,
+          'Forbidden: Only Admin can delete an AD',
+          'Error is not equal to Forbidden: Only Admin can delete an AD');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
 });
