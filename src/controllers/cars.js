@@ -101,6 +101,14 @@ class CarAds {
       bodyType: carAd.bodyType,
     });
   }
+
+  static filterAds(req, res) {
+    const carAds = Cars.allCarsAds.filter(carAd => carAd.status === req.query.status);
+    return res.status(200).json({
+      status: 200,
+      data: carAds,
+    });
+  }
 }
 
 export default CarAds;
