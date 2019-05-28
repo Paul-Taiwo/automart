@@ -146,6 +146,33 @@ class CarAds {
       bodyType: carAd.bodyType,
     });
   }
+
+  static deleteAd(req, res) {
+    const { user } = req.authData;
+    if (user.isAdmin === true) {
+      const id = parseInt(req.params.id, 10);
+      const adIndex = Cars.allCarsAds.findIndex(x => x.id === id);
+
+      if (adIndex === parseInt('-1', 10)) {
+        return res.status(200).json({
+          status: 200,
+          data: 'No record found',
+        });
+      }
+
+      Cars.allCarsAds.splice(adIndex, 0);
+
+      return res.status(200).json({
+        status: 200,
+        data: 'Car Ad successfully deleted',
+      });
+    }
+
+    return res.status(403).json({
+      status: 403,
+      error: 'Forbidden: Only Admin can delete an AD',
+    });
+  }
 }
 
 export default CarAds;
