@@ -18,7 +18,6 @@ class Users {
     address = address.trim();
 
     const encryptedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
-
     const user = User.createUser({
       firstname,
       lastname,
@@ -26,6 +25,9 @@ class Users {
       address,
       email,
     });
+    if (req.originalUrl === '/api/v1/auth/admin/signup') {
+      user.isAdmin = true;
+    }
 
     const token = jwt.sign({ user }, process.env.SECRETKEY, { expiresIn: '48h' });
 
@@ -38,6 +40,7 @@ class Users {
         lastname: user.lastname,
         email: user.email,
         address: user.address,
+        isAdmin: user.isAdmin,
       },
     });
   }
