@@ -21,7 +21,8 @@ app.use(logger('dev'));
 
 const PORT = process.env.port || 8080;
 
-app.use('/api/v1/', [indexRoutes, userRoutes, carRoutes, orderRoutes]);
+app.use('/api/v1/', [indexRoutes, userRoutes, orderRoutes]);
+app.use('/api/v1/car/', carRoutes);
 app.all('*', (req, res) => res.status(404).json({
   status: 404,
   error: 'Bad request',
