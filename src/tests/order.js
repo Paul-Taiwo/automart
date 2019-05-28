@@ -1,4 +1,4 @@
-import chai, { expect } from 'chai';
+import chai, { expect, assert } from 'chai';
 import chaiHttp from 'chai-http';
 import { describe, before, it } from 'mocha';
 import app from '../app';
@@ -30,6 +30,17 @@ describe('Test for create order endpoint', () => {
         expect(res.body.data.status).to.be.a('string');
         expect(res.body.data.price).to.be.a('number');
         expect(res.body.data.priceOffered).to.be.a('number');
+        assert.strictEqual(res.statusCode, 201, 'Status code is not 201');
+        assert.strictEqual(res.body.status, 201, 'Status is not 201');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isObject(res.body.data, 'Data is not an object');
+        assert.isNumber(res.body.data.id, 'ID is not a number');
+        assert.isNumber(res.body.data.car_id, 'ID is not a number');
+        assert.isString(res.body.data.created_on, 'Date is not a string');
+        assert.isString(res.body.data.status, 'Status is not a string');
+        assert.isNumber(res.body.data.price, 'Price is not a number');
+        assert.isNumber(res.body.data.priceOffered, 'Price is not a number');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -51,6 +62,13 @@ describe('Test for create order endpoint', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(401);
         expect(res.body.error).to.equal('Authentication failed! Please Login again');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 401, 'Status code is not 401');
+        assert.strictEqual(res.body.status, 401, 'Status is not 401');
+        assert.strictEqual(res.body.error,
+          'Authentication failed! Please Login again',
+          'Expect error to be Authentication failed! Please Login again');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -73,12 +91,20 @@ describe('Test for create order endpoint', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(401);
         expect(res.body.error).to.equal('Authentication failed! Please Login again');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 401, 'Status code is not 401');
+        assert.strictEqual(res.body.status, 401, 'Status is not 401');
+        assert.strictEqual(res.body.error,
+          'Authentication failed! Please Login again',
+          'Expect error to be Authentication failed! Please Login again');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
 });
 
 describe('Test for update order price', () => {
+  // Create an order
   let order;
   before((done) => {
     chai
@@ -117,6 +143,16 @@ describe('Test for update order price', () => {
         expect(res.body.data.status).to.be.a('string');
         expect(res.body.data.old_price_offered).to.be.a('number');
         expect(res.body.data.new_price_offered).to.be.a('number');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.strictEqual(res.body.status, 200, 'Status is not 200');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isObject(res.body.data, 'Data is not an object');
+        assert.isNumber(res.body.data.id, 'ID is not a number');
+        assert.isNumber(res.body.data.car_id, 'ID is not a number');
+        assert.isNumber(res.body.data.old_price_offered, 'Price is not a number');
+        assert.isNumber(res.body.data.new_price_offered, 'Price is not a number');
+        assert.isString(res.body.data.status, 'Status is not a string');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -134,6 +170,13 @@ describe('Test for update order price', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(401);
         expect(res.body.error).to.equal('Authentication failed! Please Login again');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 401, 'Status code is not 401');
+        assert.strictEqual(res.body.status, 401, 'Status is not 401');
+        assert.strictEqual(res.body.error,
+          'Authentication failed! Please Login again',
+          'Expect error to be Authentication failed! Please Login again');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -152,6 +195,13 @@ describe('Test for update order price', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(401);
         expect(res.body.error).to.equal('Authentication failed! Please Login again');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 401, 'Status code is not 401');
+        assert.strictEqual(res.body.status, 401, 'Status is not 401');
+        assert.strictEqual(res.body.error,
+          'Authentication failed! Please Login again',
+          'Expect error to be Authentication failed! Please Login again');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
