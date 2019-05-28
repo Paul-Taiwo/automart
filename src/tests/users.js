@@ -6,6 +6,45 @@ import app from '../app';
 chai.use(chaiHttp);
 
 describe('Test Sign up endpoint', () => {
+  it('should create an admin', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/auth/admin/signup')
+      .set({
+        'Content-type': 'application/json',
+      })
+      .send({
+        firstname: 'Testernio',
+        lastname: 'Obodokuna',
+        password: 'testTest12345',
+        address: '13, qeerrfkf kfkmfkm kfmkfmkkmfmkf',
+        email: 'alagba@gmail.com',
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(201);
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equal(201);
+        expect(res.body.data).to.be.an('object');
+        expect(res.body.data.token).to.be.a('string');
+        expect(res.body.data.id).to.be.an('number');
+        expect(res.body.data.firstname).to.be.a('string');
+        expect(res.body.data.lastname).to.be.a('string');
+        expect(res.body.data.isAdmin).to.be.a('boolean');
+        expect(res.body.data.isAdmin).to.equal(true);
+        assert.strictEqual(res.statusCode, 201, 'Status code is not 201');
+        assert.strictEqual(res.body.status, 201, 'Status is not 201');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isObject(res.body.data, 'Data is not an object');
+        assert.isString(res.body.data.token, 'Token is not a string');
+        assert.isNumber(res.body.data.id, 'ID is not a number');
+        assert.isString(res.body.data.firstname, 'Firstname is not a string');
+        assert.isString(res.body.data.lastname, 'Last name is not a string');
+        assert.isBoolean(res.body.data.isAdmin, 'isAdmin type is not boolean');
+        assert.strictEqual(res.body.data.isAdmin, true, 'isAdmin is not true');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
   it('should create a user', (done) => {
     chai
       .request(app)
