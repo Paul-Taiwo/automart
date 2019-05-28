@@ -4,10 +4,10 @@ import checkAuth from '../middlewares/auth';
 
 const Route = express.Router();
 
-Route.post('/', checkAuth, carController.createAd);
-Route.get('/:id', checkAuth, carController.findSpecificCar);
-Route.get('/', checkAuth, carController.find);
-Route.patch('/:id/status', checkAuth, carController.updateStatus);
-Route.patch('/:id/price', checkAuth, carController.updateCarPrice);
+Route.post('/car', checkAuth, carController.createAd);
+Route.get('/car/:id', checkAuth, carController.findSpecificCar);
+Route.get('/car', checkAuth, carController.find);
+Route.patch('/car/:id/status', checkAuth, carController.updateStatus);
+Route.patch('/car/:id/price', checkAuth, carController.updateCarPrice);
 
 export default Route;
