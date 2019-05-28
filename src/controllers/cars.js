@@ -123,6 +123,15 @@ class CarAds {
       });
     }
 
+    if (query.status && query.state) {
+      // eslint-disable-next-line max-len
+      const filtered = Cars.allCarsAds.filter(x => x.status === query.status && x.state === query.state);
+      return res.status(200).json({
+        status: 200,
+        data: filtered,
+      });
+    }
+
     const carAds = Cars.allCarsAds.filter(carAd => carAd.status === req.query.status);
     return res.status(200).json({
       status: 200,
