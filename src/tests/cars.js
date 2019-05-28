@@ -1,4 +1,4 @@
-import chai, { expect } from 'chai';
+import chai, { expect, assert } from 'chai';
 import chaiHttp from 'chai-http';
 import { describe, it, before } from 'mocha';
 import app from '../app';
@@ -54,9 +54,23 @@ describe('Test for car AD endpoint', () => {
         expect(res.body.data.createdOn).to.be.a('string');
         expect(res.body.data.manufacturer).to.be.a('string');
         expect(res.body.data.model).to.be.a('string');
+        expect(res.body.data.status).to.be.a('string');
         expect(res.body.data.price).to.be.a('number');
         expect(res.body.data.state).to.be.a('string');
         expect(res.body.data.year).to.be.a('number');
+        assert.strictEqual(res.statusCode, 201, 'Status code is not 201');
+        assert.strictEqual(res.body.status, 201, 'Status is not 201');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isObject(res.body.data, 'Data is not an object');
+        assert.isNumber(res.body.data.id, 'ID is not a number');
+        assert.isString(res.body.data.createdOn, 'Date is not a string');
+        assert.isString(res.body.data.manufacturer, 'Manufacturer is not a string');
+        assert.isString(res.body.data.model, 'Model is not a string');
+        assert.isString(res.body.data.status, 'Status is not a string');
+        assert.isNumber(res.body.data.price, 'Price is not a number');
+        assert.isString(res.body.data.state, 'State is not a string');
+        assert.isNumber(res.body.data.year, 'Year is not a number');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -81,6 +95,13 @@ describe('Test for car AD endpoint', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(401);
         expect(res.body.error).to.equal('Authentication failed! Please Login again');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 401, 'Status code is not 401');
+        assert.strictEqual(res.body.status, 401, 'Status is not 401');
+        assert.strictEqual(res.body.error,
+          'Authentication failed! Please Login again',
+          'Expect error to be Authentication failed! Please Login again');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -106,6 +127,13 @@ describe('Test for car AD endpoint', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(401);
         expect(res.body.error).to.equal('Authentication failed! Please Login again');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 401, 'Status code is not 401');
+        assert.strictEqual(res.body.status, 401, 'Status is not 401');
+        assert.strictEqual(res.body.error,
+          'Authentication failed! Please Login again',
+          'Expect error to be Authentication failed! Please Login again');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -125,6 +153,7 @@ describe('Test for car AD endpoint', () => {
         expect(res.statusCode).to.equal(200);
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.be.equal(200);
+        expect(res.body.data).to.be.an('object');
         expect(res.body.data.id).to.be.a('number');
         expect(res.body.data.createdOn).to.be.a('string');
         expect(res.body.data.email).to.be.a('string');
@@ -134,6 +163,19 @@ describe('Test for car AD endpoint', () => {
         expect(res.body.data.state).to.be.a('string');
         expect(res.body.data.status).to.equal('available');
         expect(res.body.data.year).to.be.a('number');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.strictEqual(res.body.status, 200, 'Status is not 200');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isObject(res.body.data, 'Data is not an object');
+        assert.isNumber(res.body.data.id, 'ID is not a number');
+        assert.isString(res.body.data.createdOn, 'Date is not a string');
+        assert.isString(res.body.data.manufacturer, 'Manufacturer is not a string');
+        assert.isString(res.body.data.model, 'Model is not a string');
+        assert.strictEqual(res.body.data.status, 'available', 'Status is not available');
+        assert.isNumber(res.body.data.price, 'Price is not a number');
+        assert.isString(res.body.data.state, 'State is not a string');
+        assert.isNumber(res.body.data.year, 'Year is not a number');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -153,6 +195,13 @@ describe('Test for car AD endpoint', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(401);
         expect(res.body.error).to.equal('Authentication failed! Please Login again');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 401, 'Status code is not 401');
+        assert.strictEqual(res.body.status, 401, 'Status is not 401');
+        assert.strictEqual(res.body.error,
+          'Authentication failed! Please Login again',
+          'Expect error to be Authentication failed! Please Login again');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -173,6 +222,13 @@ describe('Test for car AD endpoint', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(401);
         expect(res.body.error).to.equal('Authentication failed! Please Login again');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 401, 'Status code is not 401');
+        assert.strictEqual(res.body.status, 401, 'Status is not 401');
+        assert.strictEqual(res.body.error,
+          'Authentication failed! Please Login again',
+          'Expect error to be Authentication failed! Please Login again');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -200,6 +256,19 @@ describe('Test for car AD endpoint', () => {
         expect(res.body.data.state).to.be.a('string');
         expect(res.body.data.status).to.equal('sold');
         expect(res.body.data.year).to.be.a('number');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.strictEqual(res.body.status, 200, 'Status is not 200');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isObject(res.body.data, 'Data is not an object');
+        assert.isNumber(res.body.data.id, 'ID is not a number');
+        assert.isString(res.body.data.createdOn, 'Date is not a string');
+        assert.isString(res.body.data.manufacturer, 'Manufacturer is not a string');
+        assert.isString(res.body.data.model, 'Model is not a string');
+        assert.strictEqual(res.body.data.status, 'sold', 'Status is not sold');
+        assert.isNumber(res.body.data.price, 'Price is not a number');
+        assert.isString(res.body.data.state, 'State is not a string');
+        assert.isNumber(res.body.data.year, 'Year is not a number');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -219,6 +288,13 @@ describe('Test for car AD endpoint', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(401);
         expect(res.body.error).to.equal('Authentication failed! Please Login again');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 401, 'Status code is not 401');
+        assert.strictEqual(res.body.status, 401, 'Status is not 401');
+        assert.strictEqual(res.body.error,
+          'Authentication failed! Please Login again',
+          'Expect error to be Authentication failed! Please Login again');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -239,6 +315,13 @@ describe('Test for car AD endpoint', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equal(401);
         expect(res.body.error).to.equal('Authentication failed! Please Login again');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 401, 'Status code is not 401');
+        assert.strictEqual(res.body.status, 401, 'Status is not 401');
+        assert.strictEqual(res.body.error,
+          'Authentication failed! Please Login again',
+          'Expect error to be Authentication failed! Please Login again');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -264,6 +347,19 @@ describe('Test for car AD endpoint', () => {
         expect(res.body.year).to.be.a('number');
         expect(res.body.state).to.be.a('string');
         expect(res.body.bodyType).to.be.a('string');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isObject(res.body, 'Data is not an object');
+        assert.isNumber(res.body.id, 'ID is not a number');
+        assert.isString(res.body.email, 'Email is not a string');
+        assert.isString(res.body.createdOn, 'Date is not a string');
+        assert.isString(res.body.manufacturer, 'Manufacturer is not a string');
+        assert.isString(res.body.model, 'Model is not a string');
+        assert.isString(res.body.status, 'Status is not a string');
+        assert.isNumber(res.body.price, 'Price is not a number');
+        assert.isString(res.body.state, 'State is not a string');
+        assert.isString(res.body.bodyType, 'Body type is not a string');
+        assert.isNumber(res.body.year, 'Year is not a number');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -280,6 +376,10 @@ describe('Test for car AD endpoint', () => {
         expect(res.statusCode).to.equal(200);
         expect(res.body).to.be.an('object');
         expect(res.body.data).to.be.an('array');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isArray(res.body.data, 'Data is not array');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -296,6 +396,10 @@ describe('Test for car AD endpoint', () => {
         expect(res.statusCode).to.equal(200);
         expect(res.body).to.be.an('object');
         expect(res.body.data).to.be.an('array');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isArray(res.body.data, 'Data is not array');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });

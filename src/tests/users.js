@@ -1,4 +1,4 @@
-import chai, { expect } from 'chai';
+import chai, { expect, assert } from 'chai';
 import chaiHttp from 'chai-http';
 import { describe, it } from 'mocha';
 import app from '../app';
@@ -29,6 +29,15 @@ describe('Test Sign up endpoint', () => {
         expect(res.body.data.id).to.be.an('number');
         expect(res.body.data.firstname).to.be.a('string');
         expect(res.body.data.lastname).to.be.a('string');
+        assert.strictEqual(res.statusCode, 201, 'Status code is not 201');
+        assert.strictEqual(res.body.status, 201, 'Status is not 201');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isObject(res.body.data, 'Data is not an object');
+        assert.isString(res.body.data.token, 'Token is not a string');
+        assert.isNumber(res.body.data.id, 'ID is not a number');
+        assert.isString(res.body.data.firstname, 'Firstname is not a string');
+        assert.isString(res.body.data.lastname, 'Last name is not a string');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -52,6 +61,13 @@ describe('Test Sign up endpoint', () => {
         expect(res.body.status).to.equals(400);
         expect(res.statusCode).to.equal(400);
         expect(res.body.error).to.equals('Name fields cannot be empty');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Name fields cannot be empty',
+          'Expect error to be Name fields cannot be empty');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -75,6 +91,13 @@ describe('Test Sign up endpoint', () => {
         expect(res.body.status).to.equals(400);
         expect(res.statusCode).to.equal(400);
         expect(res.body.error).to.equals('Name fields cannot be less than 2 characters');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Name fields cannot be less than 2 characters',
+          'Expect error to be Name fields cannot be less than 2 characters');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -98,6 +121,13 @@ describe('Test Sign up endpoint', () => {
         expect(res.body.status).to.equals(400);
         expect(res.statusCode).to.equal(400);
         expect(res.body.error).to.equals('Name fields cannot be empty');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Name fields cannot be empty',
+          'Expect error to be Name fields cannot be empty');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -121,6 +151,13 @@ describe('Test Sign up endpoint', () => {
         expect(res.body.status).to.equals(400);
         expect(res.statusCode).to.equal(400);
         expect(res.body.error).to.equals('Name fields cannot be less than 2 characters');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Name fields cannot be less than 2 characters',
+          'Expect error to be Name fields cannot be less than 2 characters');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -144,6 +181,13 @@ describe('Test Sign up endpoint', () => {
         expect(res.body.status).to.equals(400);
         expect(res.statusCode).to.equal(400);
         expect(res.body.error).to.equals('Password field cannot be empty');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Password field cannot be empty',
+          'Expect error to be Password field cannot be empty');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -167,6 +211,13 @@ describe('Test Sign up endpoint', () => {
         expect(res.statusCode).to.equal(400);
         expect(res.body.status).to.equals(400);
         expect(res.body.error).to.equals('Password cannot be less than 8 characters');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Password cannot be less than 8 characters',
+          'Expect error to be Password field cannot be empty');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -190,6 +241,13 @@ describe('Test Sign up endpoint', () => {
         expect(res.body.status).to.equals(400);
         expect(res.statusCode).to.equal(400);
         expect(res.body.error).to.equals('Please provide a valid email address');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Please provide a valid email address',
+          'Expect error to be Please provide a valid email address');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -216,6 +274,15 @@ describe('Test sign in endpoint', () => {
         expect(res.body.data.id).to.be.an('number');
         expect(res.body.data.firstname).to.be.a('string');
         expect(res.body.data.lastname).to.be.a('string');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.strictEqual(res.body.status, 200, 'Status is not 200');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isObject(res.body.data, 'Data is not an object');
+        assert.isString(res.body.data.token, 'Token is not a string');
+        assert.isNumber(res.body.data.id, 'ID is not a number');
+        assert.isString(res.body.data.firstname, 'Firstname is not a string');
+        assert.isString(res.body.data.lastname, 'Last name is not a string');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -236,6 +303,13 @@ describe('Test sign in endpoint', () => {
         expect(res.statusCode).to.equal(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error).to.equal('Email not found');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Email not found',
+          'Expect error to be Email not found');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
@@ -256,6 +330,13 @@ describe('Test sign in endpoint', () => {
         expect(res.statusCode).to.equal(400);
         expect(res.body.status).to.equal(400);
         expect(res.body.error).to.equal('Password is incorrect');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Password is incorrect',
+          'Expect error to be Password is incorrect');
+        assert.isNull(err, 'Expect error to not exist');
         done();
       });
   });
