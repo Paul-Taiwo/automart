@@ -103,6 +103,14 @@ class CarAds {
   }
 
   static filterAds(req, res) {
+    const { query } = req;
+    if (query.status && query.min_price && query.max_price) {
+      const filtered = Cars.allCarsAds.filter(x => x.status === query.status && x.price > query.min_price && x.price < query.max_price);
+      return res.status(200).json({
+        status: 200,
+        data: filtered,
+      });
+    }
     const carAds = Cars.allCarsAds.filter(carAd => carAd.status === req.query.status);
     return res.status(200).json({
       status: 200,
