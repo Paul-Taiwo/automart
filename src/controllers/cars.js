@@ -85,24 +85,7 @@ class CarAds {
     });
   }
 
-  static findSpecificCar(req, res) {
-    const id = parseInt(req.params.id, 10);
-    const carAd = Cars.allCarsAds.find(car => car.id === id);
-    return res.status(200).json({
-      id: carAd.id,
-      email: carAd.email,
-      createdOn: carAd.createdOn,
-      manufacturer: carAd.manufacturer,
-      model: carAd.model,
-      price: carAd.price,
-      state: carAd.state,
-      status: carAd.status,
-      year: carAd.year,
-      bodyType: carAd.bodyType,
-    });
-  }
-
-  static filterAds(req, res) {
+  static find(req, res) {
     const { query } = req;
 
     if (query.status && query.min_price && query.max_price) {
@@ -132,10 +115,35 @@ class CarAds {
       });
     }
 
-    const carAds = Cars.allCarsAds.filter(carAd => carAd.status === req.query.status);
+    if (query.status) {
+      const carAds = Cars.allCarsAds.filter(carAd => carAd.status === req.query.status);
+      return res.status(200).json({
+        status: 200,
+        data: carAds,
+      });
+    }
+
+    const allAds = Cars.allCarsAds;
     return res.status(200).json({
       status: 200,
-      data: carAds,
+      data: allAds,
+    });
+  }
+
+  static findSpecificCar(req, res) {
+    const id = parseInt(req.params.id, 10);
+    const carAd = Cars.allCarsAds.find(car => car.id === id);
+    return res.status(200).json({
+      id: carAd.id,
+      email: carAd.email,
+      createdOn: carAd.createdOn,
+      manufacturer: carAd.manufacturer,
+      model: carAd.model,
+      price: carAd.price,
+      state: carAd.state,
+      status: carAd.status,
+      year: carAd.year,
+      bodyType: carAd.bodyType,
     });
   }
 }
