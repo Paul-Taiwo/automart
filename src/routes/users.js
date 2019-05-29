@@ -7,6 +7,6 @@ const Route = express.Router();
 
 Route.post('/auth/signup', validate.Name, validate.Email, validate.Input, userController.createUser);
 Route.post('/auth/admin/signup', validate.Name, validate.Email, validate.Input, userController.createUser);
-Route.post('/auth/signin', userController.login);
+Route.post('/auth/signin', validate.Email, userController.login);
 
 export default Route;
