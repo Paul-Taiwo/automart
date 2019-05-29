@@ -1,11 +1,16 @@
 
 const validate = (req, res, next) => {
-  let { firstname, lastname } = req.body;
+  let {
+    firstname, lastname, price, carId, priceOffered,
+  } = req.body;
   const { password } = req.body;
 
   // Remove unnecessary spaces
   firstname = firstname.trim().replace(/\s+/g, '');
   lastname = lastname.trim().replace(/\s+/g, '');
+  carId = parseInt(carId, 10);
+  price = parseFloat(price);
+  priceOffered = parseFloat(priceOffered);
 
   if (!firstname || !lastname) {
     return res.status(400).json({
@@ -32,6 +37,20 @@ const validate = (req, res, next) => {
     return res.status(400).json({
       status: 400,
       error: 'Password cannot be less than 8 characters',
+    });
+  }
+
+  if (Number.isNaN(price) || Number.isNaN(priceOffered)) {
+    return res.status(400).json({
+      status: 400,
+      error: 'Enter a valid price',
+    });
+  }
+
+  if (Number.isNaN(carId)) {
+    return res.status(400).json({
+      status: 400,
+      error: 'Enter a valid ID',
     });
   }
 
