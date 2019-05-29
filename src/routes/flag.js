@@ -1,6 +1,6 @@
 import express from 'express';
 import checkAuth from '../middlewares/auth';
-import Flag from '../controllers/flag';
+import Flag from '../controllers/flags';
 
 const Route = express.Router();
 
