@@ -13,10 +13,12 @@ class Users {
 
     const { email, password } = req.body;
 
-    firstname = firstname.trim();
-    lastname = lastname.trim();
-    address = address.trim();
+    // Remove unnecessary spaces
+    firstname = firstname.trim().replace(/\s+/g, '');
+    lastname = lastname.trim().replace(/\s+/g, '');
+    address = address.trim().replace(/\s+/g, ' ');
 
+    // Encrypt password
     const encryptedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
     const user = User.createUser({
       firstname,
