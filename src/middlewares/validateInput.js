@@ -1,7 +1,7 @@
 
 const validate = (req, res, next) => {
   let {
-    firstname, lastname, price, carId, priceOffered,
+    firstname, lastname, price, carId, priceOffered, newPriceOffered,
   } = req.body;
   const { password } = req.body;
 
@@ -11,6 +11,7 @@ const validate = (req, res, next) => {
   carId = parseInt(carId, 10);
   price = parseFloat(price);
   priceOffered = parseFloat(priceOffered);
+  newPriceOffered = parseFloat(newPriceOffered);
 
   if (!firstname || !lastname) {
     return res.status(400).json({
@@ -40,7 +41,7 @@ const validate = (req, res, next) => {
     });
   }
 
-  if (Number.isNaN(price) || Number.isNaN(priceOffered)) {
+  if (Number.isNaN(price) || Number.isNaN(priceOffered) || Number.isNaN(newPriceOffered)) {
     return res.status(400).json({
       status: 400,
       error: 'Enter a valid price',
