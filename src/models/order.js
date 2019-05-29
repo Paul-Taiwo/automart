@@ -25,10 +25,11 @@ const updatePrice = (id, data) => {
   // Find the order
   const order = findOneOrder(id);
 
-  if (order.status === 'pending') {
-    order.newPriceOffered = parseFloat(data);
+  if (order !== undefined) {
+    if (order.status === 'pending') {
+      order.newPriceOffered = parseFloat(data);
+    }
   }
-
   return order;
 };
 
