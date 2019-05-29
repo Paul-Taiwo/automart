@@ -1,6 +1,6 @@
 const allFlags = [];
 
-const createFlag = (data = null) => {
+const createFlag = (data) => {
   const id = parseInt(allFlags.length + 12657890, 10);
 
   const flagData = {
