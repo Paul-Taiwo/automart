@@ -3,6 +3,7 @@ import {
   createCarAds, updateStatus, updateCarAdPrice, allCarsAds,
 } from './cars';
 import { createOrder, updatePrice, allOrder } from './order';
+import { createFlag, allFlags } from './flags';
 
 const models = {
   User: {
@@ -20,6 +21,10 @@ const models = {
     createOrder,
     updatePrice,
     allOrder,
+  },
+  Flags: {
+    createFlag,
+    allFlags,
   },
 };
 
