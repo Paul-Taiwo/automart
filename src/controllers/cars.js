@@ -9,12 +9,12 @@ class CarAds {
     } = req.body;
 
     const { email } = req.authData.user;
-    manufacturer = manufacturer.trim();
-    model = model.trim();
-    price = parseFloat(price.trim());
-    state = state.trim();
-    year = parseInt(year.trim(), 10);
-    bodyType = bodyType.trim();
+    manufacturer = manufacturer.trim().replace(/\s+/g, '');
+    model = model.trim().replace(/\s+/g, '');
+    price = parseFloat(price);
+    state = state.trim().replace(/\s+/g, '');
+    year = parseInt(year, 10);
+    bodyType = bodyType.trim().replace(/\s+/g, '');
 
     const adsData = Cars.createCarAds({
       email,
