@@ -1,8 +1,11 @@
 
 const validate = (req, res, next) => {
-  const {
-    firstname, lastname, password,
-  } = req.body;
+  let { firstname, lastname } = req.body;
+  const { password } = req.body;
+
+  // Remove unnecessary spaces
+  firstname = firstname.trim().replace(/\s+/g, '');
+  lastname = lastname.trim().replace(/\s+/g, '');
 
   if (!firstname || !lastname) {
     return res.status(400).json({
