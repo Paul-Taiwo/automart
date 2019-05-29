@@ -8,6 +8,7 @@ import indexRoutes from './routes/index';
 import userRoutes from './routes/users';
 import carRoutes from './routes/cars';
 import orderRoutes from './routes/order';
+import flagRoutes from './routes/flag';
 
 
 const app = express();
@@ -21,15 +22,15 @@ app.use(logger('dev'));
 
 const PORT = process.env.port || 8080;
 
-app.use('/api/v1/', [indexRoutes, userRoutes, carRoutes, orderRoutes]);
+app.use('/api/v1/', [indexRoutes, userRoutes, carRoutes, orderRoutes, flagRoutes]);
 
-app.all('*', (req, res) => res.status(404).json({
-  status: 404,
+app.all('*', (req, res) => res.status(400).json({
+  status: 400,
   error: 'Bad request',
 }));
 
-app.all('*', (req, res) => res.status(404).json({
-  status: 404,
+app.all('*', (req, res) => res.status(400).json({
+  status: 400,
   error: 'Bad request',
 }));
 
