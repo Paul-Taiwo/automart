@@ -91,6 +91,14 @@ class CarAds {
     if (query.status && query.min_price && query.max_price) {
       // eslint-disable-next-line max-len
       const filtered = Cars.allCarsAds.filter(x => x.status === query.status && x.price > query.min_price && x.price < query.max_price);
+
+      if (filtered.length === 0) {
+        return res.status(200).json({
+          status: 200,
+          data: 'No record found',
+        });
+      }
+
       return res.status(200).json({
         status: 200,
         data: filtered,
@@ -100,6 +108,31 @@ class CarAds {
     if (query.status && query.manufacturer) {
       // eslint-disable-next-line max-len
       const filtered = Cars.allCarsAds.filter(x => x.status === query.status && x.manufacturer === query.manufacturer);
+
+      if (filtered.length === 0) {
+        return res.status(200).json({
+          status: 200,
+          data: 'No record found',
+        });
+      }
+
+      return res.status(200).json({
+        status: 200,
+        data: filtered,
+      });
+    }
+
+    if (query.status && query.bodyType) {
+      // eslint-disable-next-line max-len
+      const filtered = Cars.allCarsAds.filter(x => x.status === query.status && x.bodyType === query.bodyType);
+
+      if (filtered.length === 0) {
+        return res.status(200).json({
+          status: 200,
+          data: 'No record found',
+        });
+      }
+
       return res.status(200).json({
         status: 200,
         data: filtered,
@@ -109,6 +142,14 @@ class CarAds {
     if (query.status && query.state) {
       // eslint-disable-next-line max-len
       const filtered = Cars.allCarsAds.filter(x => x.status === query.status && x.state === query.state);
+
+      if (filtered.length === 0) {
+        return res.status(200).json({
+          status: 200,
+          data: 'No record found',
+        });
+      }
+
       return res.status(200).json({
         status: 200,
         data: filtered,
@@ -116,10 +157,19 @@ class CarAds {
     }
 
     if (query.status) {
-      const carAds = Cars.allCarsAds.filter(carAd => carAd.status === req.query.status);
+      const filtered = Cars.allCarsAds.filter(carAd => carAd.status === req.query.status);
+
+
+      if (filtered.length === 0) {
+        return res.status(200).json({
+          status: 200,
+          data: 'No record found',
+        });
+      }
+
       return res.status(200).json({
         status: 200,
-        data: carAds,
+        data: filtered,
       });
     }
 
