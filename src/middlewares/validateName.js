@@ -13,13 +13,6 @@ export default (req, res, next) => {
     });
   }
 
-  if (Number.isInteger(parseInt(firstname, 10)) || Number.isInteger(parseInt(lastname, 10))) {
-    return res.status(400).json({
-      status: 400,
-      error: 'Name cannot be a number',
-    });
-  }
-
   if (!firstname || !lastname) {
     return res.status(400).json({
       status: 400,

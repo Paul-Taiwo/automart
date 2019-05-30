@@ -41,7 +41,7 @@ export default (req, res, next) => {
   if (!year) {
     return res.status(400).json({
       status: 400,
-      error: 'Year cannot be empty',
+      error: 'Enter a valid year',
     });
   }
 
@@ -66,13 +66,6 @@ export default (req, res, next) => {
     });
   }
 
-  if (bodyType.split('').some(x => Number.isInteger(parseInt(x, 10)))) {
-    return res.status(400).json({
-      status: 400,
-      error: 'Car body type cannot contain number(s)',
-    });
-  }
-
   if (Number.isNaN(price)) {
     return res.status(400).json({
       status: 400,
@@ -80,11 +73,5 @@ export default (req, res, next) => {
     });
   }
 
-  if (Number.isNaN(year)) {
-    return res.status(400).json({
-      status: 400,
-      error: 'Enter a valid Year',
-    });
-  }
   return next();
 };
