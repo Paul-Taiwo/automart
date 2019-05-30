@@ -20,5 +20,20 @@ export default (req, res, next) => {
     });
   }
 
+  if (!firstname || !lastname) {
+    return res.status(400).json({
+      status: 400,
+      error: 'Name fields cannot be empty',
+    });
+  }
+
+  if (firstname.trim().length <= 2 || lastname.trim().length <= 2) {
+    return res.status(400).json({
+      status: 400,
+      error: 'Name fields cannot be less than 2 characters',
+    });
+  }
+
+
   return next();
 };
