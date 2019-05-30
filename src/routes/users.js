@@ -1,11 +1,12 @@
 import express from 'express';
-import validateSignUp from '../middlewares/validateSignUp';
+import validate from '../middlewares/index';
 import userController from '../controllers/users';
 
 const Route = express.Router();
 
-Route.post('/auth/signup', validateSignUp, userController.createUser);
-Route.post('/auth/admin/signup', validateSignUp, userController.createUser);
-Route.post('/auth/signin', userController.login);
+
+Route.post('/auth/signup', validate.Name, validate.Email, validate.PassWord, userController.createUser);
+Route.post('/auth/admin/signup', validate.Name, validate.Email, validate.PassWord, userController.createUser);
+Route.post('/auth/signin', validate.Email, userController.login);
 
 export default Route;

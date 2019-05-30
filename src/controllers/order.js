@@ -33,7 +33,12 @@ class Order {
   static updateOrder(req, res) {
     const id = parseInt(req.params.id, 10);
     const updatedOrder = Orders.updatePrice(id, req.body.newPriceOffered);
-
+    if (updatedOrder === undefined) {
+      return res.status(200).json({
+        status: 200,
+        data: 'No record found',
+      });
+    }
     if (updatedOrder.status === 'accepted' || updatedOrder.status === 'rejected') {
       return res.status(400).json({
         status: 400,
