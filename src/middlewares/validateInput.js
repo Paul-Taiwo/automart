@@ -1,8 +1,8 @@
 
-const validate = (req, res, next) => {
+export default (req, res, next) => {
   let {
-    firstname, lastname, price, carId,
-    priceOffered, newPriceOffered, manufacturer, model, state, year, bodyType,
+    firstname, lastname, price, carId, priceOffered,
+    newPriceOffered, manufacturer, model, state, year, bodyType,
   } = req.body;
   const { password } = req.body;
 
@@ -133,6 +133,3 @@ const validate = (req, res, next) => {
 
   return next();
 };
-
-
-export default validate;
