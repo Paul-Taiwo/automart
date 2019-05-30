@@ -1,7 +1,7 @@
 import validateName from './validateName';
 import validateEmail from './validateEmail';
 import validateStatus from './validateStatus';
-
+import validatePrice from './validatePrice';
 import validateCar from './validateCar';
 import validateCarId from './validateCarId';
 import validateOrder from './validateOrder';
@@ -13,6 +13,7 @@ export default {
   Email: validateEmail,
   PassWord: validatePassword,
   Status: validateStatus,
+  Price: validatePrice,
   Car: validateCar,
   CarId: validateCarId,
   Order: validateOrder,
