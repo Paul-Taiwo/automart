@@ -8,8 +8,8 @@ const Route = express.Router();
 Route.post('/car', checkAuth, validate.Input, carController.createAd);
 Route.get('/car/:id', checkAuth, carController.findSpecificCar);
 Route.get('/car/', checkAuth, carController.find);
-Route.patch('/car/:id/status', checkAuth, carController.updateStatus);
-Route.patch('/car/:id/price', checkAuth, carController.updateCarPrice);
+Route.patch('/car/:id/status', checkAuth, validate.Status, carController.updateStatus);
+Route.patch('/car/:id/price', checkAuth, validate.Price, carController.updateCarPrice);
 Route.delete('/car/:id', checkAuth, carController.deleteAd);
 
 export default Route;
