@@ -5,7 +5,7 @@ import validate from '../middlewares/index';
 
 const Route = express.Router();
 
-Route.post('/car', checkAuth, validate.Input, carController.createAd);
+Route.post('/car', checkAuth, validate.Car, carController.createAd);
 Route.get('/car/:id', checkAuth, carController.findSpecificCar);
 Route.get('/car/', checkAuth, carController.find);
 Route.patch('/car/:id/status', checkAuth, validate.Status, carController.updateStatus);
