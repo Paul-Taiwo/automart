@@ -45,6 +45,7 @@ describe('Test Sign up endpoint', () => {
         done();
       });
   });
+
   it('should create a user', (done) => {
     chai
       .request(app)
@@ -106,6 +107,36 @@ describe('Test Sign up endpoint', () => {
         assert.strictEqual(res.body.error,
           'Name fields cannot be empty',
           'Expect error to be Name fields cannot be empty');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should return an error message if name contains a number', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/auth/signup')
+      .set({
+        'Content-type': 'application/json',
+      })
+      .send({
+        firstname: 'Tester12',
+        lastname: 'Obodokuna',
+        password: 'testTest12345',
+        address: '13, qeerrfkf kfkmfkm kfmkfmkkmfmkf',
+        email: 'alagba@gmail.com',
+      })
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equals(400);
+        expect(res.statusCode).to.equal(400);
+        expect(res.body.error).to.equals('Name cannot contain number(s)');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Name cannot contain number(s)',
+          'Expect error to be Name cannot contain number(s)');
         assert.isNull(err, 'Expect error to not exist');
         done();
       });

@@ -38,4 +38,31 @@ describe('Test create flag endpoint', () => {
         done();
       });
   });
+
+  it('Should return an error car Id is not a number', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/flag/report')
+      .set({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJPYm9kb2t1bmEiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCQvdjBxTnFUZGxFVjZEYldITjZqLjV1MU94NWg3ZWpyaGlSVml1YVNlbWlxTExqOWtoQXRmLiIsImFkZHJlc3MiOiIxMywgcWVlcnJma2Yga2ZrbWZrbSBrZm1rZm1ra21mbWtmIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5MTM4NTY1LCJleHAiOjE1NTkzMTEzNjV9.1chjN5nlluRATgWMdP7CHhcqB3JhUasFPdaSGjXx4Z0',
+      })
+      .send({
+        carId: 'bbb10000043',
+        reason: 'Image not availble',
+        description: 'Image is not available for the AD',
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(400);
+        expect(res.body.status).to.equal(400);
+        expect(res.body.error).to.equal('Enter a valid ID');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Enter a valid ID',
+          'Expect error to be Enter a valid ID');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
 });
