@@ -36,7 +36,7 @@ class Order {
     if (updatedOrder === undefined) {
       return res.status(200).json({
         status: 200,
-        message: 'No order found',
+        data: 'No record found',
       });
     }
     if (updatedOrder.status === 'accepted' || updatedOrder.status === 'rejected') {
