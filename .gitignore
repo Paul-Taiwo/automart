@@ -8,3 +8,7 @@ package-lock.json
 coverage
 coverage.lcov
 .eslintignore
+<<<<<<< HEAD
+=======
+package-lock.json
+>>>>>>> feature(upload-image): update

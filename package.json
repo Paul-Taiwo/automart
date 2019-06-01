@@ -29,8 +29,13 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "cloudinary": "^1.14.0",
     "core-js": "^3.0.1",
+=======
+    "cloudinary": "^1.14.0",
+    "connect-multiparty": "^2.2.0",
+>>>>>>> feature(upload-image): update
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "datauri": "^2.0.0",
