@@ -3,12 +3,20 @@ export default (req, res, next) => {
     manufacturer, model, state, year, bodyType, price,
   } = req.body;
 
+  // console.log(req.files.image);
   manufacturer = manufacturer.trim().replace(/\s+/g, '');
   model = model.trim().replace(/\s+/g, '');
   state = state.trim().replace(/\s+/g, '');
   bodyType = bodyType.trim().replace(/\s+/g, '');
   year = parseInt(year, 10);
   price = parseFloat(price);
+
+  if (!Array.isArray(req.files.image) || req.files.image.length < 3) {
+    return res.status(400).json({
+      status: 400,
+      error: 'Upload at least three (3) images of the car',
+    });
+  }
 
   if (!manufacturer) {
     return res.status(400).json({
