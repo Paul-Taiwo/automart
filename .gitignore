@@ -7,3 +7,4 @@ package-lock.json
 coverage
 coverage.lcov
 .eslintignore
+package-lock.json
