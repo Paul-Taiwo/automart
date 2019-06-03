@@ -244,6 +244,7 @@ class CarAds {
       status: carAd.status,
       year: carAd.year,
       bodyType: carAd.bodyType,
+      images: carAd.imgUrl,
     });
   }
 
