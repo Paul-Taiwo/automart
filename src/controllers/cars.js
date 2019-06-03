@@ -227,6 +227,12 @@ class CarAds {
   static findSpecificCar(req, res) {
     const id = parseInt(req.params.id, 10);
     const carAd = Cars.allCarsAds.find(car => car.id === id);
+    if (carAd === undefined) {
+      return res.status(200).json({
+        status: 200,
+        data: 'No record found',
+      });
+    }
     return res.status(200).json({
       id: carAd.id,
       email: carAd.email,
