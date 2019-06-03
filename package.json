@@ -16,8 +16,12 @@
 =======
     "prestart": "babel ./src -d ./build --source-maps",
     "start": "node ./build/app",
+<<<<<<< HEAD
     "test": "nyc cross-env NODE_ENV=test --reporter=html mocha --require babel-register ./src/tests/* --no-deprecation --exit",
 >>>>>>> chore(test-user-sign-up): write test for user sign up endpoint
+=======
+    "test": "nyc cross-env NODE_ENV=test --reporter=html mocha --require babel-register ./src/tests/* --timeout 10000 --no-deprecation --exit",
+>>>>>>> test(upload-file): increase timeout for test
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build"
   },
@@ -35,11 +39,15 @@
 =======
     "cloudinary": "^1.14.0",
     "connect-multiparty": "^2.2.0",
+<<<<<<< HEAD
 >>>>>>> feature(upload-image): update
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "datauri": "^2.0.0",
 =======
+=======
+    "core-js": "^3.0.1",
+>>>>>>> test(upload-file): increase timeout for test
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
 >>>>>>> chore(test-user-sign-up): write test for user sign up endpoint
@@ -52,6 +60,7 @@
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.1.4",
     "morgan": "^1.9.1",
+<<<<<<< HEAD
     "multer": "^1.4.1",
     "nodemailer": "^6.2.1",
     "npm": "^6.9.0",
@@ -60,6 +69,10 @@
     "regenerator-runtime": "^0.13.2",
     "swagger-ui-dist": "^3.22.3",
     "update": "^0.7.4"
+=======
+    "path": "^0.12.7",
+    "regenerator-runtime": "^0.13.2"
+>>>>>>> test(upload-file): increase timeout for test
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
