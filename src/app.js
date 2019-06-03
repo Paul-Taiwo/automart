@@ -1,5 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import logger from 'morgan';
 import cors from 'cors';
 import log from 'fancy-log';
@@ -25,9 +27,9 @@ const PORT = process.env.port || 8080;
 
 app.use('/api/v1/', [indexRoutes, userRoutes, carRoutes, orderRoutes, flagRoutes]);
 
-app.all('*', (req, res) => res.status(400).json({
+app.all('*', (req, res) => res.status(404).json({
   status: 404,
-  error: 'Not found',
+  error: 'Not Found',
 }));
 
 app.listen(PORT, () => log.info(`Listening at ${PORT}`));
