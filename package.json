@@ -90,10 +90,16 @@
     "nodemon": "^1.19.1",
     "nyc": "^14.1.1"
 <<<<<<< HEAD
+<<<<<<< HEAD
   },
   "engines": {
     "node": "8.11.3"
 =======
 >>>>>>> chore(test-user-sign-up): write test for user sign up endpoint
+=======
+  },
+  "engines": {
+    "node": "8.11.3"
+>>>>>>> bug(heroku): fix application error
   }
 }
