@@ -8,6 +8,7 @@
     "lint": "eslint ./src",
     "fix": "eslint ./src --fix",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "build": "babel ./src -d ./build --source-maps",
     "start": "npm run db:migrate && node ./build/app",
     "db:migrate": "babel-node ./src/database/migrations",
@@ -15,6 +16,9 @@
     "test": "nyc cross-env NODE_ENV=test --reporter=html  mocha --require babel-register ./src/tests/* --timeout 10000 --no-deprecation --exit",
 =======
     "prestart": "babel ./src -d ./build --source-maps",
+=======
+    "build": "babel ./src -d ./build --source-maps",
+>>>>>>> chore(app): update
     "start": "node ./build/app",
 <<<<<<< HEAD
     "test": "nyc cross-env NODE_ENV=test --reporter=html mocha --require babel-register ./src/tests/* --no-deprecation --exit",
