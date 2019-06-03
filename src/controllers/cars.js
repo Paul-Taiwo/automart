@@ -1,13 +1,24 @@
+import { v2 } from 'cloudinary';
+import log from 'fancy-log';
 import models from '../models';
 
+v2.config({
+  cloud_name: process.env.ClOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
+
 const { Cars } = models;
+const imageUrl = [];
 
 class CarAds {
-  static createAd(req, res) {
+  static async createAd(req, res) {
+    // Request body
     let {
       manufacturer, model, price, state, year, bodyType,
     } = req.body;
 
+    // Format Inputs
     const { email } = req.authData.user;
     manufacturer = manufacturer.trim().replace(/\s+/g, '');
     model = model.trim().replace(/\s+/g, '');
@@ -16,6 +27,37 @@ class CarAds {
     year = parseInt(year, 10);
     bodyType = bodyType.trim().replace(/\s+/g, '');
 
+    // Create promise
+    const multipleUpload = new Promise((resolve, reject) => {
+      if (req.files.image.length > 1) {
+        req.files.image.forEach((x) => {
+          v2.uploader.upload(x.path, (error, result) => {
+            if (result) imageUrl.push(result.url);
+
+            if (imageUrl.length === req.files.image.length) {
+              resolve(imageUrl);
+            } else if (error) {
+              log.warn(error);
+              reject(error);
+            }
+          });
+        });
+      }
+    })
+      .then(result => result)
+      .catch(error => error);
+
+    // Wait until promise is resolved
+    const imgUrl = await multipleUpload;
+
+    if (imgUrl.code || imgUrl.errno) {
+      return res.status(500).json({
+        status: 500,
+        error: imgUrl,
+      });
+    }
+
+    // Create Data
     const adsData = Cars.createCarAds({
       email,
       manufacturer,
@@ -24,6 +66,7 @@ class CarAds {
       state,
       year,
       bodyType,
+      imgUrl,
     });
 
     return res.status(201).json({
@@ -39,6 +82,7 @@ class CarAds {
         status: adsData.status,
         year: adsData.year,
         bodyType: adsData.bodyType,
+        images: adsData.imgUrl,
       },
     });
   }
@@ -183,6 +227,12 @@ class CarAds {
   static findSpecificCar(req, res) {
     const id = parseInt(req.params.id, 10);
     const carAd = Cars.allCarsAds.find(car => car.id === id);
+    if (carAd === undefined) {
+      return res.status(200).json({
+        status: 200,
+        data: 'No record found',
+      });
+    }
     return res.status(200).json({
       id: carAd.id,
       email: carAd.email,
@@ -194,6 +244,7 @@ class CarAds {
       status: carAd.status,
       year: carAd.year,
       bodyType: carAd.bodyType,
+      images: carAd.imgUrl,
     });
   }
 

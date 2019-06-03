@@ -15,12 +15,12 @@ describe('Test API v1 Endpoint', () => {
       })
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.statusCode).to.equal(400);
-        expect(res.body.status).to.equal(400);
+        expect(res.statusCode).to.equal(404);
+        expect(res.body.status).to.equal(404);
         assert.isObject(res.body, 'Response is not an object');
-        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
-        assert.strictEqual(res.body.status, 400, 'Status is not be 400');
-        assert.strictEqual(res.body.error, 'Bad request', 'Error is not Bad request');
+        assert.strictEqual(res.statusCode, 404, 'Status code is not 404');
+        assert.strictEqual(res.body.status, 404, 'Status is not be 404');
+        assert.strictEqual(res.body.error, 'Not Found');
         assert.isNull(err, 'Expect error to not exist');
         done();
       });

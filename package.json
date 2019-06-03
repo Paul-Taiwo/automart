@@ -9,7 +9,7 @@
     "fix": "eslint ./src --fix",
     "prestart": "babel ./src -d ./build --source-maps",
     "start": "node ./build/app",
-    "test": "nyc cross-env NODE_ENV=test --reporter=html mocha --require babel-register ./src/tests/* --no-deprecation --exit",
+    "test": "nyc cross-env NODE_ENV=test --reporter=html mocha --require babel-register ./src/tests/* --timeout 10000 --no-deprecation --exit",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run build"
   },
@@ -20,6 +20,9 @@
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
+    "cloudinary": "^1.14.0",
+    "connect-multiparty": "^2.2.0",
+    "core-js": "^3.0.1",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
@@ -29,7 +32,8 @@
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.1.4",
     "morgan": "^1.9.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "regenerator-runtime": "^0.13.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
