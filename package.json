@@ -7,7 +7,7 @@
     "dev": "nodemon ./src/app --exec babel-node",
     "lint": "eslint ./src",
     "fix": "eslint ./src --fix",
-    "prestart": "babel ./src -d ./build --source-maps",
+    "build": "babel ./src -d ./build --source-maps",
     "start": "node ./build/app",
     "test": "nyc cross-env NODE_ENV=test --reporter=html mocha --require babel-register ./src/tests/* --timeout 10000 --no-deprecation --exit",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
