@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 app.use(logger('dev'));
 
-const PORT = process.env.port || 8080;
+const PORT = process.env.PORT || 8080;
 
 app.use('/api/v1/', [indexRoutes, userRoutes, carRoutes, orderRoutes, flagRoutes]);
 
