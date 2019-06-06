@@ -1,5 +1,4 @@
 import { v2 } from 'cloudinary';
-import log from 'fancy-log';
 import models from '../models';
 
 v2.config({
