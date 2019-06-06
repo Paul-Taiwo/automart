@@ -21,7 +21,7 @@ describe('Test for car AD endpoint', () => {
         .request(app)
         .post('/api/v1/car')
         .set({
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
         })
         .field('manufacturer', 'Toyota')
         .field('model', 'Corolla')
@@ -33,7 +33,10 @@ describe('Test for car AD endpoint', () => {
         .attach('image', file2, 'Car2.jpg')
         .attach('image', file3, 'Car3.jpg');
       resolve(res);
-    });
+    }).then(res => res)
+      .catch((err) => {
+        throw err;
+      });
     const response = await prom;
     carAd = response.body.data;
   });
@@ -43,7 +46,7 @@ describe('Test for car AD endpoint', () => {
       .request(app)
       .post('/api/v1/car')
       .set({
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .field('manufacturer', 'Toyota')
       .field('model', 'Corolla')
@@ -137,7 +140,7 @@ describe('Test for car AD endpoint', () => {
       .post('/api/v1/car')
       .set({
         'Content-Type': 'multipart/form-data',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .field('manufacturer', '')
       .field('model', 'Corolla')
@@ -170,7 +173,7 @@ describe('Test for car AD endpoint', () => {
       .post('/api/v1/car')
       .set({
         'Content-Type': 'multipart/form-data',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .field('manufacturer', '12344')
       .field('model', 'Corolla')
@@ -203,7 +206,7 @@ describe('Test for car AD endpoint', () => {
       .post('/api/v1/car')
       .set({
         'Content-Type': 'multipart/form-data',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .field('manufacturer', 'Toyota')
       .field('model', '')
@@ -236,7 +239,7 @@ describe('Test for car AD endpoint', () => {
       .post('/api/v1/car')
       .set({
         'Content-Type': 'multipart/form-data',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .field('manufacturer', 'Toyota')
       .field('model', 'Corolla')
@@ -269,7 +272,7 @@ describe('Test for car AD endpoint', () => {
       .post('/api/v1/car')
       .set({
         'Content-Type': 'multipart/form-data',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .field('manufacturer', 'Toyota')
       .field('model', 'Corolla')
@@ -301,7 +304,7 @@ describe('Test for car AD endpoint', () => {
       .post('/api/v1/car')
       .set({
         'Content-Type': 'multipart/form-data',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .field('manufacturer', 'Toyota')
       .field('model', 'Corolla')
@@ -333,7 +336,7 @@ describe('Test for car AD endpoint', () => {
       .post('/api/v1/car')
       .set({
         'Content-Type': 'multipart/form-data',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .field('manufacturer', 'Toyota')
       .field('model', 'Corolla')
@@ -364,7 +367,7 @@ describe('Test for car AD endpoint', () => {
       .post('/api/v1/car')
       .set({
         'Content-Type': 'multipart/form-data',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .field('manufacturer', 'Toyota')
       .field('model', 'Corolla')
@@ -396,7 +399,7 @@ describe('Test for car AD endpoint', () => {
       .post('/api/v1/car')
       .set({
         'Content-Type': 'multipart/form-data',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .field('manufacturer', 'Toyota')
       .field('model', 'Corolla')
@@ -427,7 +430,7 @@ describe('Test for car AD endpoint', () => {
       .patch(`/api/v1/car/${carAd.id}/price`)
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .send({
         price: '1580000',
@@ -438,7 +441,7 @@ describe('Test for car AD endpoint', () => {
         expect(res.body.status).to.be.equal(200);
         expect(res.body.data).to.be.an('object');
         expect(res.body.data.id).to.be.a('number');
-        expect(res.body.data.createdOn).to.be.a('string');
+        expect(res.body.data.created_on).to.be.a('string');
         expect(res.body.data.email).to.be.a('string');
         expect(res.body.data.manufacturer).to.be.a('string');
         expect(res.body.data.model).to.be.a('string');
@@ -451,7 +454,7 @@ describe('Test for car AD endpoint', () => {
         assert.isObject(res.body, 'Response is not an object');
         assert.isObject(res.body.data, 'Data is not an object');
         assert.isNumber(res.body.data.id, 'ID is not a number');
-        assert.isString(res.body.data.createdOn, 'Date is not a string');
+        assert.isString(res.body.data.created_on, 'Date is not a string');
         assert.isString(res.body.data.manufacturer, 'Manufacturer is not a string');
         assert.isString(res.body.data.model, 'Model is not a string');
         assert.strictEqual(res.body.data.status, 'available', 'Status is not available');
@@ -469,7 +472,7 @@ describe('Test for car AD endpoint', () => {
       .patch(`/api/v1/car/${carAd.id}/price`)
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .send({
         price: 'xxxxxx',
@@ -522,7 +525,7 @@ describe('Test for car AD endpoint', () => {
       .patch(`/api/v1/car/${carAd.id}/price`)
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer aeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer aeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .send({
         price: '1580000',
@@ -549,7 +552,7 @@ describe('Test for car AD endpoint', () => {
       .patch(`/api/v1/car/${carAd.id}/status`)
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .send({
         status: '',
@@ -576,7 +579,7 @@ describe('Test for car AD endpoint', () => {
       .patch(`/api/v1/car/${carAd.id}/status`)
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .send({
         status: 'Sold55',
@@ -629,33 +632,33 @@ describe('Test for car AD endpoint', () => {
       .get(`/api/v1/car/${carAd.id}`)
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
         expect(res.body).to.be.an('object');
-        expect(res.body.id).to.be.a('number');
-        expect(res.body.email).to.be.a('string');
-        expect(res.body.createdOn).to.be.a('string');
-        expect(res.body.manufacturer).to.be.a('string');
-        expect(res.body.model).to.be.a('string');
-        expect(res.body.price).to.be.a('number');
-        expect(res.body.status).to.be.a('string');
-        expect(res.body.year).to.be.a('number');
-        expect(res.body.state).to.be.a('string');
-        expect(res.body.bodyType).to.be.a('string');
+        expect(res.body.data.id).to.be.a('number');
+        expect(res.body.data.email).to.be.a('string');
+        expect(res.body.data.created_on).to.be.a('string');
+        expect(res.body.data.manufacturer).to.be.a('string');
+        expect(res.body.data.model).to.be.a('string');
+        expect(res.body.data.price).to.be.a('number');
+        expect(res.body.data.status).to.be.a('string');
+        expect(res.body.data.year).to.be.a('number');
+        expect(res.body.data.state).to.be.a('string');
+        expect(res.body.data.body_type).to.be.a('string');
         assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
         assert.isObject(res.body, 'Data is not an object');
-        assert.isNumber(res.body.id, 'ID is not a number');
-        assert.isString(res.body.email, 'Email is not a string');
-        assert.isString(res.body.createdOn, 'Date is not a string');
-        assert.isString(res.body.manufacturer, 'Manufacturer is not a string');
-        assert.isString(res.body.model, 'Model is not a string');
-        assert.isString(res.body.status, 'Status is not a string');
-        assert.isNumber(res.body.price, 'Price is not a number');
-        assert.isString(res.body.state, 'State is not a string');
-        assert.isString(res.body.bodyType, 'Body type is not a string');
-        assert.isNumber(res.body.year, 'Year is not a number');
+        assert.isNumber(res.body.data.id, 'ID is not a number');
+        assert.isString(res.body.data.email, 'Email is not a string');
+        assert.isString(res.body.data.created_on, 'Date is not a string');
+        assert.isString(res.body.data.manufacturer, 'Manufacturer is not a string');
+        assert.isString(res.body.data.model, 'Model is not a string');
+        assert.isString(res.body.data.status, 'Status is not a string');
+        assert.isNumber(res.body.data.price, 'Price is not a number');
+        assert.isString(res.body.data.state, 'State is not a string');
+        assert.isString(res.body.data.body_type, 'Body type is not a string');
+        assert.isNumber(res.body.data.year, 'Year is not a number');
         assert.isNull(err, 'Expect error to not exist');
         done();
       });
@@ -667,7 +670,7 @@ describe('Test for car AD endpoint', () => {
       .get('/api/v1/car/1111111111')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -696,7 +699,7 @@ describe('Test for car AD endpoint', () => {
       })
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -716,7 +719,7 @@ describe('Test for car AD endpoint', () => {
       .get('/api/v1/car')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -736,7 +739,7 @@ describe('Test for car AD endpoint', () => {
       .get('/api/v1/car')
       .query({ status: 'available' })
       .set({
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -756,7 +759,7 @@ describe('Test for car AD endpoint', () => {
       .get('/api/v1/car?status=unknown')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -780,7 +783,7 @@ describe('Test for car AD endpoint', () => {
       .get('/api/v1/car?status=unknown&min_price=unknown&max_price=unknown')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -808,7 +811,7 @@ describe('Test for car AD endpoint', () => {
       })
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -828,7 +831,7 @@ describe('Test for car AD endpoint', () => {
       .get('/api/v1/car?status=unknown&manufacturer=unknown')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -856,7 +859,7 @@ describe('Test for car AD endpoint', () => {
       })
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -876,7 +879,7 @@ describe('Test for car AD endpoint', () => {
       .get('/api/v1/car?status=unknown&state=unknown')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -900,7 +903,7 @@ describe('Test for car AD endpoint', () => {
       .get('/api/v1/car?status=available&bodyType=Saloon')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -920,7 +923,7 @@ describe('Test for car AD endpoint', () => {
       .get('/api/v1/car?status=unknown&bodyType=unknown')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -944,7 +947,7 @@ describe('Test for car AD endpoint', () => {
       .patch(`/api/v1/car/${carAd.id}/status`)
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .send({
         status: 'sold',
@@ -954,7 +957,7 @@ describe('Test for car AD endpoint', () => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.be.equal(200);
         expect(res.body.data.id).to.be.a('number');
-        expect(res.body.data.createdOn).to.be.a('string');
+        expect(res.body.data.created_on).to.be.a('string');
         expect(res.body.data.manufacturer).to.be.a('string');
         expect(res.body.data.model).to.be.a('string');
         expect(res.body.data.price).to.be.a('number');
@@ -966,7 +969,7 @@ describe('Test for car AD endpoint', () => {
         assert.isObject(res.body, 'Response is not an object');
         assert.isObject(res.body.data, 'Data is not an object');
         assert.isNumber(res.body.data.id, 'ID is not a number');
-        assert.isString(res.body.data.createdOn, 'Date is not a string');
+        assert.isString(res.body.data.created_on, 'Date is not a string');
         assert.isString(res.body.data.manufacturer, 'Manufacturer is not a string');
         assert.isString(res.body.data.model, 'Model is not a string');
         assert.strictEqual(res.body.data.status, 'sold', 'Status is not sold');
@@ -984,7 +987,7 @@ describe('Test for car AD endpoint', () => {
       .delete(`/api/v1/car/${carAd.id}`)
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkb3BkNXkxWk9TdnR4V1VaNEphUTl4ZWFybG5BbGJRYndIUzZhRlZ6M0RkTm1jL014L0VibWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWV9LCJpYXQiOjE1NTk0ODEwNTQsImV4cCI6MTU1OTY1Mzg1NH0.5jlUFYMWoixEMLRTqZbjL6pxcpwDAWqgUAsbCH3_Amw',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJKYW1pdSIsImxhc3RuYW1lIjoiQWRla2FuYmUiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCQycURPNk9sLnNGTkg1MW1kc2pPYnlPTEpaOWFscG9MdS5nWlBSdGFCcVhPVXYuMW5FdVgzMiIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSxPc29sbywgTGFnb3MiLCJlbWFpbCI6ImphbWl1amFtbXl0QGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWV9LCJpYXQiOjE1NTk4MDAxOTYsImV4cCI6MTU1OTk3Mjk5Nn0.vgEEgw33t0FfkAsrpPoCiuzg5sM58BspxdKAG9bH9sY',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -1008,7 +1011,7 @@ describe('Test for car AD endpoint', () => {
       .delete('/api/v1/car/11111045')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkb3BkNXkxWk9TdnR4V1VaNEphUTl4ZWFybG5BbGJRYndIUzZhRlZ6M0RkTm1jL014L0VibWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWV9LCJpYXQiOjE1NTk0ODEwNTQsImV4cCI6MTU1OTY1Mzg1NH0.5jlUFYMWoixEMLRTqZbjL6pxcpwDAWqgUAsbCH3_Amw',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJKYW1pdSIsImxhc3RuYW1lIjoiQWRla2FuYmUiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCQycURPNk9sLnNGTkg1MW1kc2pPYnlPTEpaOWFscG9MdS5nWlBSdGFCcVhPVXYuMW5FdVgzMiIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSxPc29sbywgTGFnb3MiLCJlbWFpbCI6ImphbWl1amFtbXl0QGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWV9LCJpYXQiOjE1NTk4MDAxOTYsImV4cCI6MTU1OTk3Mjk5Nn0.vgEEgw33t0FfkAsrpPoCiuzg5sM58BspxdKAG9bH9sY',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(200);
@@ -1032,7 +1035,7 @@ describe('Test for car AD endpoint', () => {
       .delete(`/api/v1/car/${carAd.id}`)
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .end((err, res) => {
         expect(res.statusCode).to.equal(403);
