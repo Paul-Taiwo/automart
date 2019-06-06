@@ -38,11 +38,11 @@ class Users {
       data: {
         token,
         id: user.id,
-        firstname: user.firstname,
-        lastname: user.lastname,
+        first_name: user.firstname,
+        last_name: user.lastname,
         email: user.email,
         address: user.address,
-        isAdmin: user.isAdmin,
+        is_admin: user.isAdmin,
       },
     });
   }
@@ -79,8 +79,8 @@ class Users {
       data: {
         token,
         id: user.id,
-        firstname: user.firstname,
-        lastname: user.lastname,
+        first_name: user.firstname,
+        last_name: user.lastname,
         email: user.email,
       },
     });
