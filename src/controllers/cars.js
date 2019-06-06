@@ -38,7 +38,6 @@ class CarAds {
             if (imageUrl.length === req.files.image.length) {
               resolve(imageUrl);
             } else if (error) {
-              log.warn(error);
               reject(error);
             }
           });
