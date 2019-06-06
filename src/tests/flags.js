@@ -12,7 +12,7 @@ describe('Test create flag endpoint', () => {
       .post('/api/v1/flag/report')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .send({
         carId: 10000043,
@@ -45,7 +45,7 @@ describe('Test create flag endpoint', () => {
       .post('/api/v1/flag/report')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJSZXNzcyIsImxhc3RuYW1lIjoiTmlvIiwiZW5jcnlwdGVkUGFzc3dvcmQiOiIkMmEkMTAkVnEwOERpMnk4ZEEwNlZmNFNqT3FiLmFiMWQvSG1BQzgxUElCdllLT3FMLkZlMVVndHpTcWkiLCJhZGRyZXNzIjoiIiwiZW1haWwiOiJwYXVsQGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTU5Mzk0NjA3LCJleHAiOjE1NTk1Njc0MDd9.YRLpxWAiUILvJRrZwWmJvSip-h4-cJu9xpITqCsZgnQ',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
       })
       .send({
         carId: 'bbb10000043',
