@@ -1,22 +1,20 @@
 export default (req, res, next) => {
-  let { firstname, lastname } = req.body;
-  // Remove unnecessary spaces
-  firstname = firstname.trim().replace(/\s+/g, '');
-  lastname = lastname.trim().replace(/\s+/g, '');
+  const { firstname, lastname } = req.body;
   // Check if firstname and lastname contains a number
+
+  if (!firstname || !lastname) {
+    return res.status(400).json({
+      status: 400,
+      error: 'Name fields cannot be empty',
+    });
+  }
+
   const yes = `${firstname}${lastname}`.split('').some(x => Number.isInteger(parseInt(x, 10)));
 
   if (yes) {
     return res.status(400).json({
       status: 400,
       error: 'Name cannot contain number(s)',
-    });
-  }
-
-  if (!firstname || !lastname) {
-    return res.status(400).json({
-      status: 400,
-      error: 'Name fields cannot be empty',
     });
   }
 

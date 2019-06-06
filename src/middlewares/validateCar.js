@@ -1,15 +1,7 @@
 export default (req, res, next) => {
-  let {
+  const {
     manufacturer, model, state, year, bodyType, price,
   } = req.body;
-
-  // console.log(req.files.image);
-  manufacturer = manufacturer.trim().replace(/\s+/g, '');
-  model = model.trim().replace(/\s+/g, '');
-  state = state.trim().replace(/\s+/g, '');
-  bodyType = bodyType.trim().replace(/\s+/g, '');
-  year = parseInt(year, 10);
-  price = parseFloat(price);
 
   if (!Array.isArray(req.files.image) || req.files.image.length < 3) {
     return res.status(400).json({
@@ -53,7 +45,7 @@ export default (req, res, next) => {
     });
   }
 
-  if (year.toString().length < 4 || year.toString().length > 4) {
+  if (parseInt(year, 10).toString().length < 4 || parseInt(year, 10).toString().length > 4) {
     return res.status(400).json({
       status: 400,
       error: 'Input a valid year',
@@ -74,7 +66,7 @@ export default (req, res, next) => {
     });
   }
 
-  if (Number.isNaN(price)) {
+  if (Number.isNaN(parseFloat(price))) {
     return res.status(400).json({
       status: 400,
       error: 'Enter a valid price',

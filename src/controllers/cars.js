@@ -1,5 +1,4 @@
 import { v2 } from 'cloudinary';
-import log from 'fancy-log';
 import models from '../models';
 
 v2.config({
@@ -19,7 +18,8 @@ class CarAds {
     } = req.body;
 
     // Format Inputs
-    const { email } = req.authData.user;
+    const { id, email } = req.authData.user;
+    const owner = id;
     manufacturer = manufacturer.trim().replace(/\s+/g, '');
     model = model.trim().replace(/\s+/g, '');
     price = parseFloat(price);
@@ -37,7 +37,6 @@ class CarAds {
             if (imageUrl.length === req.files.image.length) {
               resolve(imageUrl);
             } else if (error) {
-              log.warn(error);
               reject(error);
             }
           });
@@ -59,6 +58,7 @@ class CarAds {
 
     // Create Data
     const adsData = Cars.createCarAds({
+      owner,
       email,
       manufacturer,
       model,
@@ -73,15 +73,16 @@ class CarAds {
       status: 201,
       data: {
         id: adsData.id,
+        owner: adsData.owner,
         email: adsData.email,
-        createdOn: adsData.createdOn,
+        created_on: adsData.createdOn,
         manufacturer: adsData.manufacturer,
         model: adsData.model,
         price: adsData.price,
         state: adsData.state,
         status: adsData.status,
         year: adsData.year,
-        bodyType: adsData.bodyType,
+        body_type: adsData.bodyType,
         images: adsData.imgUrl,
       },
     });
@@ -96,14 +97,14 @@ class CarAds {
       data: {
         id: updatedAd.id,
         email: updatedAd.email,
-        createdOn: updatedAd.createdOn,
+        created_on: updatedAd.createdOn,
         manufacturer: updatedAd.manufacturer,
         model: updatedAd.model,
         price: updatedAd.price,
         state: updatedAd.state,
         status: updatedAd.status,
         year: updatedAd.year,
-        bodyType: updatedAd.bodyType,
+        body_type: updatedAd.bodyType,
       },
     });
   }
@@ -117,14 +118,14 @@ class CarAds {
       data: {
         id: updatedAd.id,
         email: updatedAd.email,
-        createdOn: updatedAd.createdOn,
+        created_on: updatedAd.createdOn,
         manufacturer: updatedAd.manufacturer,
         model: updatedAd.model,
         price: updatedAd.price,
         state: updatedAd.state,
         status: updatedAd.status,
         year: updatedAd.year,
-        bodyType: updatedAd.bodyType,
+        body_type: updatedAd.bodyType,
       },
     });
   }
@@ -234,17 +235,21 @@ class CarAds {
       });
     }
     return res.status(200).json({
-      id: carAd.id,
-      email: carAd.email,
-      createdOn: carAd.createdOn,
-      manufacturer: carAd.manufacturer,
-      model: carAd.model,
-      price: carAd.price,
-      state: carAd.state,
-      status: carAd.status,
-      year: carAd.year,
-      bodyType: carAd.bodyType,
-      images: carAd.imgUrl,
+      status: 200,
+      data: {
+        id: carAd.id,
+        owner: carAd.owner,
+        email: carAd.email,
+        created_on: carAd.createdOn,
+        manufacturer: carAd.manufacturer,
+        model: carAd.model,
+        price: carAd.price,
+        state: carAd.state,
+        status: carAd.status,
+        year: carAd.year,
+        body_type: carAd.bodyType,
+        images: carAd.imgUrl,
+      },
     });
   }
 
