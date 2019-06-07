@@ -71,6 +71,33 @@ describe('Test for car AD endpoint', () => {
       });
   });
 
+  it('Should create an AD', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/car')
+      .set({
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
+      })
+      .field('manufacturer', 'Toyota')
+      .field('model', 'Corolla')
+      .field('price', '145000')
+      .field('state', 'New')
+      .field('year', '2018')
+      .field('bodyType', 'Saloon')
+      .attach('image', file, 'Car1.jpg')
+      .attach('image', file2, 'Car2.jpg')
+      .attach('image', file3, 'Car3.jpg')
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equals(201);
+        expect(res.statusCode).to.equal(201);
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 201, 'Status code is not 201');
+        assert.strictEqual(res.body.status, 201, 'Status is not 201');
+        done();
+      });
+  });
+
   it('Should return an error if request is not authorized', (done) => {
     chai
       .request(app)

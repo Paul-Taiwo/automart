@@ -1,4 +1,5 @@
 import { v2 } from 'cloudinary';
+import log from 'fancy-log';
 import models from '../models';
 
 v2.config({
@@ -8,7 +9,6 @@ v2.config({
 });
 
 const { Cars } = models;
-const imageUrl = [];
 
 class CarAds {
   static async createAd(req, res) {
@@ -16,7 +16,6 @@ class CarAds {
     let {
       manufacturer, model, price, state, year, bodyType,
     } = req.body;
-
     // Format Inputs
     const { id, email } = req.authData.user;
     const owner = id;
@@ -29,14 +28,15 @@ class CarAds {
 
     // Create promise
     const multipleUpload = new Promise((resolve, reject) => {
+      const imageUrl = [];
       if (req.files.image.length > 1) {
         req.files.image.forEach((x) => {
           v2.uploader.upload(x.path, (error, result) => {
             if (result) imageUrl.push(result.url);
-
             if (imageUrl.length === req.files.image.length) {
               resolve(imageUrl);
             } else if (error) {
+              log.warn(error);
               reject(error);
             }
           });
@@ -48,7 +48,6 @@ class CarAds {
 
     // Wait until promise is resolved
     const imgUrl = await multipleUpload;
-
     if (imgUrl.code || imgUrl.errno) {
       return res.status(500).json({
         status: 500,
