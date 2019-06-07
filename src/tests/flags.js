@@ -65,4 +65,60 @@ describe('Test create flag endpoint', () => {
         done();
       });
   });
+
+  it('Should return an error message if reason is empty', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/flag/report')
+      .set({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
+      })
+      .send({
+        carId: 10000043,
+        reason: '',
+        description: 'Image is not available for the AD',
+      })
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equals(400);
+        expect(res.statusCode).to.equal(400);
+        expect(res.body.error).to.equals('Reason field cannot be empty');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Reason field cannot be empty');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should return an error message if description is empty', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/flag/report')
+      .set({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVuY3J5cHRlZFBhc3N3b3JkIjoiJDJhJDEwJE8uT0ZadVdsYUZZTFNuWWVLUHVwTmU0d2ZCWGNDeldvVUJoYmlKZUZsY2Ztb1JPNk1Cam1lIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiZW1haWwiOiJheW9wYXVsb3RAZ21haWwuY29tIiwiaXNBZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NTk3OTk5NzIsImV4cCI6MTU1OTk3Mjc3Mn0.tFkZwO-ydwrJRM6WW7ZIVkN4z6bLemOCOiRDz1LVWcs',
+      })
+      .send({
+        carId: 10000043,
+        reason: 'Image not availble',
+        description: '',
+      })
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equals(400);
+        expect(res.statusCode).to.equal(400);
+        expect(res.body.error).to.equals('Description field cannot be empty');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Description field cannot be empty');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
 });

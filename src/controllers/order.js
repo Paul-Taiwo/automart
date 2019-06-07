@@ -7,9 +7,9 @@ class Order {
     let { carId, price, priceOffered } = req.body;
 
 
-    carId = parseInt(carId.trim(), 10);
-    price = parseFloat(price.trim());
-    priceOffered = parseFloat(priceOffered.trim());
+    carId = parseInt(carId, 10);
+    price = parseFloat(price);
+    priceOffered = parseFloat(priceOffered);
 
     const createdOrder = Orders.createOrder({
       carId,

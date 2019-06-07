@@ -5,6 +5,7 @@ import validatePrice from './validatePrice';
 import validateCar from './validateCar';
 import validateCarId from './validateCarId';
 import validateOrder from './validateOrder';
+import validateFlag from './validateFlag';
 import validateNewPrice from './validateNewPrice';
 import validatePassword from './validatePassword';
 
@@ -14,6 +15,7 @@ export default {
   PassWord: validatePassword,
   Status: validateStatus,
   Price: validatePrice,
+  Flag: validateFlag,
   Car: validateCar,
   CarId: validateCarId,
   Order: validateOrder,

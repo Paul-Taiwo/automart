@@ -5,6 +5,6 @@ import Flag from '../controllers/flags';
 
 const Route = express.Router();
 
-Route.post('/flag/report', checkAuth, validate.CarId, Flag.createFlag);
+Route.post('/flag/report', checkAuth, validate.CarId, validate.Flag, Flag.createFlag);
 
 export default Route;
