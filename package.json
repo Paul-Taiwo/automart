@@ -40,15 +40,10 @@
     "nodemailer": "^6.2.1",
     "npm": "^6.9.0",
     "path": "^0.12.7",
-<<<<<<< HEAD
     "pg": "^7.11.0",
     "regenerator-runtime": "^0.13.2",
     "swagger-ui-dist": "^3.22.3",
     "update": "^0.7.4"
-=======
-    "regenerator-runtime": "^0.13.2",
-    "swagger-ui-dist": "^3.22.3"
->>>>>>> documentation(api): document API
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
