@@ -1,0 +1,1567 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Auto Mart",
+    "description": "Auto Mart is an online marketplace for automobiles of diverse makes,\nmodel or body type. With Auto Mart, users can sell their cars or buy from trusted\ndealerships or private sellers.",
+    "version": "1.0.0"
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  },
+  "servers": [{
+    "url": "https://automart1.herokuapp.com/api/v1"
+  }],
+  "tags": [{
+      "name": "Users",
+      "description": "Create a User"
+    },
+    {
+      "name": "Cars",
+      "description": "Create a Car AD"
+    },
+    {
+      "name": "Orders",
+      "description": "Create an Order"
+    },
+    {
+      "name": "Flags",
+      "description": "Flag/Report an AD"
+    }
+  ],
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create user",
+        "description": "Create a User",
+        "parameters": [{
+          "in": "header",
+          "name": "Content-Type",
+          "schema": {
+            "type": "string"
+          },
+          "required": true
+        }],
+        "requestBody": {
+          "description": "User Data to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseUser"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 400,
+                    "error": "Name fields cannot be empty"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/admin/signup": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create user (Admin)",
+        "description": "Create a User (Admin)",
+        "requestBody": {
+          "description": "User Data to create",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseUserAdmin"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 400,
+                    "error": "Name fields cannot be empty"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Logs user into the system",
+        "requestBody": {
+          "description": "User details",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserSignIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseSignIn"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/car": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "View all posted ADs",
+        "description": "View all posted ADs whether sold or available",
+        "parameters": [{
+            "name": "status",
+            "in": "query",
+            "description": "Status of cars to view",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "available",
+                "sold"
+              ]
+            }
+          },
+          {
+            "name": "body_type",
+            "in": "query",
+            "description": "Body type of cars to view",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "description": "State of cars to view",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "new",
+                "used"
+              ]
+            }
+          },
+          {
+            "name": "manufacturer",
+            "in": "query",
+            "description": "Manufacturer of cars to view",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "min_price",
+            "in": "query",
+            "description": "Minimum price of cars to view",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "max_price",
+            "in": "query",
+            "description": "Maximum price of cars to view",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseCar"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "WWW_Authenticate": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 401,
+                    "error": "Authentication failed! Please Login again"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{
+          "petstore_auth": [
+            "write:pets",
+            "read:pets"
+          ]
+        }]
+      },
+      "post": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "Create an AD",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "body type",
+                  "image1",
+                  "image2",
+                  "image3",
+                  "manufacturer",
+                  "model",
+                  "price",
+                  "state",
+                  "year"
+                ],
+                "properties": {
+                  "manufacturer": {
+                    "type": "string",
+                    "description": "Manufacturer of the car"
+                  },
+                  "model": {
+                    "type": "string",
+                    "description": "Model of the car"
+                  },
+                  "state": {
+                    "type": "string",
+                    "description": "State of the car(new or used)",
+                    "enum": [
+                      "new",
+                      "used"
+                    ]
+                  },
+                  "price": {
+                    "type": "number",
+                    "description": "Price of the car"
+                  },
+                  "body type": {
+                    "type": "string",
+                    "description": "Body type of the car"
+                  },
+                  "year": {
+                    "type": "number",
+                    "description": "Year the car was manufactured"
+                  },
+                  "image1": {
+                    "type": "string",
+                    "description": "Images of the car",
+                    "format": "binary"
+                  },
+                  "image2": {
+                    "type": "string",
+                    "description": "Images of the car",
+                    "format": "binary"
+                  },
+                  "image3": {
+                    "type": "string",
+                    "description": "Images of the car",
+                    "format": "binary"
+                  },
+                  "image4": {
+                    "type": "string",
+                    "description": "Images of the car",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Car AD created",
+            "content": {}
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 400,
+                    "error": "Manufacturer field cannot be empty"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 401,
+                    "error": "Authentication failed! Please Login again"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{
+          "petstore_auth": [
+            "write:pets",
+            "read:pets"
+          ]
+        }]
+      }
+    },
+    "/car/{carId}": {
+      "get": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "View a specific car AD",
+        "description": "Returns a single AD",
+        "parameters": [{
+          "name": "carId",
+          "in": "path",
+          "description": "ID of car AD to return",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseSpecificCar"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 401,
+                    "error": "Authentication failed! Please Login again"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{
+          "api_key": []
+        }]
+      },
+      "delete": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "Delete a specific car AD (Admins Only)",
+        "description": "Delete a single AD",
+        "parameters": [{
+          "name": "carId",
+          "in": "path",
+          "description": "ID of car AD to delete",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 200,
+                    "data": "Car Ad successfully deleted"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 401,
+                    "error": "Authentication failed! Please Login again"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 403,
+                    "error": "Forbidden: Only Admin can delete an AD"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{
+          "api_key": []
+        }]
+      }
+    },
+    "/car/{carId}/price": {
+      "patch": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "Update price of a specific car AD",
+        "description": "Returns a single AD with price updated",
+        "parameters": [{
+          "name": "carId",
+          "in": "path",
+          "description": "ID of car AD to update price",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }],
+        "requestBody": {
+          "description": "New price",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "price": {
+                    "type": "integer",
+                    "description": "New Price"
+                  }
+                },
+                "example": {
+                  "price": 3450000
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiReponseUpdatePrice"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 400,
+                    "error": "Enter a valid price"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 401,
+                    "error": "Authentication failed! Please Login again"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{
+          "api_key": []
+        }]
+      }
+    },
+    "/car/{carId}/status": {
+      "patch": {
+        "tags": [
+          "Cars"
+        ],
+        "summary": "Update the status of a specific car AD",
+        "description": "Returns a single AD with status updated",
+        "parameters": [{
+          "name": "carId",
+          "in": "path",
+          "description": "ID of car AD to update status",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }],
+        "requestBody": {
+          "description": "New Status",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "description": "New Status"
+                  }
+                },
+                "example": {
+                  "status": "sold"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiReponseUpdateStatus"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 400,
+                    "error": "Status cannot be empty"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 401,
+                    "error": "Authentication failed! Please Login again"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{
+          "api_key": []
+        }]
+      }
+    },
+    "/order": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Create an Order",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "carId": {
+                    "type": "integer"
+                  },
+                  "price": {
+                    "type": "integer"
+                  },
+                  "priceOffered": {
+                    "type": "integer"
+                  }
+                },
+                "example": {
+                  "carId": 1000012,
+                  "price": 3450000,
+                  "priceOffered": 3000000
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiResponseOrder"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 400,
+                    "error": "Enter a valid price"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 401,
+                    "error": "Authentication failed! Please Login again"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{
+          "api_key": []
+        }]
+      }
+    },
+    "/order/{orderId}/price": {
+      "patch": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Update price of a specific order",
+        "description": "Returns a single order with price updated",
+        "parameters": [{
+          "name": "orderId",
+          "in": "path",
+          "description": "ID of order to update price",
+          "required": true,
+          "schema": {
+            "type": "integer"
+          }
+        }],
+        "requestBody": {
+          "description": "New Price Offered",
+          "content": {
+            "*/*": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "newPriceOffered": {
+                    "type": "integer",
+                    "description": "New Price Offered"
+                  }
+                },
+                "example": {
+                  "newPriceOffered": 3400000
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiReponseUpdateOrder"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 400,
+                    "error": "Enter a valid price"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 401,
+                    "error": "Authentication failed! Please Login again"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [{
+          "api_key": []
+        }]
+      }
+    },
+    "/flag/report": {
+      "post": {
+        "tags": [
+          "Flags"
+        ],
+        "summary": "Create a flag/report a posted AD as fraudulent",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "car_id": {
+                    "type": "integer"
+                  },
+                  "reason": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "car_id": 1000896,
+                  "reason": "pricing",
+                  "description": "The seller demands too much for the car"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Report created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiReponseFlag"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 400,
+                    "error": "Description field cannot be empty"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "integer"
+                    }
+                  },
+                  "example": {
+                    "status": 401,
+                    "error": "Authentication failed! Please Login again"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ApiReponseUpdateOrder": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "new_price_offered": {
+                "type": "integer"
+              },
+              "old_price_offered": {
+                "type": "integer"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "car_id": {
+                "type": "integer"
+              },
+              "status": {
+                "type": "string",
+                "description": "Order Status",
+                "enum": [
+                  "pending",
+                  "accepted",
+                  "rejected"
+                ]
+              }
+            },
+            "example": [{
+              "status": 200,
+              "data": {
+                "id": 1003412,
+                "car_id": 100001,
+                "status": "pending",
+                "old_price_offered": 2750000,
+                "new_price_offered": 2760000
+              }
+            }]
+          }
+        }
+      },
+      "ApiResponseSignIn": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "last_name": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "token": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "status": 200,
+          "data": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJKYW1pdSIsImxhc3RuYW1lIjoiQWRla2FuYmUiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCRHSjVCSTcuYTc1TXdaTTN6TVZ6cHlPaWFEVVJKWTVVdmdPbDlpMGFMQ1hPSGd1WC8vQVBVdSIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSxPc29sbywgTGFnb3MiLCJlbWFpbCI6ImphbWl1amFtbXl0QGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTYwNzY1NTA3LCJleHAiOjE1NjA5MzgzMDd9.g1LtxiE7QOsSnw8oUbhP5cTjJ-S21Df-Gyq9q-1ZPx0",
+            "id": 1000,
+            "first_name": "Jamiu",
+            "last_name": "Adekanbe",
+            "email": "jamiujammyt@gmail.com"
+          }
+        }
+      },
+      "User": {
+        "required": [
+          "email",
+          "firstname",
+          "lastname",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "firstname": "Jamiu",
+          "lastname": "Adekanbe",
+          "email": "jamiujammyt@gmail.com",
+          "password": "PASSmyword12345"
+        }
+      },
+      "ApiReponseUpdateStatus": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "example": 200
+          },
+          "data": {
+            "type": "array",
+            "example": [{
+              "id": 1000012,
+              "owner": 100001,
+              "email": "jamiujammyt@gmail.com",
+              "manufacturer": "Honda",
+              "model": "Accord",
+              "price": 3450000,
+              "state": "new",
+              "year": 2019,
+              "bodyType": "Saloon",
+              "createdOn": "2019-06-07T20:59:50.502Z",
+              "status": "sold",
+              "imgUrl": [
+                "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/nkl00qirqfjwcr2cpr5h.jpg",
+                "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/zajxrmcocsihrdzn6de8.jpg",
+                "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/lqgy3f3eielxlpvruvsr.jpg"
+              ]
+            }],
+            "items": {
+              "$ref": "#/components/schemas/car"
+            }
+          }
+        }
+      },
+      "ApiReponseFlag": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "reason": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer",
+                "description": "Flag ID"
+              },
+              "car_id": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "example": {
+          "status": 201,
+          "data": {
+            "id": 1000231,
+            "car_id": 1000896,
+            "reason": "pricing",
+            "description": "The seller demands too much for the car"
+          }
+        }
+      },
+      "ApiResponseUserAdmin": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "is_admin": {
+                "type": "boolean"
+              },
+              "address": {
+                "type": "string"
+              },
+              "last_name": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "token": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "status": 201,
+          "data": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJKYW1pdSIsImxhc3RuYW1lIjoiQWRla2FuYmUiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCRHNHVhNG9Edy4wYnlVSnJ4U0t2TXF1bmN0T2ZTY3FxcTdacks5eUVhZnVHN21JQjhJdDk5dSIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSxPc29sbywgTGFnb3MiLCJlbWFpbCI6ImphbWl1amFtbXl0QGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTYwNzY0NDU1LCJleHAiOjE1NjA5MzcyNTV9.T25t2ON1FJcy3IsUFbD5jAUB04_PypUhh8OehNG79J8",
+            "id": 1000,
+            "first_name": "Jamiu",
+            "last_name": "Adekanbe",
+            "email": "jamiujammyt@gmail.com",
+            "address": "12, Aderibigbe, Osolo, Lagos",
+            "is_admin": true
+          }
+        }
+      },
+      "ApiResponseCar": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "example": 200
+          },
+          "data": {
+            "type": "array",
+            "example": [{
+                "id": 1000012,
+                "owner": 100001,
+                "email": "jamiujammyt@gmail.com",
+                "manufacturer": "Honda",
+                "model": "Accord",
+                "price": 2780000,
+                "state": "new",
+                "year": 2019,
+                "bodyType": "Saloon",
+                "createdOn": "2019-06-07T20:59:50.502Z",
+                "status": "available",
+                "imgUrl": [
+                  "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/nkl00qirqfjwcr2cpr5h.jpg",
+                  "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/zajxrmcocsihrdzn6de8.jpg",
+                  "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/lqgy3f3eielxlpvruvsr.jpg"
+                ]
+              },
+              {
+                "id": 1000013,
+                "owner": 100003,
+                "email": "johndoe@gmail.com",
+                "manufacturer": "Toyota",
+                "model": "Camry",
+                "price": 3780000,
+                "state": "new",
+                "year": 2019,
+                "bodyType": "Saloon",
+                "createdOn": "2019-07-07T20:59:50.502Z",
+                "status": "available",
+                "imgUrl": [
+                  "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/nkl00qirqfjwcr2cpr5h.jpg",
+                  "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/zajxrmcocsihrdzn6de8.jpg",
+                  "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/lqgy3f3eielxlpvruvsr.jpg"
+                ]
+              }
+            ],
+            "items": {
+              "$ref": "#/components/schemas/car"
+            }
+          }
+        }
+      },
+      "ApiReponseUpdatePrice": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "example": 200
+          },
+          "data": {
+            "type": "array",
+            "example": [{
+              "id": 1000012,
+              "owner": 100001,
+              "email": "jamiujammyt@gmail.com",
+              "manufacturer": "Honda",
+              "model": "Accord",
+              "price": 3450000,
+              "state": "new",
+              "year": 2019,
+              "bodyType": "Saloon",
+              "createdOn": "2019-06-07T20:59:50.502Z",
+              "status": "available",
+              "imgUrl": [
+                "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/nkl00qirqfjwcr2cpr5h.jpg",
+                "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/zajxrmcocsihrdzn6de8.jpg",
+                "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/lqgy3f3eielxlpvruvsr.jpg"
+              ]
+            }],
+            "items": {
+              "$ref": "#/components/schemas/car"
+            }
+          }
+        }
+      },
+      "car": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "owner": {
+            "type": "integer",
+            "description": "ID of the user who created the AD"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email of the user who created the AD"
+          },
+          "manufacturer": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "state": {
+            "type": "string"
+          },
+          "year": {
+            "type": "integer"
+          },
+          "bodyType": {
+            "type": "string"
+          },
+          "imgUrl": {
+            "type": "array",
+            "description": "Links to uploaded images",
+            "items": {
+              "type": "object"
+            }
+          },
+          "createdOn": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "ApiResponseUser": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "is_admin": {
+                "type": "boolean"
+              },
+              "address": {
+                "type": "string"
+              },
+              "last_name": {
+                "type": "string"
+              },
+              "id": {
+                "type": "integer"
+              },
+              "first_name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "token": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "example": {
+          "status": 201,
+          "data": {
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJKYW1pdSIsImxhc3RuYW1lIjoiQWRla2FuYmUiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCRHNHVhNG9Edy4wYnlVSnJ4U0t2TXF1bmN0T2ZTY3FxcTdacks5eUVhZnVHN21JQjhJdDk5dSIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSxPc29sbywgTGFnb3MiLCJlbWFpbCI6ImphbWl1amFtbXl0QGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTYwNzY0NDU1LCJleHAiOjE1NjA5MzcyNTV9.T25t2ON1FJcy3IsUFbD5jAUB04_PypUhh8OehNG79J8",
+            "id": 1000,
+            "first_name": "Jamiu",
+            "last_name": "Adekanbe",
+            "email": "jamiujammyt@gmail.com",
+            "address": "12, Aderibigbe, Osolo, Lagos",
+            "is_admin": false
+          }
+        }
+      },
+      "ApiResponseSpecificCar": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "example": 200
+          },
+          "data": {
+            "type": "array",
+            "example": [{
+              "id": 1000012,
+              "owner": 100001,
+              "email": "jamiujammyt@gmail.com",
+              "manufacturer": "Honda",
+              "model": "Accord",
+              "price": 2780000,
+              "state": "new",
+              "year": 2019,
+              "bodyType": "Saloon",
+              "createdOn": "2019-06-07T20:59:50.502Z",
+              "status": "available",
+              "imgUrl": [
+                "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/nkl00qirqfjwcr2cpr5h.jpg",
+                "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/zajxrmcocsihrdzn6de8.jpg",
+                "http://res.cloudinary.com/pa15la4ta/image/upload/v1559941190/lqgy3f3eielxlpvruvsr.jpg"
+              ]
+            }],
+            "items": {
+              "$ref": "#/components/schemas/car"
+            }
+          }
+        }
+      },
+      "UserSignIn": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "example": {
+          "email": "jamiujammyt@gmail.com",
+          "password": "PASSmyword12345"
+        }
+      },
+      "ApiResponseOrder": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "example": 201
+          },
+          "data": {
+            "type": "array",
+            "example": [{
+              "id": 1003412,
+              "car_id": 100001,
+              "createdOn": "2019-09-07T20:59:50.502Z",
+              "status": "pending",
+              "price": 2780000,
+              "priceOffered": 2750000
+            }],
+            "items": {
+              "$ref": "#/components/schemas/order"
+            }
+          }
+        }
+      },
+      "order": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "car_id": {
+            "type": "integer"
+          },
+          "created_on": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "description": "Order Status",
+            "enum": [
+              "pending",
+              "accepted",
+              "rejected"
+            ]
+          },
+          "price": {
+            "type": "integer"
+          },
+          "priceOffered": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
+      }
+    }
+  }
+}
