@@ -32,9 +32,11 @@
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.1.4",
     "morgan": "^1.9.1",
+    "npm": "^6.9.0",
     "path": "^0.12.7",
     "regenerator-runtime": "^0.13.2",
-    "swagger-ui-dist": "^3.22.3"
+    "swagger-ui-dist": "^3.22.3",
+    "update": "^0.7.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
