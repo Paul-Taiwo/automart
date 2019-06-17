@@ -8,7 +8,7 @@ import log from 'fancy-log';
 import dotenv from 'dotenv';
 import path from 'path';
 import fs from 'fs';
-import { absolutePath } from 'swagger-ui-dist';
+import getAbsoluteFSPath from './docs/absolute-path';
 import indexRoutes from './routes/index';
 import userRoutes from './routes/users';
 import carRoutes from './routes/cars';
@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({
 app.use(cors());
 app.use(logger('dev'));
 
-app.use('/api/v1/', express.static(absolutePath()));
+app.use('/api/v1/docs', express.static(getAbsoluteFSPath()));
 
 const PORT = process.env.PORT || 8080;
 
