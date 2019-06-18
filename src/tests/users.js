@@ -7,8 +7,6 @@ import app from '../app';
 config();
 chai.use(chaiHttp);
 
-console.log(process.env.NODE_ENV);
-
 describe('Test for sign up endpoint', () => {
   it('should create an admin', (done) => {
     chai
