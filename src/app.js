@@ -10,6 +10,7 @@ import path from 'path';
 import fs from 'fs';
 import getAbsoluteFSPath from './docs/absolute-path';
 import indexRoutes from './routes/index';
+import userRoutes from './routes/users';
 
 dotenv.config();
 
@@ -26,7 +27,7 @@ app.use('/api/v1/docs', express.static(getAbsoluteFSPath()));
 
 const PORT = process.env.PORT || 8080;
 
-app.use('/api/v1/', indexRoutes);
+app.use('/api/v1/', [indexRoutes, userRoutes]);
 
 app.get('/api/v1/docs/', (req, res) => {
   res.sendFile(path.resolve(__dirname, './docs/index.html'));
