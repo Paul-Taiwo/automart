@@ -11,6 +11,9 @@ node_js:
 
 sudo: false
 
+services:
+  - postgresql
+
 install:
   - npm install -q --no-color --no-progress
 
@@ -19,6 +22,7 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
   - npm run db:migrate
+  - psql -C "CREATE USER paul WITH PASSWORD 'paulas1234kxckFG';" -U postgres
 
 script:
     - nyc --reporter=lcov npm run test
