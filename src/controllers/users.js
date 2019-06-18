@@ -43,7 +43,7 @@ class Users {
       const result = await DB.query(query, userData);
       const user = result.rows[0];
 
-      const token = jwt.sign({ user }, process.env.SECRETKEY, { expiresIn: '48h' });
+      const token = jwt.sign({ user }, process.env.SECRETKEY, { expiresIn: '68h' });
 
       return res.status(201).json({
         status: 201,
