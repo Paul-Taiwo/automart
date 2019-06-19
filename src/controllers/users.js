@@ -24,6 +24,19 @@ class Users {
       isAdmin = false;
     }
 
+    const query = `
+          INSERT INTO users(firstname, lastname, email, password, address, is_admin)
+          VALUES ($1, $2, $3, $4, $5, $6)
+          RETURNING id, firstname, lastname, email, address, is_admin ;`;
+    const userData = [
+      firstname,
+      lastname,
+      email,
+      encryptedPassword,
+      address,
+      isAdmin,
+    ];
+
     try {
       const checkResult = await DB.query('SELECT * FROM users WHERE email = $1', [`${email}`]);
       if (checkResult.rowCount >= 1) {
@@ -32,19 +45,6 @@ class Users {
           error: 'User with email already exist',
         });
       }
-
-      const query = `
-      INSERT INTO users(firstname, lastname, email, password, address, is_admin)
-      VALUES ($1, $2, $3, $4, $5, $6)
-      RETURNING id, firstname, lastname, email, address, is_admin ;`;
-      const userData = [
-        firstname,
-        lastname,
-        email,
-        encryptedPassword,
-        address,
-        isAdmin,
-      ];
 
       const result = await DB.query(query, userData);
       const user = result.rows[0];

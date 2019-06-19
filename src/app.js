@@ -11,6 +11,7 @@ import fs from 'fs';
 import getAbsoluteFSPath from './docs/absolute-path';
 import indexRoutes from './routes/index';
 import userRoutes from './routes/users';
+import orderRoutes from './routes/order';
 import flagRoutes from './routes/flag';
 
 dotenv.config();
@@ -28,7 +29,7 @@ app.use('/api/v1/docs', express.static(getAbsoluteFSPath()));
 
 const PORT = process.env.PORT || 8080;
 
-app.use('/api/v1/', [indexRoutes, userRoutes, flagRoutes]);
+app.use('/api/v1/', [indexRoutes, userRoutes, orderRoutes, flagRoutes]);
 
 app.get('/api/v1/docs/', (req, res) => {
   res.sendFile(path.resolve(__dirname, './docs/index.html'));
