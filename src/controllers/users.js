@@ -1,11 +1,8 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { config } from 'dotenv';
 import { error } from 'fancy-log';
 import DB from '../database/dbconnection';
 import 'regenerator-runtime';
-
-config();
 
 class Users {
   static async createUser(req, res) {
