@@ -10,19 +10,19 @@ class Flag {
     reason = reason.trim().replace(/\s+/g, ' ');
     description = description.trim().replace(/\s+/g, ' ');
 
-    try {
-      const query = `
-      INSERT INTO flags("createdOn", car_id, reason, description)
-      VALUES ($1, $2, $3, $4)
-      RETURNING id, "createdOn", car_id, reason, description;
-      `;
-      const userData = [
-        new Date().toISOString(),
-        carId,
-        reason,
-        description,
-      ];
+    const query = `
+    INSERT INTO flags("createdOn", car_id, reason, description)
+    VALUES ($1, $2, $3, $4)
+    RETURNING id, "createdOn", car_id, reason, description;
+    `;
+    const userData = [
+      new Date().toISOString(),
+      carId,
+      reason,
+      description,
+    ];
 
+    try {
       const result = await DB.query(query, userData);
       const createdFlag = result.rows[0];
       return res.status(201).json({

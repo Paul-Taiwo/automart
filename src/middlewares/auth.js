@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
 
-dotenv.config();
+config();
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization) {
@@ -23,7 +23,7 @@ module.exports = (req, res, next) => {
       }
 
       req.authData = decodedData;
-      next();
+      return next();
     });
   }
 };

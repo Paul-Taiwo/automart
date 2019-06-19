@@ -53,6 +53,7 @@ const createOrderTable = `
   orders (
     id INTEGER DEFAULT nextval('order_seq') NOT NULL,
     buyer INTEGER NOT NULL,
+    email VARCHAR(255) NOT NULL,
     car_id INTEGER NOT NULL,
     "createdOn" TIMESTAMP,
     amount FLOAT NOT NULL,
