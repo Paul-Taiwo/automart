@@ -1,8 +1,9 @@
 env:
+    - NODE_ENV=test
+    - PGTEST_URL=postgres://xextnteg:fCNLK30hKJMQCIqmAi65-Fu-cKV5mC09@raja.db.elephantsql.com:5432/xextnteg
   global:
     - CC_TEST_REPORTER_ID=5cea74285558a23f091a5586da12930ec1d701781670ad6730fa383eb06a6aa0
     - SECRETKEY=automart1234455
-    - NODE_ENV=test
 
 language: node_js
 
@@ -22,7 +23,6 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
   - npm run db:migrate
-  - psql -C "CREATE USER paul WITH PASSWORD 'paulas1234kxckFG';" -U postgres
 
 script:
     - nyc --reporter=lcov npm run test
