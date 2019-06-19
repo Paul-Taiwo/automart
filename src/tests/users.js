@@ -341,7 +341,8 @@ describe('Test sign in endpoint', () => {
       .request(app)
       .post('/api/v1/auth/signin')
       .set({
-        'Content-type': 'application/x-www-form-urlencoded', Accept: 'application/json',
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
       })
       .send({
         email: 'alagba@gmail.com',
@@ -374,7 +375,8 @@ describe('Test sign in endpoint', () => {
       .request(app)
       .post('/api/v1/auth/signin')
       .set({
-        'Content-type': 'application/x-www-form-urlencoded', Accept: 'application/json',
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
       })
       .send({
         email: 'alagb@gmail.com',
@@ -401,7 +403,8 @@ describe('Test sign in endpoint', () => {
       .request(app)
       .post('/api/v1/auth/signin')
       .set({
-        'Content-type': 'application/x-www-form-urlencoded', Accept: 'application/json',
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
       })
       .send({
         email: 'alagba@gmail.com',

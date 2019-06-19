@@ -3,6 +3,7 @@ import validateEmail from './validateEmail';
 import validatePassword from './validatePassword';
 import validateCarId from './validateCarId';
 import validateOrder from './validateOrder';
+import validateNewPrice from './validateNewPrice';
 import validateFlag from './validateFlag';
 
 export default {
@@ -11,5 +12,6 @@ export default {
   PassWord: validatePassword,
   CarId: validateCarId,
   Order: validateOrder,
+  NewPrice: validateNewPrice,
   Flag: validateFlag,
 };
