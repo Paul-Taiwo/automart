@@ -5,6 +5,8 @@ import app from '../app';
 
 chai.use(chaiHttp);
 
+const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDYwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bG90QGdtYWlsLmNvbSIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTU2MDk0NjU0NiwiZXhwIjoxNTYxMTkxMzQ2fQ.BmqvWXxsR67XG6hePl7bsnj_bXM62sKWNbMnqBYbzQo';
+
 describe('Test create flag endpoint', () => {
   it('Should create a flag', (done) => {
     chai
@@ -12,7 +14,7 @@ describe('Test create flag endpoint', () => {
       .post('/api/v1/flag/report')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJKYW1pdSIsImxhc3RuYW1lIjoiQWRla2FuYmUiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCRLaFpJUEkzVy5lNUtHLjNDWmsvV1FlQ0VTS0F6Z09DdjR6cDlRS3kwZGUxald0SkRKV1UxRyIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSxPc29sbywgTGFnb3MiLCJlbWFpbCI6ImphbWl1amFtbXl0QGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTYwNzc3OTg3LCJleHAiOjE1NjA5NTA3ODd9.BkRTqVVVQnOYVtq9GWbsuE1bIugtL3zu6lZEgMUjsbg',
+        Authorization: token,
       })
       .send({
         carId: 10000043,
@@ -45,7 +47,7 @@ describe('Test create flag endpoint', () => {
       .post('/api/v1/flag/report')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJKYW1pdSIsImxhc3RuYW1lIjoiQWRla2FuYmUiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCRLaFpJUEkzVy5lNUtHLjNDWmsvV1FlQ0VTS0F6Z09DdjR6cDlRS3kwZGUxald0SkRKV1UxRyIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSxPc29sbywgTGFnb3MiLCJlbWFpbCI6ImphbWl1amFtbXl0QGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTYwNzc3OTg3LCJleHAiOjE1NjA5NTA3ODd9.BkRTqVVVQnOYVtq9GWbsuE1bIugtL3zu6lZEgMUjsbg',
+        Authorization: token,
       })
       .send({
         carId: 'bbb10000043',
@@ -72,7 +74,7 @@ describe('Test create flag endpoint', () => {
       .post('/api/v1/flag/report')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJKYW1pdSIsImxhc3RuYW1lIjoiQWRla2FuYmUiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCRLaFpJUEkzVy5lNUtHLjNDWmsvV1FlQ0VTS0F6Z09DdjR6cDlRS3kwZGUxald0SkRKV1UxRyIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSxPc29sbywgTGFnb3MiLCJlbWFpbCI6ImphbWl1amFtbXl0QGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTYwNzc3OTg3LCJleHAiOjE1NjA5NTA3ODd9.BkRTqVVVQnOYVtq9GWbsuE1bIugtL3zu6lZEgMUjsbg',
+        Authorization: token,
       })
       .send({
         carId: 10000043,
@@ -100,7 +102,7 @@ describe('Test create flag endpoint', () => {
       .post('/api/v1/flag/report')
       .set({
         'Content-Type': 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMDAwLCJmaXJzdG5hbWUiOiJKYW1pdSIsImxhc3RuYW1lIjoiQWRla2FuYmUiLCJlbmNyeXB0ZWRQYXNzd29yZCI6IiQyYSQxMCRLaFpJUEkzVy5lNUtHLjNDWmsvV1FlQ0VTS0F6Z09DdjR6cDlRS3kwZGUxald0SkRKV1UxRyIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSxPc29sbywgTGFnb3MiLCJlbWFpbCI6ImphbWl1amFtbXl0QGdtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlfSwiaWF0IjoxNTYwNzc3OTg3LCJleHAiOjE1NjA5NTA3ODd9.BkRTqVVVQnOYVtq9GWbsuE1bIugtL3zu6lZEgMUjsbg',
+        Authorization: token,
       })
       .send({
         carId: 10000043,
