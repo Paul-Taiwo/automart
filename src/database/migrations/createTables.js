@@ -51,7 +51,7 @@ const createOrderTable = `
   CREATE TYPE order_status AS ENUM ('pending', 'accepted', 'rejected');
   CREATE TABLE IF NOT EXISTS
   orders (
-    id INTEGER NOT NULL,
+    id INTEGER DEFAULT nextval('order_seq') NOT NULL,
     buyer INTEGER NOT NULL,
     car_id INTEGER NOT NULL,
     "createdOn" TIMESTAMP,
@@ -63,12 +63,12 @@ const createOrderTable = `
 const createFlagTable = `
   DROP SEQUENCE IF EXISTS flag_seq CASCADE;
   CREATE SEQUENCE "flag_seq"
-  start 1134524520
-  increment 1;
+    start 1134524520
+    increment 1;
 
   CREATE TABLE IF NOT EXISTS
   flags (
-    id INTEGER NOT NULL,
+    id INTEGER DEFAULT nextval('flag_seq') NOT NULL,
     "createdOn" TIMESTAMP,
     car_id INTEGER NOT NULL,
     reason VARCHAR(255) NOT NULL,
