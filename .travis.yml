@@ -2,6 +2,8 @@ env:
   global:
     - CC_TEST_REPORTER_ID=5cea74285558a23f091a5586da12930ec1d701781670ad6730fa383eb06a6aa0
     - SECRETKEY=automart1234455
+    - NODE_ENV=test
+    - PGTEST_URL=postgres://xextnteg:fCNLK30hKJMQCIqmAi65-Fu-cKV5mC09@raja.db.elephantsql.com:5432/xextnteg
 
 language: node_js
 
@@ -10,6 +12,9 @@ node_js:
 
 sudo: false
 
+services:
+  - postgresql
+
 install:
   - npm install -q --no-color --no-progress
 
@@ -17,6 +22,7 @@ before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
+  - npm run db:migrate
 
 script:
     - nyc --reporter=lcov npm run test

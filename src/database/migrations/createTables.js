@@ -1,7 +1,12 @@
 const createUsersTable = `
+  DROP SEQUENCE IF EXISTS user_seq CASCADE;
+  CREATE SEQUENCE "user_seq"
+    start 1132675460
+    increment 2;
+
   CREATE TABLE IF NOT EXISTS
   users (
-    id INTEGER NOT NULL,
+    id INTEGER DEFAULT nextval('user_seq') NOT NULL,
     firstname VARCHAR(128) NOT NULL,
     lastname VARCHAR(128) NOT NULL,
     email VARCHAR(255) NOT NULL,
@@ -12,13 +17,19 @@ const createUsersTable = `
     );`;
 
 const createCarAdsTable = `
+  DROP SEQUENCE IF EXISTS car_seq CASCADE;
   DROP TYPE IF EXISTS car_state;
   DROP TYPE IF EXISTS car_status;
+
+  CREATE SEQUENCE "car_seq"
+  start 1225423140
+  increment 1;
+
+  CREATE TYPE car_status AS ENUM ('sold', 'available');
   CREATE TYPE car_state AS ENUM ('new', 'used');
-  CREATE TYPE car_status AS ENUM('sold', 'available');
   CREATE TABLE IF NOT EXISTS
   cars (
-    id INTEGER NOT NULL,
+    id INTEGER DEFAULT nextval('car_seq') NOT NULL,
     owner VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     "createdOn" TIMESTAMP,
@@ -31,7 +42,12 @@ const createCarAdsTable = `
     );`;
 
 const createOrderTable = `
+  DROP SEQUENCE IF EXISTS order_seq CASCADE;
   DROP TYPE IF EXISTS order_status;
+
+  CREATE SEQUENCE "order_seq"
+    start 1156256210
+    increment 1;
   CREATE TYPE order_status AS ENUM ('pending', 'accepted', 'rejected');
   CREATE TABLE IF NOT EXISTS
   orders (
@@ -45,6 +61,11 @@ const createOrderTable = `
     );`;
 
 const createFlagTable = `
+  DROP SEQUENCE IF EXISTS flag_seq CASCADE;
+  CREATE SEQUENCE "flag_seq"
+  start 1134524520
+  increment 1;
+
   CREATE TABLE IF NOT EXISTS
   flags (
     id INTEGER NOT NULL,
