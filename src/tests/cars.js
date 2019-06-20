@@ -994,6 +994,7 @@ describe('Test for car AD endpoint', () => {
         done();
       });
   });
+
   it('Should return an error if user is not an admin', (done) => {
     chai
       .request(app)
@@ -1014,6 +1015,27 @@ describe('Test for car AD endpoint', () => {
         assert.strictEqual(res.body.error,
           'Forbidden: Only Admin can delete an AD',
           'Error is not equal to Forbidden: Only Admin can delete an AD');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should return all cars if user is an Admin', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/car')
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: adminToken,
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.an('array');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isArray(res.body.data, 'Data is not array');
         assert.isNull(err, 'Expect error to not exist');
         done();
       });
