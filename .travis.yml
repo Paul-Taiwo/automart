@@ -4,6 +4,10 @@ env:
     - SECRETKEY=automart1234455
     - NODE_ENV=test
     - PGTEST_URL=postgres://xextnteg:fCNLK30hKJMQCIqmAi65-Fu-cKV5mC09@raja.db.elephantsql.com:5432/xextnteg
+    - SECRETKEY=automart1234455
+    - CLOUD_NAME=pa15la4ta
+    - API_KEY=151962189923948
+    - API_SECRET=NF4qi4UHD6S6QiXAcaF-h6XVX3Q
 
 language: node_js
 
