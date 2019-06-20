@@ -8,5 +8,6 @@ const Route = express.Router();
 const multiparty = multipart();
 
 Route.post('/car', checkAuth, multiparty, validate.Car, carController.createAd);
+Route.patch('/car/:id/status', checkAuth, validate.Status, carController.updateStatus);
 
 export default Route;

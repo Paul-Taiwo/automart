@@ -453,4 +453,88 @@ describe('Test for car AD endpoint', () => {
         done();
       });
   });
+
+  it('Should return an error message if status is empty', (done) => {
+    chai
+      .request(app)
+      .patch(`/api/v1/car/${carAd.id}/status`)
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: token,
+      })
+      .send({
+        status: '',
+      })
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equals(400);
+        expect(res.statusCode).to.equal(400);
+        expect(res.body.error).to.equals('Status cannot be empty');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Status cannot be empty',
+          'Expect error to be Status cannot be empty');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should return an error message if status contains a number', (done) => {
+    chai
+      .request(app)
+      .patch(`/api/v1/car/${carAd.id}/status`)
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: token,
+      })
+      .send({
+        status: 'Sold55',
+      })
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equals(400);
+        expect(res.statusCode).to.equal(400);
+        expect(res.body.error).to.equals('Status cannot contain number(s)');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Status cannot contain number(s)',
+          'Expect error to be Status cannot contain number(s)');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should return an error if request is not authorized', (done) => {
+    chai
+      .request(app)
+      .patch(`/api/v1/car/${carAd.id}/status`)
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: '',
+      })
+      .send({
+        status: 'sold',
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(401);
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equal(401);
+        expect(res.body.error).to.equal('Authentication failed! Please Login again');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 401, 'Status code is not 401');
+        assert.strictEqual(res.body.status, 401, 'Status is not 401');
+        assert.strictEqual(res.body.error,
+          'Authentication failed! Please Login again',
+          'Expect error to be Authentication failed! Please Login again');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
 });
