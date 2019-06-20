@@ -11,5 +11,6 @@ Route.post('/car', checkAuth, multiparty, validate.Car, carController.createAd);
 Route.patch('/car/:id/status', checkAuth, validate.Status, carController.updateStatus);
 Route.patch('/car/:id/price', checkAuth, validate.Price, carController.updateCarPrice);
 Route.get('/car/:id', checkAuth, carController.findSpecificCar);
+Route.get('/car/', checkAuth, carController.find);
 
 export default Route;
