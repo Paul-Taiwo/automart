@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { v2 } from 'cloudinary';
 import { warn, error } from 'fancy-log';
 import DB from '../database/dbconnection';
@@ -224,12 +225,39 @@ class CarAds {
   }
 
   static async find(req, res) {
-    const { status } = req.query;
+    const { status, min_price, max_price } = req.query;
+
+    if (status && min_price && max_price) {
+      try {
+        const { rows } = await DB.query(`SELECT * FROM cars WHERE status = '${status}' AND price > '${min_price}' AND price < '${max_price}'`);
+        if (rows.length === 0) {
+          return res.status(200).json({
+            status: 200,
+            data: 'No record found',
+          });
+        }
+        return res.status(200).json({
+          status: 200,
+          data: rows,
+        });
+      } catch (err) {
+        warn(err.stack);
+        return res.status(200).json({
+          status: 200,
+          data: 'No record found',
+        });
+      }
+    }
 
     if (status) {
       try {
         const { rows } = await DB.query(`SELECT * FROM cars WHERE status = '${status}'`);
-
+        if (rows.length === 0) {
+          return res.status(200).json({
+            status: 200,
+            data: 'No record found',
+          });
+        }
         return res.status(200).json({
           status: 200,
           data: rows,
