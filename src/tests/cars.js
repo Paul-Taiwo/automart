@@ -970,6 +970,30 @@ describe('Test for car AD endpoint', () => {
       });
   });
 
+  it('Should return an error if  ID is bad', (done) => {
+    chai
+      .request(app)
+      .delete('/api/v1/car/123456g')
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: adminToken,
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.equal('No record found');
+        expect(res.body.data).to.be.a('string');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isString(res.body.data, 'Data is not a string');
+        assert.strictEqual(res.body.data,
+          'No record found',
+          'Data is not equal to No record found');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
   it('Should return an error if user is not an admin', (done) => {
     chai
       .request(app)
