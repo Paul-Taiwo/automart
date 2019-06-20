@@ -148,6 +148,47 @@ class CarAds {
       error: 'Internal Server Error',
     });
   }
+
+  static async updateCarPrice(req, res) {
+    const id = parseInt(req.params.id, 10);
+
+    try {
+      const result = await DB.query(`
+          UPDATE cars SET price = '${req.body.price}' WHERE id = '${id}'
+          RETURNING id, owner, email, "createdOn", manufacturer, model, body_type, price, state, status, year, images; `);
+      const updatedAd = result.rows[0];
+
+      return res.status(200).json({
+        status: 200,
+        data: {
+          id: updatedAd.id,
+          owner: updatedAd.owner,
+          email: updatedAd.email,
+          updated_on: updatedAd.createdOn,
+          manufacturer: updatedAd.manufacturer,
+          model: updatedAd.model,
+          body_type: updatedAd.bodyType,
+          price: updatedAd.price,
+          state: updatedAd.state,
+          status: updatedAd.status,
+          year: updatedAd.year,
+          images: updatedAd.images,
+        },
+      });
+    } catch (err) {
+      warn(err);
+      if (err.routine === 'float8in_internal') {
+        return res.status(400).json({
+          status: 400,
+          error: 'Please enter a valid price',
+        });
+      }
+    }
+    return res.status(500).json({
+      status: 500,
+      error: 'Internal Server Error',
+    });
+  }
 }
 
 export default CarAds;
