@@ -40,7 +40,7 @@ class Order {
           },
         });
       } catch (err) {
-        error(err.stack);
+        return error(err.stack);
       }
     }
 

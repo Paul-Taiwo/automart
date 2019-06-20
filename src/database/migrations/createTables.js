@@ -22,8 +22,8 @@ const createCarAdsTable = `
   DROP TYPE IF EXISTS car_status;
 
   CREATE SEQUENCE "car_seq"
-  start 1225423140
-  increment 1;
+    start 1225423140
+    increment 1;
 
   CREATE TYPE car_status AS ENUM ('sold', 'available');
   CREATE TYPE car_state AS ENUM ('new', 'used');
@@ -35,9 +35,12 @@ const createCarAdsTable = `
     "createdOn" TIMESTAMP,
     manufacturer VARCHAR(255) NOT NULL,
     model VARCHAR(255) NOT NULL,
+    body_type VARCHAR(255) NOT NULL,
+    year INTEGER NOT NULL,
     price FLOAT NOT NULL,
     state car_state,
     status car_status DEFAULT 'available',
+    images TEXT [] NOT NULL,
     CONSTRAINT cars_pkey PRIMARY KEY("id")
     );`;
 
