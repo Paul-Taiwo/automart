@@ -105,6 +105,49 @@ class CarAds {
       error: 'Internal Server Error',
     });
   }
+
+  static async updateStatus(req, res) {
+    const id = parseInt(req.params.id, 10);
+    let { status } = req.body;
+    status = status.trim().replace(/\s+/g, '');
+
+    try {
+      const result = await DB.query(`
+        UPDATE cars SET status = '${status}' WHERE id = '${id}'
+        RETURNING id, owner, email, "createdOn", manufacturer, model, body_type, price, state, status, year, images; `);
+      const updatedAd = result.rows[0];
+
+      return res.status(200).json({
+        status: 200,
+        data: {
+          id: updatedAd.id,
+          owner: updatedAd.owner,
+          email: updatedAd.email,
+          updated_on: updatedAd.createdOn,
+          manufacturer: updatedAd.manufacturer,
+          model: updatedAd.model,
+          body_type: updatedAd.bodyType,
+          price: updatedAd.price,
+          state: updatedAd.state,
+          status: updatedAd.status,
+          year: updatedAd.year,
+          images: updatedAd.images,
+        },
+      });
+    } catch (err) {
+      warn(err);
+      if (err.routine === 'enum_in') {
+        return res.status(500).json({
+          status: 400,
+          error: 'Status can only be updated to sold',
+        });
+      }
+    }
+    return res.status(500).json({
+      status: 500,
+      error: 'Internal Server Error',
+    });
+  }
 }
 
 export default CarAds;
