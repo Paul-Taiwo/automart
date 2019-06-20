@@ -3,8 +3,9 @@ node_modules/
 .env
 build/
 package-lock.json
-.coveralls.yml
-coverage
-coverage.lcov
 .eslintignore
+coverage
 package-lock.json
+src/docs/package.json
+src/docs/README.md
+src/docs/oauth2-redirect.html
