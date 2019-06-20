@@ -225,17 +225,12 @@ class CarAds {
   }
 
   static async find(req, res) {
+    const { is_admin } = req.authData.user;
     const { status, min_price, max_price } = req.query;
 
-    if (status && min_price && max_price) {
+    if (is_admin) {
       try {
-        const { rows } = await DB.query(`SELECT * FROM cars WHERE status = '${status}' AND price > '${min_price}' AND price < '${max_price}'`);
-        if (rows.length === 0) {
-          return res.status(200).json({
-            status: 200,
-            data: 'No record found',
-          });
-        }
+        const { rows } = await DB.query('SELECT * FROM cars');
         return res.status(200).json({
           status: 200,
           data: rows,
@@ -246,33 +241,56 @@ class CarAds {
           status: 200,
           data: 'No record found',
         });
+      }
+    } else {
+      if (status && min_price && max_price) {
+        try {
+          const { rows } = await DB.query(`SELECT * FROM cars WHERE status = '${status}' AND price > '${min_price}' AND price < '${max_price}'`);
+          if (rows.length === 0) {
+            return res.status(200).json({
+              status: 200,
+              data: 'No record found',
+            });
+          }
+          return res.status(200).json({
+            status: 200,
+            data: rows,
+          });
+        } catch (err) {
+          warn(err.stack);
+          return res.status(200).json({
+            status: 200,
+            data: 'No record found',
+          });
+        }
+      }
+
+      if (status) {
+        try {
+          const { rows } = await DB.query(`SELECT * FROM cars WHERE status = '${status}'`);
+          if (rows.length === 0) {
+            return res.status(200).json({
+              status: 200,
+              data: 'No record found',
+            });
+          }
+          return res.status(200).json({
+            status: 200,
+            data: rows,
+          });
+        } catch (err) {
+          warn(err.stack);
+          return res.status(200).json({
+            status: 200,
+            data: 'No record found',
+          });
+        }
       }
     }
 
-    if (status) {
-      try {
-        const { rows } = await DB.query(`SELECT * FROM cars WHERE status = '${status}'`);
-        if (rows.length === 0) {
-          return res.status(200).json({
-            status: 200,
-            data: 'No record found',
-          });
-        }
-        return res.status(200).json({
-          status: 200,
-          data: rows,
-        });
-      } catch (err) {
-        warn(err.stack);
-        return res.status(200).json({
-          status: 200,
-          data: 'No record found',
-        });
-      }
-    }
-    return res.status(200).json({
-      status: 500,
-      data: 'Internal Server Error',
+    return res.status(400).json({
+      status: 400,
+      data: 'Bad Request',
     });
   }
 
