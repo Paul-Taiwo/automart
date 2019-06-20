@@ -537,4 +537,31 @@ describe('Test for car AD endpoint', () => {
         done();
       });
   });
+
+  it('Should return an error message if car status is not sold', (done) => {
+    chai
+      .request(app)
+      .patch(`/api/v1/car/${carAd.id}/status`)
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: token,
+      })
+      .send({
+        status: 'solded',
+      })
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equals(400);
+        expect(res.statusCode).to.equal(400);
+        expect(res.body.error).to.equals('Status can only be updated to sold');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Status can only be updated to sold');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
 });
