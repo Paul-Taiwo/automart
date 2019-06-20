@@ -137,7 +137,7 @@ class CarAds {
     } catch (err) {
       warn(err);
       if (err.routine === 'enum_in') {
-        return res.status(500).json({
+        return res.status(400).json({
           status: 400,
           error: 'Status can only be updated to sold',
         });
