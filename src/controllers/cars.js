@@ -4,7 +4,7 @@ import DB from '../database/dbconnection';
 
 
 v2.config({
-  cloud_name: process.env.ClOUD_NAME,
+  cloud_name: process.env.CL_NAME,
   api_key: process.env.API_KEY,
   api_secret: process.env.API_SECRET,
 });
