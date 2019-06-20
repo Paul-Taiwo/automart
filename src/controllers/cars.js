@@ -222,6 +222,31 @@ class CarAds {
       });
     }
   }
+
+  static async find(req, res) {
+    const { status } = req.query;
+
+    if (status) {
+      try {
+        const { rows } = await DB.query(`SELECT * FROM cars WHERE status = '${status}'`);
+
+        return res.status(200).json({
+          status: 200,
+          data: rows,
+        });
+      } catch (err) {
+        warn(err.stack);
+        return res.status(200).json({
+          status: 200,
+          data: 'No record found',
+        });
+      }
+    }
+    return res.status(200).json({
+      status: 500,
+      data: 'Internal Server Error',
+    });
+  }
 }
 
 export default CarAds;
