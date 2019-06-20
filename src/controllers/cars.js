@@ -275,6 +275,42 @@ class CarAds {
       data: 'Internal Server Error',
     });
   }
+
+  static async deleteAd(req, res) {
+    const { is_admin } = req.authData.user;
+
+    if (is_admin) {
+      const id = parseInt(req.params.id, 10);
+
+      try {
+        const result = await DB.query(`DELETE FROM cars WHERE id = '${id}'`);
+
+        if (result.rowCount === 0) {
+          return res.status(200).json({
+            status: 200,
+            data: 'No record found',
+          });
+        }
+
+        return res.status(200).json({
+          status: 200,
+          data: 'Car Ad successfully deleted',
+        });
+      } catch (err) {
+        warn(err);
+
+        return res.status(200).json({
+          status: 200,
+          data: 'No record found',
+        });
+      }
+    }
+
+    return res.status(403).json({
+      status: 403,
+      error: 'Forbidden: Only Admin can delete an AD',
+    });
+  }
 }
 
 export default CarAds;

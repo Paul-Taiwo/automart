@@ -10,6 +10,7 @@ import app from '../app';
 chai.use(chaiHttp);
 
 const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDYwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bG90QGdtYWlsLmNvbSIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTU2MDk0NjU0NiwiZXhwIjoxNTYxMTkxMzQ2fQ.BmqvWXxsR67XG6hePl7bsnj_bXM62sKWNbMnqBYbzQo';
+const adminToken = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDYwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bG90YUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiMTIsIEFkZXJpYmlnYmUiLCJpc19hZG1pbiI6dHJ1ZX0sImlhdCI6MTU2MTA0MDI4NywiZXhwIjoxNTYxMjg1MDg3fQ.f4pnNPQdWOUNQsH9AZXa6WOBQw46-TJU2dJPJ0d95TY';
 const invalidToken = 'Bearer engaF1bGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDYwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bG90QGdtYWlsLmNvbSIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTU2MDk0NjU0NiwiZXhwIjoxNTYxMTkxMzQ2fQ.BmqvWXxsR67XG6hePl7bsnj_bXM62sKWNbMnqBYbzQo';
 const file = readFileSync('src/test-img/car.png');
 const file2 = readFileSync('src/test-img/car2.jpg');
@@ -914,6 +915,105 @@ describe('Test for car AD endpoint', () => {
         assert.strictEqual(res.body.data,
           'No record found',
           'Data is not equal to No record found');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should delete an AD if user is an admin', (done) => {
+    chai
+      .request(app)
+      .delete(`/api/v1/car/${carAd.id}`)
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: adminToken,
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.equal('Car Ad successfully deleted');
+        expect(res.body.data).to.be.a('string');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isString(res.body.data, 'Data is not a string');
+        assert.strictEqual(res.body.data,
+          'Car Ad successfully deleted',
+          'Data is not equal to Car Ad successfully deleted');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should return a message if record is not found', (done) => {
+    chai
+      .request(app)
+      .delete('/api/v1/car/11111045')
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: adminToken,
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.equal('No record found');
+        expect(res.body.data).to.be.a('string');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isString(res.body.data, 'Data is not a string');
+        assert.strictEqual(res.body.data,
+          'No record found',
+          'Data is not equal to No record found');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should return an error if  ID is bad', (done) => {
+    chai
+      .request(app)
+      .delete('/api/v1/car/123456g')
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: adminToken,
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.equal('No record found');
+        expect(res.body.data).to.be.a('string');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isString(res.body.data, 'Data is not a string');
+        assert.strictEqual(res.body.data,
+          'No record found',
+          'Data is not equal to No record found');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+  it('Should return an error if user is not an admin', (done) => {
+    chai
+      .request(app)
+      .delete(`/api/v1/car/${carAd.id}`)
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: token,
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(403);
+        expect(res.body).to.be.an('object');
+        expect(res.body.error).to.be.equal('Forbidden: Only Admin can delete an AD');
+        expect(res.body.error).to.be.a('string');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 403, 'Status code is not 403');
+        assert.isString(res.body.error, 'Data is not a string');
+        assert.strictEqual(res.body.error,
+          'Forbidden: Only Admin can delete an AD',
+          'Error is not equal to Forbidden: Only Admin can delete an AD');
         assert.isNull(err, 'Expect error to not exist');
         done();
       });

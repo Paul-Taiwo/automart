@@ -12,5 +12,6 @@ Route.patch('/car/:id/status', checkAuth, validate.Status, carController.updateS
 Route.patch('/car/:id/price', checkAuth, validate.Price, carController.updateCarPrice);
 Route.get('/car/:id', checkAuth, carController.findSpecificCar);
 Route.get('/car/', checkAuth, carController.find);
+Route.delete('/car/:id', checkAuth, carController.deleteAd);
 
 export default Route;
