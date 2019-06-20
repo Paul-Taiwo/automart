@@ -719,4 +719,69 @@ describe('Test for car AD endpoint', () => {
         done();
       });
   });
+
+  it('Should get a specific car', (done) => {
+    chai
+      .request(app)
+      .get(`/api/v1/car/${carAd.id}`)
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: token,
+      })
+      .end((err, res) => {
+        console.log(res.body);
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data.id).to.be.a('number');
+        expect(res.body.data.email).to.be.a('string');
+        expect(res.body.data.created_on).to.be.a('string');
+        expect(res.body.data.manufacturer).to.be.a('string');
+        expect(res.body.data.model).to.be.a('string');
+        expect(res.body.data.price).to.be.a('number');
+        expect(res.body.data.status).to.be.a('string');
+        expect(res.body.data.year).to.be.a('number');
+        expect(res.body.data.state).to.be.a('string');
+        expect(res.body.data.body_type).to.be.a('string');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isObject(res.body, 'Data is not an object');
+        assert.isNumber(res.body.data.id, 'ID is not a number');
+        assert.isString(res.body.data.email, 'Email is not a string');
+        assert.isString(res.body.data.created_on, 'Date is not a string');
+        assert.isString(res.body.data.manufacturer, 'Manufacturer is not a string');
+        assert.isString(res.body.data.model, 'Model is not a string');
+        assert.isString(res.body.data.status, 'Status is not a string');
+        assert.isNumber(res.body.data.price, 'Price is not a number');
+        assert.isString(res.body.data.state, 'State is not a string');
+        assert.isString(res.body.data.body_type, 'Body type is not a string');
+        assert.isNumber(res.body.data.year, 'Year is not a number');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should return a message if ID is wrong', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/car/1111111111')
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: token,
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.equal('No record found');
+        expect(res.body.data).to.be.a('string');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isString(res.body.data, 'Data is not a string');
+        assert.strictEqual(res.body.data,
+          'No record found',
+          'Data is not equal to No record found');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
 });

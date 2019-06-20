@@ -87,7 +87,7 @@ class CarAds {
             created_on: createdAd.createdOn,
             manufacturer: createdAd.manufacturer,
             model: createdAd.model,
-            body_type: createdAd.bodyType,
+            body_type: createdAd.body_type,
             price: createdAd.price,
             state: createdAd.state,
             status: createdAd.status,
@@ -126,7 +126,7 @@ class CarAds {
           updated_on: updatedAd.createdOn,
           manufacturer: updatedAd.manufacturer,
           model: updatedAd.model,
-          body_type: updatedAd.bodyType,
+          body_type: updatedAd.body_type,
           price: updatedAd.price,
           state: updatedAd.state,
           status: updatedAd.status,
@@ -167,7 +167,7 @@ class CarAds {
           updated_on: updatedAd.createdOn,
           manufacturer: updatedAd.manufacturer,
           model: updatedAd.model,
-          body_type: updatedAd.bodyType,
+          body_type: updatedAd.body_type,
           price: updatedAd.price,
           state: updatedAd.state,
           status: updatedAd.status,
@@ -188,6 +188,39 @@ class CarAds {
       status: 500,
       error: 'Internal Server Error',
     });
+  }
+
+  static async findSpecificCar(req, res) {
+    const id = parseInt(req.params.id, 10);
+
+    try {
+      const result = await DB.query(`SELECT * FROM cars WHERE id = ${id}`);
+      const carAd = result.rows[0];
+
+      return res.status(200).json({
+        status: 200,
+        data: {
+          id: carAd.id,
+          owner: carAd.owner,
+          email: carAd.email,
+          created_on: carAd.createdOn,
+          manufacturer: carAd.manufacturer,
+          model: carAd.model,
+          price: carAd.price,
+          state: carAd.state,
+          status: carAd.status,
+          year: carAd.year,
+          body_type: carAd.body_type,
+          images: carAd.images,
+        },
+      });
+    } catch (err) {
+      warn(err);
+      return res.status(200).json({
+        status: 200,
+        data: 'No record found',
+      });
+    }
   }
 }
 
