@@ -945,6 +945,35 @@ describe('Test for car AD endpoint', () => {
       });
   });
 
+  it('Should return a message if query is bad', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/car')
+      .query({
+        status: 'availablee',
+        manufacturer: 'Toyota',
+      })
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: token,
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.equal('No record found');
+        expect(res.body.data).to.be.a('string');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isString(res.body.data, 'Data is not a string');
+        assert.strictEqual(res.body.data,
+          'No record found',
+          'Data is not equal to No record found');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
   it('Should return a message if record is not found', (done) => {
     chai
       .request(app)
@@ -984,7 +1013,6 @@ describe('Test for car AD endpoint', () => {
         Authorization: adminToken,
       })
       .end((err, res) => {
-        console.log(res.body);
         expect(res.statusCode).to.equal(200);
         expect(res.body).to.be.an('object');
         expect(res.body.data).to.be.an('array');
