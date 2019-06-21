@@ -322,6 +322,13 @@ class CarAds {
           AND state = '${query.state}'`,
         );
 
+        if (rows.length === 0) {
+          return res.status(200).json({
+            status: 200,
+            data: 'No record found',
+          });
+        }
+
         return res.status(200).json({
           status: 200,
           data: rows,
