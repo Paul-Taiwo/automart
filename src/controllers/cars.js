@@ -97,7 +97,7 @@ class CarAds {
           },
         });
       } catch (err) {
-        warn(err);
+        warn(err.stack);
       }
     }
 
@@ -136,7 +136,7 @@ class CarAds {
         },
       });
     } catch (err) {
-      warn(err);
+      warn(err.stack);
       if (err.routine === 'enum_in') {
         return res.status(400).json({
           status: 400,
@@ -177,7 +177,7 @@ class CarAds {
         },
       });
     } catch (err) {
-      warn(err);
+      warn(err.stack);
       if (err.routine === 'float8in_internal') {
         return res.status(400).json({
           status: 400,
@@ -216,7 +216,7 @@ class CarAds {
         },
       });
     } catch (err) {
-      warn(err);
+      warn(err.stack);
       return res.status(200).json({
         status: 200,
         data: 'No record found',
@@ -274,6 +274,31 @@ class CarAds {
         const { rows } = await DB.query(
           `SELECT * FROM cars WHERE status = '${query.status}'
           AND manufacturer = '${query.manufacturer}'`,
+        );
+
+        if (rows.length === 0) {
+          return res.status(200).json({
+            status: 200,
+            data: 'No record found',
+          });
+        }
+
+        return res.status(200).json({
+          status: 200,
+          data: rows,
+        });
+      } catch (err) {
+        warn(err.stack);
+      }
+    }
+
+    if (query.status && query.bodyType) {
+      try {
+        const {
+          rows,
+        } = await DB.query(
+          `SELECT * FROM cars WHERE status = '${query.status}'
+          AND body_type = '${query.bodyType}'`,
         );
 
         if (rows.length === 0) {
