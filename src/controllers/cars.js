@@ -294,9 +294,7 @@ class CarAds {
 
     if (query.status && query.bodyType) {
       try {
-        const {
-          rows,
-        } = await DB.query(
+        const { rows } = await DB.query(
           `SELECT * FROM cars WHERE status = '${query.status}'
           AND body_type = '${query.bodyType}'`,
         );
