@@ -315,6 +315,26 @@ class CarAds {
       }
     }
 
+    if (query.status && query.state) {
+      try {
+        const { rows } = await DB.query(
+          `SELECT * FROM cars WHERE status = '${query.status}'
+          AND state = '${query.state}'`,
+        );
+
+        return res.status(200).json({
+          status: 200,
+          data: rows,
+        });
+      } catch (err) {
+        warn(err.stack);
+        return res.status(200).json({
+          status: 200,
+          data: 'No record found',
+        });
+      }
+    }
+
     if (query.status) {
       try {
         const { rows } = await DB.query(`SELECT * FROM cars WHERE status = '${query.status}'`);
