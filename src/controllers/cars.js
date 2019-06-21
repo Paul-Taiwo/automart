@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { v2 } from 'cloudinary';
-import { warn, error } from 'fancy-log';
+import { warn } from 'fancy-log';
 import DB from '../database/dbconnection';
 
 
@@ -97,7 +97,7 @@ class CarAds {
           },
         });
       } catch (err) {
-        error(err);
+        warn(err);
       }
     }
 
@@ -226,11 +226,81 @@ class CarAds {
 
   static async find(req, res) {
     const { is_admin } = req.authData.user;
-    const { status, min_price, max_price } = req.query;
+    const { query } = req;
 
-    if (is_admin) {
+    if (is_admin && Object.entries(query).length === 0) {
       try {
         const { rows } = await DB.query('SELECT * FROM cars');
+
+        return res.status(200).json({
+          status: 200,
+          data: rows,
+        });
+      } catch (err) {
+        warn(err.stack);
+
+        return res.status(200).json({
+          status: 200,
+          data: 'No record found',
+        });
+      }
+    }
+
+    if (query.status && query.min_price && query.max_price) {
+      try {
+        const { rows } = await DB.query(
+          `SELECT * FROM cars WHERE status = '${query.status}'
+          AND price > '${query.min_price}'
+          AND price < '${query.max_price}'`,
+        );
+
+        if (rows.length === 0) {
+          return res.status(200).json({
+            status: 200,
+            data: 'No record found',
+          });
+        }
+        return res.status(200).json({
+          status: 200,
+          data: rows,
+        });
+      } catch (err) {
+        warn(err.stack);
+      }
+    }
+
+    if (query.status && query.manufacturer) {
+      try {
+        const { rows } = await DB.query(
+          `SELECT * FROM cars WHERE status = '${query.status}'
+          AND manufacturer = '${query.manufacturer}'`,
+        );
+
+        if (rows.length === 0) {
+          return res.status(200).json({
+            status: 200,
+            data: 'No record found',
+          });
+        }
+
+        return res.status(200).json({
+          status: 200,
+          data: rows,
+        });
+      } catch (err) {
+        warn(err.stack);
+      }
+    }
+
+    if (query.status) {
+      try {
+        const { rows } = await DB.query(`SELECT * FROM cars WHERE status = '${query.status}'`);
+        if (rows.length === 0) {
+          return res.status(200).json({
+            status: 200,
+            data: 'No record found',
+          });
+        }
         return res.status(200).json({
           status: 200,
           data: rows,
@@ -242,55 +312,11 @@ class CarAds {
           data: 'No record found',
         });
       }
-    } else {
-      if (status && min_price && max_price) {
-        try {
-          const { rows } = await DB.query(`SELECT * FROM cars WHERE status = '${status}' AND price > '${min_price}' AND price < '${max_price}'`);
-          if (rows.length === 0) {
-            return res.status(200).json({
-              status: 200,
-              data: 'No record found',
-            });
-          }
-          return res.status(200).json({
-            status: 200,
-            data: rows,
-          });
-        } catch (err) {
-          warn(err.stack);
-          return res.status(200).json({
-            status: 200,
-            data: 'No record found',
-          });
-        }
-      }
-
-      if (status) {
-        try {
-          const { rows } = await DB.query(`SELECT * FROM cars WHERE status = '${status}'`);
-          if (rows.length === 0) {
-            return res.status(200).json({
-              status: 200,
-              data: 'No record found',
-            });
-          }
-          return res.status(200).json({
-            status: 200,
-            data: rows,
-          });
-        } catch (err) {
-          warn(err.stack);
-          return res.status(200).json({
-            status: 200,
-            data: 'No record found',
-          });
-        }
-      }
     }
 
     return res.status(400).json({
       status: 400,
-      data: 'Bad Request',
+      error: 'Bad Request',
     });
   }
 
@@ -316,11 +342,6 @@ class CarAds {
         });
       } catch (err) {
         warn(err);
-
-        return res.status(200).json({
-          status: 200,
-          data: 'No record found',
-        });
       }
     }
 
