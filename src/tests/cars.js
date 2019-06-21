@@ -1086,7 +1086,33 @@ describe('Test for car AD endpoint', () => {
       });
   });
 
-  it('Should return all unsold cars of a state', (done) => {
+  it('Should return all unsold cars of a specific state (new)', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/car')
+      .query({
+        status: 'available',
+        state: 'new',
+      })
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: token,
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.an('array');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isArray(res.body.data, 'Data is not array');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should return all unsold cars of a specific state (used)', (done) => {
+    carAd.status = 'used';
     chai
       .request(app)
       .get('/api/v1/car')
