@@ -4,7 +4,13 @@ package-lock.json
 .nyc_output/
 build
 package-lock.json
+<<<<<<< HEAD
 .coveralls.yml
 coverage
 coverage.lcov
 .eslintignore
+=======
+docs/package.json
+docs/README.md
+docs/oauth2-redirect.html
+>>>>>>> bug(documentation): Fix display error
