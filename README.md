@@ -79,7 +79,7 @@ Auto Mart, users can sell their cars or buy from trusted dealerships or private 
 
 ## Documentation
 
-<https://automart1.docs.apiary.io/>
+<https://automart1.herokuapp.com/api/v1/docs/>
 
 ## Author
 
