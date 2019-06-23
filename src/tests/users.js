@@ -333,6 +333,75 @@ describe('Test for sign up endpoint', () => {
         done();
       });
   });
+
+  it('Should return an error message if user can remember his/her password but password is wrong', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/users/tester@gmail.com/reset_password')
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+      })
+      .send({
+        password: 'testTest1ip2345',
+        newPassword: 'testerinoTest12345',
+      })
+      .end((err, res) => {
+        console.log(res.body);
+        expect(res.body).to.be.an('object');
+        expect(res.body.status).to.equals(400);
+        expect(res.statusCode).to.equal(400);
+        expect(res.body.error).to.equals('Password is incorrect');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
+        assert.strictEqual(res.body.status, 400, 'Status is not 400');
+        assert.strictEqual(res.body.error,
+          'Password is incorrect',
+          'Expect error to be Password is incorrect');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should reset password if user can remember his/her password', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/users/tester@gmail.com/reset_password')
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+      })
+      .send({
+        password: 'testTest12345',
+        newPassword: 'testerinoTest12345',
+      })
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.statusCode).to.equal(201);
+        expect(res.body.status).to.equal(201);
+        expect(res.body.data).to.equal('Check your email for your new password');
+        assert.isNumber(res.body.status);
+        assert.strictEqual(res.body.status, 201, 'Status code is not 201');
+        assert.strictEqual(res.body.data, 'Check your email for your new password', 'Expect data to be Check your email for your new password');
+        done();
+      });
+  });
+
+  it('Should reset password if user cannot remember his/her password', (done) => {
+    chai
+      .request(app)
+      .post('/api/v1/users/tester@gmail.com/reset_password')
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.statusCode).to.equal(201);
+        expect(res.body.status).to.equal(201);
+        expect(res.body.data).to.equal('Check your email for your new password');
+        assert.isNumber(res.body.status);
+        assert.strictEqual(res.body.status, 201, 'Status code is not 201');
+        assert.strictEqual(res.body.data, 'Check your email for your new password', 'Expect data to be Check your email for your new password');
+        done();
+      });
+  });
 });
 
 describe('Test sign in endpoint', () => {
