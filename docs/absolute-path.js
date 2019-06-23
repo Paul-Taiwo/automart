@@ -11,4 +11,4 @@ const getAbsoluteFSPath = function () {
   throw new Error('getAbsoluteFSPath can only be called within a Nodejs environment');
 }
 
-export default getAbsoluteFSPath
+module.exports = getAbsoluteFSPath;

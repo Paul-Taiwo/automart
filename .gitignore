@@ -6,6 +6,6 @@ package-lock.json
 .eslintignore
 coverage
 package-lock.json
-src/docs/package.json
-src/docs/README.md
-src/docs/oauth2-redirect.html
+docs/package.json
+docs/README.md
+docs/oauth2-redirect.html
