@@ -36,6 +36,7 @@ function authenticateUser(userData, endpoint) {
           document.querySelector('.show-error').style.display = 'none';
         }, 2000);
       }
+<<<<<<< HEAD
     })
     .catch((err) => {
       document.querySelector('.show-error').style.display = 'block';
@@ -43,6 +44,8 @@ function authenticateUser(userData, endpoint) {
       setTimeout(() => {
         document.querySelector('.show-error').style.display = 'none';
       }, 2000);
+=======
+>>>>>>> feature(sign-up): user can sign up
     });
 }
 
@@ -61,6 +64,7 @@ document.querySelector('#signupForm').addEventListener('submit', (e) => {
 
   authenticateUser(userData, endpoint);
 });
+<<<<<<< HEAD
 
 document.querySelector('#loginForm').addEventListener('submit', (e) => {
   e.preventDefault();
@@ -72,3 +76,5 @@ document.querySelector('#loginForm').addEventListener('submit', (e) => {
 
   authenticateUser(userData, endpoint);
 });
+=======
+>>>>>>> feature(sign-up): user can sign up
