@@ -108,6 +108,8 @@ class Users {
           first_name: user.firstname,
           last_name: user.lastname,
           email: user.email,
+          address: user.address,
+          is_admin: user.is_admin,
         },
       });
     } catch (err) {

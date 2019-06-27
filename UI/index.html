@@ -42,8 +42,7 @@
     </div>
   </div>
 
-  <div class="content-margin">
-    <section id="featured-vehicles" class="featured">
+    <section id="featured-vehicles" class="featured content-margin">
       <h1 class="section-header t-center">Featured Vehicles</h1>
       <ul class="slides">
 
@@ -97,7 +96,7 @@
       </ul>
     </section>
 
-    <section id="popular-brand" class="brand">
+    <section id="popular-brand" class="brand content-margin">
       <h1 class="section-header t-center">Popular Brands</h1>
       <ul class="slides">
         <li class="slides-contain">
@@ -195,9 +194,9 @@
     </section>
 
     <section id="how_it-works" class="how-it-works">
-      <h1 class="section-header t-center">How it works</h1>
+      <h1 class="section-header t-center t-white">How it works</h1>
 
-
+      <div class="content-margin">
         <div class="row">
           <div class="c-md-12 c-lg-4 c-xl-4">
             <div class="card m-t-20 m-b-20 m-r-20 m-l-20">
@@ -244,7 +243,7 @@
           </div>
 
         </div>
-
+      </div>
     </section>
 
     <section id="contact_us" class="contact-us">
@@ -761,7 +760,7 @@
         </div>
       </div>
     </section>
-  </div>
+
 
   <div id="login-modal" class="modal">
     <div class="wrapper animate">
@@ -771,26 +770,26 @@
           <h1 class="t-center mt-0 m-b-15">AutoMart</h1>
 
           <div class="p-3">
-            <form class="m-t-20" action="">
+            <form id="loginForm" class="m-t-20" method="POST">
 
               <div class="m-b-20 row">
                 <div class="c-12">
-                  <input class="control-input" type="text" required="" placeholder="Username" autofocus="">
+                  <input class="control-input" type="email" name="loginemail" required="required" placeholder="Your email e.g kowope@gmail.com" autofocus="autofocus">
                 </div>
               </div>
 
               <div class="m-b-20 row">
                 <div class="c-12">
-                  <input class="control-input" type="password" required="" placeholder="Password">
+                  <input class="control-input" name="loginpassword" type="password" required="required" placeholder="Your password">
                 </div>
               </div>
 
-              <div class="m-b-20 row">
+              <!-- <div class="m-b-20 row">
                 <div class="c-12">
                   <input type="checkbox" class="checkbox-input" id="customCheck1">
                   <label class="checkbox-label" for="customCheck1">Remember me</label>
                 </div>
-              </div>
+              </div> -->
 
               <div class="m-b-20 t-center row m-t-20">
                 <div class="c-12">
@@ -825,29 +824,35 @@
             <h1 class="t-center mt-0 m-b-15">AutoMart</h1>
 
             <div class="p-3">
-              <form class="m-t-20" action="">
-
+              <form id="signupForm" class="m-t-20" method="POST">
+                <input type="hidden" name="hidden" value="signup">
                 <div class="m-b-20 row">
                   <div class="c-12">
-                    <input class="control-input" type="text" required="" placeholder="Username" autofocus="">
+                    <input class="control-input" type="text" name="firstname" required="required" placeholder="Firstname* e.g Paul" autofocus>
                   </div>
                 </div>
 
                 <div class="m-b-20 row">
                   <div class="c-12">
-                    <input class="control-input" type="email" required="" placeholder="Email">
+                    <input class="control-input" type="text" name="lastname" required="required" placeholder="Lastname* e.g Adegoke">
                   </div>
                 </div>
 
                 <div class="m-b-20 row">
                   <div class="c-12">
-                    <input class="control-input" type="password" required="" placeholder="Password">
+                    <input class="control-input" type="email" name="email" required="required" placeholder="Email*">
                   </div>
                 </div>
 
                 <div class="m-b-20 row">
                   <div class="c-12">
-                    <input class="control-input" type="password" required="" placeholder="Confirm password">
+                    <input class="control-input" type="text" name="address" placeholder="Address">
+                  </div>
+                </div>
+
+                <div class="m-b-20 row">
+                  <div class="c-12">
+                    <input class="control-input" name='password' type="password" required="required" placeholder="Password">
                   </div>
                 </div>
 
@@ -881,12 +886,21 @@
     </div>
   </div>
 
+  <div class="show-error t-center">
+    <p id="error-text" class="t-white">Error</p>
+  </div>
+  <svg>
+    <clipPath id="wave" clipPathUnits="objectBoundingBox">
+      <path class="st0" d="M1,0c0,0-0.3,0.1-0.5,0.1S0.3,0,0,0.1V1h1L1,0z" />
+    </clipPath>
+  </svg>
   <footer class="footer">
     <p> © 2019 Andela-AutoMart</p>
   </footer>
 
   <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
   <script src="./js/script.js"></script>
+  <script src="./js/authenticateUser.js"></script>
 </body>
 
 </html>
