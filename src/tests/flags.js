@@ -5,7 +5,7 @@ import app from '../app';
 
 chai.use(chaiHttp);
 
-const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDYwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bG90QGdtYWlsLmNvbSIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTU2MTI5NTg0NSwiZXhwIjoxNTYxNTQwNjQ1fQ.D1sqLrDtRafESiupQtlPdwgUHaCQY-emvFlGZAyHRkE';
+const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDc4LCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRHb25KT29uSGYvUTR3MjRRVlRDTTR1em5heFp5dHdHc05xeTd5NjBSaTZmY0h3dk95QkZ0MiIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTU2MTYzMjM1MiwiZXhwIjoxNTYxODc3MTUyfQ.i4qv0fO7_GDMj_xzWRi72MQneg1L4MdFTsb0w_HRYqw';
 
 describe('Test create flag endpoint', () => {
   it('Should create a flag', (done) => {

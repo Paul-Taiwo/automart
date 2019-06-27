@@ -347,7 +347,6 @@ describe('Test for sign up endpoint', () => {
         newPassword: 'testerinoTest12345',
       })
       .end((err, res) => {
-        console.log(res.body);
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
         expect(res.statusCode).to.equal(400);
