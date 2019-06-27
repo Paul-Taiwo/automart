@@ -65,6 +65,9 @@ document.querySelector('#signupForm').addEventListener('submit', (e) => {
   authenticateUser(userData, endpoint);
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> feature(sign-in): user can sign in
 
 document.querySelector('#loginForm').addEventListener('submit', (e) => {
   e.preventDefault();
@@ -76,5 +79,8 @@ document.querySelector('#loginForm').addEventListener('submit', (e) => {
 
   authenticateUser(userData, endpoint);
 });
+<<<<<<< HEAD
 =======
 >>>>>>> feature(sign-up): user can sign up
+=======
+>>>>>>> feature(sign-in): user can sign in
