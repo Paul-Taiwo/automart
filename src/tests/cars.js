@@ -9,8 +9,8 @@ import app from '../app';
 
 chai.use(chaiHttp);
 
-const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDYwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bG90QGdtYWlsLmNvbSIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTU2MTI5NTg0NSwiZXhwIjoxNTYxNTQwNjQ1fQ.D1sqLrDtRafESiupQtlPdwgUHaCQY-emvFlGZAyHRkE';
-const adminToken = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDYyLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiaWFtdWNoZWp1ZGVAZ21haWwuY29tIiwiYWRkcmVzcyI6IjEyLCBBZGVyaWJpZ2JlIiwiaXNfYWRtaW4iOnRydWV9LCJpYXQiOjE1NjEyOTYwMjUsImV4cCI6MTU2MTU0MDgyNX0.Bt04Ia3aisMGkmdqm6Z_m_eGwKLzNnQ2u8-bQiQFons';
+const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDc4LCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRHb25KT29uSGYvUTR3MjRRVlRDTTR1em5heFp5dHdHc05xeTd5NjBSaTZmY0h3dk95QkZ0MiIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTU2MTYzMjM1MiwiZXhwIjoxNTYxODc3MTUyfQ.i4qv0fO7_GDMj_xzWRi72MQneg1L4MdFTsb0w_HRYqw';
+const adminToken = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDgwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bG90YUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiMTIsIEFkZXJpYmlnYmUiLCJpc19hZG1pbiI6dHJ1ZX0sImlhdCI6MTU2MTYzNDM4OCwiZXhwIjoxNTYxODc5MTg4fQ.GDoBWwYafKy3B_8WdChZf90YJYXyxfqJea3lX7HTys4';
 const invalidToken = 'Bearer engaF1bGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDYwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bG90QGdtYWlsLmNvbSIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTU2MDk0NjU0NiwiZXhwIjoxNTYxMTkxMzQ2fQ.BmqvWXxsR67XG6hePl7bsnj_bXM62sKWNbMnqBYbzQo';
 const file = readFileSync('src/test-img/car.png');
 const file2 = readFileSync('src/test-img/car2.jpg');
@@ -32,8 +32,8 @@ describe('Test for car AD endpoint', () => {
         .field('state', 'new')
         .field('year', '2018')
         .field('bodyType', 'Saloon')
-        .attach('image', file, 'Car1.jpg')
-        .attach('image', file2, 'Car2.jpg');
+        .attach('images', file, 'Car1.jpg')
+        .attach('images', file2, 'Car2.jpg');
       resolve(res);
     }).then(res => res)
       .catch((err) => {
@@ -43,7 +43,7 @@ describe('Test for car AD endpoint', () => {
     carAd = response.body.data;
   });
 
-  it('Should not create if image is less than 2', (done) => {
+  it('Should not create if image is not present', (done) => {
     chai
       .request(app)
       .post('/api/v1/car')
@@ -57,17 +57,16 @@ describe('Test for car AD endpoint', () => {
       .field('state', 'new')
       .field('year', '2018')
       .field('bodyType', 'Saloon')
-      .attach('image', file, 'Car1.jpg')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
         expect(res.statusCode).to.equal(400);
-        expect(res.body.error).to.equals('Upload at least two(2) images of the car');
+        expect(res.body.error).to.equals('Upload an image of the car');
         assert.isObject(res.body, 'Response is not an object');
         assert.strictEqual(res.statusCode, 400, 'Status code is not 400');
         assert.strictEqual(res.body.status, 400, 'Status is not 400');
         assert.strictEqual(res.body.error,
-          'Upload at least two(2) images of the car');
+          'Upload an image of the car');
         assert.isNull(err, 'Expect error to not exist');
         done();
       });
@@ -78,7 +77,7 @@ describe('Test for car AD endpoint', () => {
       .request(app)
       .post('/api/v1/car')
       .set({
-        'Content-type': 'application/x-www-form-urlencoded',
+        'Content-type': 'multipart/form-data',
         Accept: 'application/json',
         Authorization: token,
       })
@@ -88,8 +87,8 @@ describe('Test for car AD endpoint', () => {
       .field('state', 'new')
       .field('year', '2018')
       .field('bodyType', 'Saloon')
-      .attach('image', file, 'Car1.jpg')
-      .attach('image', file2, 'Car2.jpg')
+      .attach('images', file, 'Car1.jpg')
+      .attach('images', file2, 'Car2.jpg')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(201);
@@ -179,8 +178,8 @@ describe('Test for car AD endpoint', () => {
       .field('state', 'new')
       .field('year', '2018')
       .field('bodyType', 'Saloon')
-      .attach('image', file, 'Car1.jpg')
-      .attach('image', file2, 'Car2.jpg')
+      .attach('images', file, 'Car1.jpg')
+      .attach('images', file2, 'Car2.jpg')
 
       .end((err, res) => {
         expect(res.body).to.be.an('object');
@@ -213,8 +212,8 @@ describe('Test for car AD endpoint', () => {
       .field('state', 'new')
       .field('year', '2018')
       .field('bodyType', 'Saloon')
-      .attach('image', file, 'Car1.jpg')
-      .attach('image', file2, 'Car2.jpg')
+      .attach('images', file, 'Car1.jpg')
+      .attach('images', file2, 'Car2.jpg')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
@@ -246,8 +245,8 @@ describe('Test for car AD endpoint', () => {
       .field('state', 'new')
       .field('year', '2018')
       .field('bodyType', 'Saloon')
-      .attach('image', file, 'Car1.jpg')
-      .attach('image', file2, 'Car2.jpg')
+      .attach('images', file, 'Car1.jpg')
+      .attach('images', file2, 'Car2.jpg')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
@@ -279,8 +278,8 @@ describe('Test for car AD endpoint', () => {
       .field('state', 'new')
       .field('year', '2018')
       .field('bodyType', '')
-      .attach('image', file, 'Car1.jpg')
-      .attach('image', file2, 'Car2.jpg')
+      .attach('images', file, 'Car1.jpg')
+      .attach('images', file2, 'Car2.jpg')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
@@ -312,8 +311,8 @@ describe('Test for car AD endpoint', () => {
       .field('state', '')
       .field('year', '2018')
       .field('bodyType', 'Saloon')
-      .attach('image', file, 'Car1.jpg')
-      .attach('image', file2, 'Car2.jpg')
+      .attach('images', file, 'Car1.jpg')
+      .attach('images', file2, 'Car2.jpg')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
@@ -344,8 +343,8 @@ describe('Test for car AD endpoint', () => {
       .field('state', 'New12')
       .field('year', '2018')
       .field('bodyType', 'Saloon')
-      .attach('image', file, 'Car1.jpg')
-      .attach('image', file2, 'Car2.jpg')
+      .attach('images', file, 'Car1.jpg')
+      .attach('images', file2, 'Car2.jpg')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
@@ -376,8 +375,8 @@ describe('Test for car AD endpoint', () => {
       .field('state', 'new')
       .field('year', '')
       .field('bodyType', 'Saloon')
-      .attach('image', file, 'Car1.jpg')
-      .attach('image', file2, 'Car2.jpg')
+      .attach('images', file, 'Car1.jpg')
+      .attach('images', file2, 'Car2.jpg')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
@@ -407,8 +406,8 @@ describe('Test for car AD endpoint', () => {
       .field('state', 'new')
       .field('year', '20186')
       .field('bodyType', 'Saloon')
-      .attach('image', file, 'Car1.jpg')
-      .attach('image', file2, 'Car2.jpg')
+      .attach('images', file, 'Car1.jpg')
+      .attach('images', file2, 'Car2.jpg')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);
@@ -439,8 +438,8 @@ describe('Test for car AD endpoint', () => {
       .field('state', 'new')
       .field('year', '2018')
       .field('bodyType', 'Saloon')
-      .attach('image', file, 'Car1.jpg')
-      .attach('image', file2, 'Car2.jpg')
+      .attach('images', file, 'Car1.jpg')
+      .attach('images', file2, 'Car2.jpg')
       .end((err, res) => {
         expect(res.body).to.be.an('object');
         expect(res.body.status).to.equals(400);

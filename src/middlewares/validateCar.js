@@ -3,7 +3,6 @@ export default (req, res, next) => {
     manufacturer, model, state, year, bodyType, price,
   } = req.body;
 
-
   if (!manufacturer) {
     return res.status(400).json({
       status: 400,
@@ -67,10 +66,10 @@ export default (req, res, next) => {
     });
   }
 
-  if (!req.files || !Array.isArray(req.files.image) || req.files.image.length < 2) {
+  if (req.files.length < 1) {
     return res.status(400).json({
       status: 400,
-      error: 'Upload at least two(2) images of the car',
+      error: 'Upload an image of the car',
     });
   }
   return next();

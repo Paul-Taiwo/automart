@@ -1,8 +1,11 @@
 /* eslint-disable camelcase */
 import { v2 } from 'cloudinary';
+import Datauri from 'datauri';
+import path from 'path';
 import { warn } from 'fancy-log';
 import DB from '../database/dbconnection';
 
+const datauri = new Datauri();
 
 v2.config({
   cloud_name: process.env.CL_NAME,
@@ -31,11 +34,14 @@ class CarAds {
       // Create promise
       const multipleUpload = new Promise((resolve, reject) => {
         const imageUrl = [];
-        if (req.files.image.length > 1) {
-          req.files.image.forEach((x) => {
-            v2.uploader.upload(x.path, (err, result) => {
+
+        if (req.files.length >= 1) {
+          req.files.forEach((image) => {
+            const file = datauri.format(path.extname(image.originalname).toString(), image.buffer);
+
+            v2.uploader.upload(file.content, (err, result) => {
               if (result) imageUrl.push(result.url);
-              if (imageUrl.length === req.files.image.length) {
+              if (imageUrl.length === req.files.length) {
                 resolve(imageUrl);
               } else if (err) {
                 warn(err);
