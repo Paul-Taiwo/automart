@@ -54,3 +54,14 @@ document.querySelector('#signupForm').addEventListener('submit', (e) => {
 
   authenticateUser(userData, endpoint);
 });
+
+document.querySelector('#loginForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const email = document.querySelector('input[name=loginemail]').value;
+  const password = document.querySelector('input[name=loginpassword]').value;
+  const endpoint = 'auth/signin';
+  const userData = { email, password };
+
+  authenticateUser(userData, endpoint);
+});
