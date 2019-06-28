@@ -370,6 +370,28 @@ class CarAds {
       }
     }
 
+    if (query.owner) {
+      try {
+        const { rows } = await DB.query(`SELECT * FROM cars WHERE owner = '${query.owner}'`);
+        if (rows.length === 0) {
+          return res.status(200).json({
+            status: 200,
+            data: 'No record found',
+          });
+        }
+        return res.status(200).json({
+          status: 200,
+          data: rows,
+        });
+      } catch (err) {
+        warn(err.stack);
+        return res.status(200).json({
+          status: 200,
+          data: 'No record found',
+        });
+      }
+    }
+
     return res.status(400).json({
       status: 400,
       error: 'Bad Request',
