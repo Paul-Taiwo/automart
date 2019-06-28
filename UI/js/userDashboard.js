@@ -7,19 +7,22 @@ const isDashboard = window.location.href.includes('dashboard.html');
 
 const getUserAds = (userId) => {
   const token = localStorage.getItem('token');
-  const url = `http://localhost/api/v1/car?owner=${userId}`;
+  const url = `https://automart1.herokuapp.com/api/v1/car?owner=${userId}`;
 
-  fetch(url, {
-    method: 'GET',
-    headers: {
-      Authorization: token,
-      'Content-Type': 'application/json',
-    },
-  })
-    .then(response => response.json())
-    .then((res) => {
-      console.log(res);
-    });
+  console.log('Wait Baba');
+  // fetch(url, {
+  //   method: 'GET',
+  //   headers: {
+  //     Authorization: token,
+  //   },
+  // })
+  //   // .then(response => response.json())
+  //   .then((res) => {
+  //     console.log(res);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
 };
 
 
