@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Dancing+Script:700|Poppins" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Auto Mart | No 1 Market Place for automobiles</title>
+</head>
+
+<body>
+
+  <header class="header fix-header">
+    <h1 class="t-white">AutoMart</h1>
+    <button type="button" id="toggler" onclick="openSideMenu()" class="btn mobile-btn">
+      <svg class="lnr lnr-menu">
+        <use xlink:href="#lnr-menu"></use>
+      </svg></i></button>
+    <nav class="navbar">
+      <ul class="nav-list">
+        <button type="button" id="hideMenu" onclick="closeSideMenu()"" class=" btn close-btn">
+          <svg
+            class="lnr lnr-cross">
+            <use xlink:href="#lnr-cross"></use>
+          </svg></button>
+
+        <li><a class="t-white active" href="./dashboard.html">Home</a></li>
+        <li><a class="t-white" href="./vehicles.html">See Cars</a></li>
+        <li><a href="create-ads.html" class="btn btn-leaf">Sell a car</a></li>
+        <li class="dropdown">
+          
+          <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">Paulot <svg class="lnr lnr-chevron-down">
+              <use xlink:href="#lnr-chevron-down"></use>
+            </svg></button>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="#"><svg class="lnr lnr-user">
+                <use xlink:href="#lnr-user"></use>
+              </svg></i> My account</a>
+            <a href="#"><svg class="lnr lnr-database">
+                <use xlink:href="#lnr-database"></use>
+              </svg></i> Manage Ads</a>
+            <a href="#"><svg class="lnr lnr-phone">
+                <use xlink:href="#lnr-phone"></use>
+              </svg> Contact Us</a>
+           <a href="index.html"><svg class="lnr lnr-power-switch">
+                <use xlink:href="#lnr-power-switch"></use>
+              </svg></i> Logout</a>
+          </div>
+        </li>
+        <li><a class="t-white" href="./vehicles.html">Log Out</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="content-margin m-t-75">
+
+    <div class="t-center m-b-20">
+      <button class="btn btn-round t-white tablinks active">1</button>
+      <button class="btn btn-round t-white tablinks">2</button>
+      <button class="btn btn-round t-white tablinks">3</button>
+      <!-- <button class="btns btn-round t-white tablinks">3</button> -->
+    </div>
+    <div class="card">
+      <div class="card-wrap">
+        <form action="" id="create-ads-form">
+
+          <div class="tabpanel">
+            <div class="inline-form">
+              <div class="inline-field">
+                <label class=""> Make <span class="required-symbol">*</span>
+                  <select id="makes" class="control-input">
+                    <option value="" selected="selected">Please Select</option>
+                    <option value="13497">Acmat</option>
+                    <option value="13339">Acura</option>
+                    <option value="14989">Adly</option>
+                    <option value="13358">Agrimac</option>
+                    <option value="1">Alfa Romeo</option>
+                    <option value="14727">Alibaba</option>
+                    <option value="13072">AMW</option>
+                    <option value="66">Aprilia</option>
+                    <option value="13340">Apsonic</option>
+                    <option value="13494">Asia </option>
+                    <option value="2">Aston Martin</option>
+                    <option value="14709">Atlas Copco</option>
+                    <option value="13483">Atul</option>
+                    <option value="3">Audi</option>
+                    <option value="15308">Ausa</option>
+                    <option value="15306">Avant</option>
+                    <option value="15361">Aveling Barford</option>
+                    <option value="14938">BAIC</option>
+                    <option value="67">Bajaj</option>
+                    <option value="15749">Basuki</option>
+                    <option value="13770">BAW </option>
+                    <option value="13499">Bedford</option>
+                    <option value="13337">BeiBen</option>
+                    <option value="13502">Beifang Benchi</option>
+                    <option value="13492">Bell</option>
+                    <option value="15008">Benda</option>
+                    <option value="15010">Benelli</option>
+                    <option value="4">Bentley</option>
+                    <option value="13065">Beta</option>
+                    <option value="15013">Bilmola</option>
+                    <option value="15016">BKZ</option>
+                    <option value="15326">BMG</option>
+                    <option value="5">BMW</option>
+                    <option value="15395">Bobcat</option>
+                    <option value="13772">Bomag</option>
+                    <option value="15370">Brilliance</option>
+                    <option value="15401">Buell</option>
+                    <option value="13350">Buick</option>
+                    <option value="13431">C&amp;C</option>
+                    <option value="77">Cadillac</option>
+                    <option value="15399">Cagiva</option>
+                    <option value="15563">Captain</option>
+                    <option value="14591">Carltons</option>
+                    <option value="13432">Case IH</option>
+                    <option value="13353">Caterpillar</option>
+                    <option value="14754">CEC</option>
+                    <option value="14945">CHANGAN</option>
+                    <option value="15441">CHANGHE</option>
+                    <option value="78">Chery</option>
+                    <option value="6">Chevrolet</option>
+                    <option value="7">Chrysler</option>
+                    <option value="15725">CHTC</option>
+                    <option value="8">Citroen</option>
+                    <option value="13508">Claas</option>
+                    <option value="13490">Claas Ceres</option>
+                    <option value="15397">Clark</option>
+                    <option value="14934">CMC Trailer</option>
+                    <option value="13517">Colombo</option>
+                    <option value="15019">CPI</option>
+                    <option value="13349">Cygnusx</option>
+                    <option value="9">Daewoo</option>
+                    <option value="10">DAF</option>
+                    <option value="15021">Dafier</option>
+                    <option value="11">Daihatsu</option>
+                    <option value="12">Daimler</option>
+                    <option value="13">Datsun</option>
+                    <option value="15528">Dayun</option>
+                    <option value="15023">Delta</option>
+                    <option value="15763">Denstar</option>
+                    <option value="15025">Derbi</option>
+                    <option value="14732">Detank</option>
+                    <option value="15366">Deutz</option>
+                    <option value="14">Dodge</option>
+                    <option value="13482">Dongfeng</option>
+                    <option value="15610">Doosan</option>
+                    <option value="68">Ducati</option>
+                    <option value="15147">Easyone</option>
+                    <option value="13067">Eicher</option>
+                    <option value="79">Equipment &amp; Machinery</option>
+                    <option value="13511">Escorts</option>
+                    <option value="15633">Everlast Flash</option>
+                    <option value="80">FAW</option>
+                    <option value="13513">Feil</option>
+                    <option value="15">Ferrari</option>
+                    <option value="16">Fiat</option>
+                    <option value="14775">Force</option>
+                    <option value="17">Ford</option>
+                    <option value="13069">Forland</option>
+                    <option value="62">Foton</option>
+                    <option value="14634">FUSO</option>
+                    <option value="15686">GAC</option>
+                    <option value="18">Geely</option>
+                    <option value="13790">Ginaf</option>
+                    <option value="13354">GMC</option>
+                    <option value="13783">Gonow</option>
+                    <option value="13498">Great Wall</option>
+                    <option value="14969">GWM</option>
+                    <option value="15058">Haojiang</option>
+                    <option value="13341">Haojin</option>
+                    <option value="15028">Haojue</option>
+                    <option value="69">Harley-Davidson</option>
+                    <option value="15364">Hatz</option>
+                    <option value="13504">Hero</option>
+                    <option value="13791">Higer</option>
+                    <option value="75">Hino</option>
+                    <option value="81">Hitachi</option>
+                    <option value="15717">Hobby</option>
+                    <option value="13428">Holden</option>
+                    <option value="19">Honda</option>
+                    <option value="13792">HOWO</option>
+                    <option value="20">Hummer</option>
+                    <option value="13505">Husaberg</option>
+                    <option value="13429">Husqvarna</option>
+                    <option value="21">Hyundai</option>
+                    <option value="13071">Infiniti</option>
+                    <option value="13501">Infinity</option>
+                    <option value="15073">Innocenti</option>
+                    <option value="22">Isuzu</option>
+                    <option value="15076">Italjet</option>
+                    <option value="76">IVECO</option>
+                    <option value="13771">IVM</option>
+                    <option value="13073">JAC</option>
+                    <option value="23">Jaguar</option>
+                    <option value="14697">JCB</option>
+                    <option value="24">Jeep</option>
+                    <option value="15079">Jialing</option>
+                    <option value="13778">Jin Bei</option>
+                    <option value="13775">Jincheng</option>
+                    <option value="13068">JMC</option>
+                    <option value="82">John Deere</option>
+                    <option value="13789">Joylong</option>
+                    <option value="15630">Kanos</option>
+                    <option value="70">Kawasaki</option>
+                    <option value="15085">Keeway</option>
+                    <option value="25">Kia</option>
+                    <option value="15744">Kibo</option>
+                    <option value="15536">Kingbird</option>
+                    <option value="14674">Kioti</option>
+                    <option value="13038">Komatsu</option>
+                    <option value="14773">Koshin</option>
+                    <option value="71">KTM</option>
+                    <option value="13343">Kymco</option>
+                    <option value="15753">Kymstone</option>
+                    <option value="26">Lada</option>
+                    <option value="27">Lamborghini</option>
+                    <option value="28">Lancia</option>
+                    <option value="29">Land Rover</option>
+                    <option value="13500">Landini</option>
+                    <option value="13779">LDV</option>
+                    <option value="30">Lexus</option>
+                    <option value="63">Leyland</option>
+                    <option value="83">Lifan</option>
+                    <option value="13351">Lincoln</option>
+                    <option value="15756">Lingken</option>
+                    <option value="31">Lotus</option>
+                    <option value="13780">Mack</option>
+                    <option value="32">Mahindra</option>
+                    <option value="13348">Malguti</option>
+                    <option value="74">Man</option>
+                    <option value="15751">Mars</option>
+                    <option value="33">Maserati</option>
+                    <option value="84">Massey-Ferguson</option>
+                    <option value="15109">Matador</option>
+                    <option value="34">Mazda</option>
+                    <option value="15110">MBK</option>
+                    <option value="15111">Megelli</option>
+                    <option value="35">Mercedes-Benz</option>
+                    <option value="13356">Mercury</option>
+                    <option value="13352">Messy</option>
+                    <option value="36">MG</option>
+                    <option value="15629">Miliki</option>
+                    <option value="37">Mini</option>
+                    <option value="38">Mitsubishi</option>
+                    <option value="14557">Mitsuoka</option>
+                    <option value="14669">Mobius </option>
+                    <option value="65">Morris</option>
+                    <option value="15152">Motobecane</option>
+                    <option value="13520">Motrac</option>
+                    <option value="15526">Murray</option>
+                    <option value="15335">MV Agusta</option>
+                    <option value="85">New Holland</option>
+                    <option value="15113">New Way</option>
+                    <option value="39">Nissan</option>
+                    <option value="14713">Nordic</option>
+                    <option value="14749">Old Stone Tractor Co</option>
+                    <option value="40">Oldsmobile</option>
+                    <option value="41">Opel</option>
+                    <option value="14960">Perodua</option>
+                    <option value="42">Peugeot</option>
+                    <option value="15116">PGO</option>
+                    <option value="13344">Piaggio</option>
+                    <option value="13059">Pinzgauer</option>
+                    <option value="13066">Polaris</option>
+                    <option value="13336">Pontiac</option>
+                    <option value="43">Porsche</option>
+                    <option value="14593">Powerline</option>
+                    <option value="13514">Pramac</option>
+                    <option value="44">Proton</option>
+                    <option value="15635">Puzey</option>
+                    <option value="15758">Qlink</option>
+                    <option value="15120">QW Moto</option>
+                    <option value="15154">Regal-Raptor</option>
+                    <option value="45">Renault</option>
+                    <option value="46">Rolls Royce</option>
+                    <option value="47">Rover</option>
+                    <option value="13342">Royal</option>
+                    <option value="48">Saab</option>
+                    <option value="13795">Saipa</option>
+                    <option value="14633">Same</option>
+                    <option value="49">Samsung</option>
+                    <option value="13509">Sany</option>
+                    <option value="13338">Saturn</option>
+                    <option value="64">Scania</option>
+                    <option value="50">Seat</option>
+                    <option value="13346">Sefia</option>
+                    <option value="13486">Senke</option>
+                    <option value="13487">Shacman</option>
+                    <option value="13512">Shaktiman</option>
+                    <option value="86">Shineray</option>
+                    <option value="13777">Simba</option>
+                    <option value="15767">Sinoki Supra</option>
+                    <option value="87">Sinotruk</option>
+                    <option value="51">Skoda</option>
+                    <option value="13784">SkyGo</option>
+                    <option value="15695">SL200zh-D</option>
+                    <option value="13782">SMA</option>
+                    <option value="52">Smart</option>
+                    <option value="13507">Solis</option>
+                    <option value="13489">Sonalika</option>
+                    <option value="15694">Sonlink</option>
+                    <option value="13518">Soosan</option>
+                    <option value="53">Ssang Yong</option>
+                    <option value="13515">Stara</option>
+                    <option value="13488">Steyr</option>
+                    <option value="54">Subaru</option>
+                    <option value="13510">Sumitomo</option>
+                    <option value="13355">SUV</option>
+                    <option value="55">Suzuki</option>
+                    <option value="13793">Swaraj</option>
+                    <option value="15715">Swift</option>
+                    <option value="13345">Sym</option>
+                    <option value="13519">T-KING</option>
+                    <option value="13070">Tafe</option>
+                    <option value="14756">Tamashii</option>
+                    <option value="56">Tata</option>
+                    <option value="13516">Tatu Marchesan</option>
+                    <option value="15304">Taukechi</option>
+                    <option value="13033">TCM</option>
+                    <option value="13493">Terex</option>
+                    <option value="13485">Thunder</option>
+                    <option value="57">Toyota</option>
+                    <option value="14545">Trail King</option>
+                    <option value="13061">Trailer</option>
+                    <option value="72">Triumph</option>
+                    <option value="13503">TVS</option>
+                    <option value="14707">Twaites</option>
+                    <option value="15765">Twinco</option>
+                    <option value="13427">Vauxhall</option>
+                    <option value="58">Vector</option>
+                    <option value="59">Venturi</option>
+                    <option value="13347">VersityXC</option>
+                    <option value="14824">Vibromax</option>
+                    <option value="15552">Victa</option>
+                    <option value="60">Volkswagen</option>
+                    <option value="61">Volvo</option>
+                    <option value="15674">Waka</option>
+                    <option value="13794">XGMA</option>
+                    <option value="13506">Xiamen</option>
+                    <option value="73">Yamaha</option>
+                    <option value="15623">Yatian</option>
+                    <option value="15669">Yuejin</option>
+                    <option value="13785">Yutong</option>
+                    <option value="15155">Znen</option>
+                    <option value="13491">Zonda</option>
+                    <option value="13062">Zontes</option>
+                    <option value="13788">Zoomlion</option>
+                    <option value="13063">ZX Auto</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="inline-field">
+                <label class=""> Model <span class="required-symbol">*</span>
+                  <select id="models" required="required" class="control-input">
+                    <option value="" selected="selected">Please Select</option>
+                    <option value="1685">1000</option>
+                    <option value="1686">4-Runner</option>
+                    <option value="13058">86</option>
+                    <option value="2571">Allex</option>
+                    <option value="1687">Allion</option>
+                    <option value="1905">Alphard</option>
+                    <option value="1688">Altezza</option>
+                    <option value="15298">Aqua</option>
+                    <option value="1689">Aristo</option>
+                    <option value="13605">Aurion</option>
+                    <option value="1690">Auris</option>
+                    <option value="1691">Avalon</option>
+                    <option value="1692">Avanza</option>
+                    <option value="1693">Avensis</option>
+                    <option value="13467">Axio</option>
+                    <option value="13192">Axion</option>
+                    <option value="1694">Aygo</option>
+                    <option value="2569">bB</option>
+                    <option value="2574">Belta</option>
+                    <option value="2566">Blade</option>
+                    <option value="1695">Blizzard</option>
+                    <option value="1696">Brevis</option>
+                    <option value="15597">C-HR</option>
+                    <option value="13542">Caetano</option>
+                    <option value="1697">Caldina</option>
+                    <option value="1945">Cami</option>
+                    <option value="1698">Camry</option>
+                    <option value="1906">Carib</option>
+                    <option value="1699">Carina</option>
+                    <option value="1700">Celica</option>
+                    <option value="1701">Celsior</option>
+                    <option value="15350">CH-R</option>
+                    <option value="1702">Chaser</option>
+                    <option value="1703">Coaster</option>
+                    <option value="1704">Condor</option>
+                    <option value="1705">Conquest</option>
+                    <option value="1706">Corolla</option>
+                    <option value="1707">Corona</option>
+                    <option value="1708">Corsa</option>
+                    <option value="1709">Cressida</option>
+                    <option value="1710">Cresta</option>
+                    <option value="1711">Crown</option>
+                    <option value="1946">Cynos</option>
+                    <option value="1712">Denso</option>
+                    <option value="1907">Duet</option>
+                    <option value="1713">Dyna</option>
+                    <option value="13360">Echo</option>
+                    <option value="1714">ES</option>
+                    <option value="2561">Estima</option>
+                    <option value="14936">Etios</option>
+                    <option value="1715">FCHV</option>
+                    <option value="2555">Fielder</option>
+                    <option value="13053">FJ CRUISER</option>
+                    <option value="13043">fjcruiser</option>
+                    <option value="1716">FK</option>
+                    <option value="1717">Fortuner</option>
+                    <option value="1908">Fun Cargo</option>
+                    <option value="1718">FXS</option>
+                    <option value="1909">Gaia</option>
+                    <option value="1947">Grand Hiace</option>
+                    <option value="1948">Granvia</option>
+                    <option value="1719">GT1</option>
+                    <option value="1910">Harrier</option>
+                    <option value="1720">HiAce</option>
+                    <option value="1721">Highlander</option>
+                    <option value="1722">Hilux</option>
+                    <option value="14542">Hino</option>
+                    <option value="1723">HMV</option>
+                    <option value="1724">Ipsum</option>
+                    <option value="13194">iQ</option>
+                    <option value="2577">ISIS</option>
+                    <option value="1911">IST</option>
+                    <option value="13466">Jobsun</option>
+                    <option value="1912">Kluger</option>
+                    <option value="1725">Land Cruiser</option>
+                    <option value="1726">Land Cruiser Prado</option>
+                    <option value="15494">LC70</option>
+                    <option value="13465">Levin</option>
+                    <option value="1727">Lexcen</option>
+                    <option value="1728">Lite-Ace</option>
+                    <option value="13464">Marino</option>
+                    <option value="1729">Mark II</option>
+                    <option value="14565">Mark II Blit</option>
+                    <option value="2554">Mark X</option>
+                    <option value="1730">Master</option>
+                    <option value="1731">Matrix</option>
+                    <option value="1733">MR-S</option>
+                    <option value="1732">MR2</option>
+                    <option value="1949">Nadia</option>
+                    <option value="1913">Noah</option>
+                    <option value="1734">Opa</option>
+                    <option value="1735">Paseo</option>
+                    <option value="2565">Passo</option>
+                    <option value="1736">Picnic</option>
+                    <option value="15769">Pixis</option>
+                    <option value="1950">Platz</option>
+                    <option value="1737">Pod</option>
+                    <option value="2573">Porte</option>
+                    <option value="1914">Premio</option>
+                    <option value="1738">Previa</option>
+                    <option value="1739">Prius</option>
+                    <option value="15774">Proace</option>
+                    <option value="1915">Probox</option>
+                    <option value="1740">Progress</option>
+                    <option value="1741">Publica</option>
+                    <option value="1742">Quantum</option>
+                    <option value="1743">Ractis</option>
+                    <option value="1916">Raum</option>
+                    <option value="1744">RAV4</option>
+                    <option value="1951">Regius Van</option>
+                    <option value="1745">Retro</option>
+                    <option value="1746">RSC</option>
+                    <option value="13193">Rumion</option>
+                    <option value="1747">Run-X</option>
+                    <option value="2567">Rush</option>
+                    <option value="1748">SA</option>
+                    <option value="15392">Sai</option>
+                    <option value="13363">Scion</option>
+                    <option value="1749">Sequoia</option>
+                    <option value="1750">Sera</option>
+                    <option value="1751">Sienna</option>
+                    <option value="2576">Sienta</option>
+                    <option value="1752">Soarer</option>
+                    <option value="1753">Solara</option>
+                    <option value="13037">Soluna</option>
+                    <option value="2556">Spacio</option>
+                    <option value="15677">Spade</option>
+                    <option value="1754">Sparky</option>
+                    <option value="1755">Sprinter</option>
+                    <option value="1756">Stallion</option>
+                    <option value="1757">Starlet</option>
+                    <option value="1917">Succeed</option>
+                    <option value="1758">Supra</option>
+                    <option value="1918">Surf</option>
+                    <option value="13809">T100</option>
+                    <option value="15493">T70</option>
+                    <option value="1759">Tacoma</option>
+                    <option value="1760">Tazz</option>
+                    <option value="1761">Tercel</option>
+                    <option value="2582">Terrier</option>
+                    <option value="1919">Townace</option>
+                    <option value="1920">Toyoace</option>
+                    <option value="1762">TRD</option>
+                    <option value="1763">Tundra</option>
+                    <option value="2568">Vanguard</option>
+                    <option value="13054">Vellfire</option>
+                    <option value="1764">Venture</option>
+                    <option value="1765">Venza</option>
+                    <option value="1766">Verossa</option>
+                    <option value="13588">Verso</option>
+                    <option value="1921">Vios</option>
+                    <option value="1952">Vista</option>
+                    <option value="1767">Vitz</option>
+                    <option value="1922">Voltz</option>
+                    <option value="1923">Voxy</option>
+                    <option value="1768">Will</option>
+                    <option value="1769">Windom</option>
+                    <option value="1924">Wish</option>
+                    <option value="1770">XYR</option>
+                    <option value="13366">Yaris</option>
+                    <option value="15616">Yaris Hatchback</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div class="inline-form">
+              <div class="inline-field">
+                <label class=""> Series
+                  <select id="series" class="control-input">
+                    <option value="" selected="selected">Please Select</option>
+                    <option value="12782">1.3</option>
+                    <option value="12783">1.3 Automatic</option>
+                    <option value="12784">1.3 CD</option>
+                    <option value="12785">1.3 G6</option>
+                    <option value="12786">1.3 GS</option>
+                    <option value="12787">1.3 Hat</option>
+                    <option value="12791">1.3 i</option>
+                    <option value="12788">1.3 LE</option>
+                    <option value="12789">1.3 Sedan</option>
+                    <option value="12790">1.3 Sportif</option>
+                    <option value="12792">1.4 D Automatic</option>
+                    <option value="12793">1.4 D-4D</option>
+                    <option value="12794">1.4 D-4D Automatic</option>
+                    <option value="12796">1.4 i</option>
+                    <option value="12795">1.4 VVTi</option>
+                    <option value="12797">1.5</option>
+                    <option value="12798">1.5 Automatic</option>
+                    <option value="12799">1.5 Break Automatic</option>
+                    <option value="12800">1.5 Coupe</option>
+                    <option value="12801">1.5 Sedan Automatic</option>
+                    <option value="13758">1.6</option>
+                    <option value="12802">1.6 Break Automatic</option>
+                    <option value="12803">1.6 CD</option>
+                    <option value="12804">1.6 G6</option>
+                    <option value="12805">1.6 G6R</option>
+                    <option value="12806">1.6 GLS</option>
+                    <option value="12807">1.6 GS</option>
+                    <option value="12812">1.6 i</option>
+                    <option value="12809">1.6 Sedan Automatic</option>
+                    <option value="12808">1.6 SR</option>
+                    <option value="12810">1.6 VVT-i</option>
+                    <option value="12811">1.6 VVTi</option>
+                    <option value="13759">1.8</option>
+                    <option value="12813">1.8 D</option>
+                    <option value="12814">1.8 Sedan Automatic</option>
+                    <option value="12817">1.8 Verso Automatic</option>
+                    <option value="12815">1.8 VVTL-i</option>
+                    <option value="12816">1.8 VVTLi</option>
+                    <option value="12818">1.9 D</option>
+                    <option value="14865">100</option>
+                    <option value="14863">110</option>
+                    <option value="10747">140i GLS</option>
+                    <option value="10748">140i GLS F-Lift</option>
+                    <option value="10749">160i</option>
+                    <option value="10750">160i GL Limited Edition</option>
+                    <option value="10751">160i GLE</option>
+                    <option value="10752">160i GLE Automatic</option>
+                    <option value="10753">160i GLE Automatic F-Lift</option>
+                    <option value="10754">160i GLS</option>
+                    <option value="10755">160i GSX F-Lift</option>
+                    <option value="10756">180i GLS</option>
+                    <option value="10757">180i GLS F-Lift</option>
+                    <option value="10758">180i GSX Automatic</option>
+                    <option value="10759">180i GSX F-Lift</option>
+                    <option value="10760">180i GSX F-Lift Automatic</option>
+                    <option value="10761">2.0 D</option>
+                    <option value="10762">2.0 D Break</option>
+                    <option value="10763">2.0 D C</option>
+                    <option value="10764">2.0 D Hatchback</option>
+                    <option value="10765">2.0 D Liftback</option>
+                    <option value="10766">2.0 D Luna</option>
+                    <option value="10767">2.0 D Sedan</option>
+                    <option value="10768">2.0 D Sol</option>
+                    <option value="10769">2.0 D Station Wagon</option>
+                    <option value="10770">2.0 D Verso</option>
+                    <option value="10771">2.0 D-4D</option>
+                    <option value="10773">2.0 d-4d exclusive</option>
+                    <option value="10772">2.0 D-4D Sol</option>
+                    <option value="10774">2.2 D Break</option>
+                    <option value="10775">2.2 D Sedan</option>
+                    <option value="10776">2.2 D Sedan Automatic</option>
+                    <option value="10777">2.5</option>
+                    <option value="13763">Allion</option>
+                    <option value="10778">Automatic</option>
+                    <option value="10779">Avante GLi Mk 5</option>
+                    <option value="10780">Break</option>
+                    <option value="10781">CE</option>
+                    <option value="10782">Corolla</option>
+                    <option value="10783">Coupe</option>
+                    <option value="10784">Coupe Automatic</option>
+                    <option value="10785">Fielder 1.8 S</option>
+                    <option value="10786">G 1.5 4WD Automatic</option>
+                    <option value="10787">G 2.2 Diesel</option>
+                    <option value="10788">G 2.2 Diesel Automatic</option>
+                    <option value="14864">G-Touring</option>
+                    <option value="10789">Hatchback</option>
+                    <option value="10790">L 4-Speed Automatic</option>
+                    <option value="12819">L 5-Speed</option>
+                    <option value="10791">LE 4-Speed Aut</option>
+                    <option value="12820">LE 4-Speed Automatic</option>
+                    <option value="10792">LE Automatic</option>
+                    <option value="10793">Liftback</option>
+                    <option value="10794">Luxel 1.8 4WD</option>
+                    <option value="10796">Luxel 1.8i</option>
+                    <option value="10797">Luxel 1.8i 4WD</option>
+                    <option value="10795">Luxel 1.8VVT-i</option>
+                    <option value="12821">Manual</option>
+                    <option value="14862">NZE</option>
+                    <option value="13762">Rumion</option>
+                    <option value="13760">S</option>
+                    <option value="12822">S 4-Speed Automatic</option>
+                    <option value="12823">S 5-Speed</option>
+                    <option value="12824">S Automatic</option>
+                    <option value="12825">S Manual</option>
+                    <option value="12826">Sedan</option>
+                    <option value="12827">Sedan Automatic</option>
+                    <option value="12828">Sprinter 140i</option>
+                    <option value="12829">Sprinter 160i</option>
+                    <option value="12830">Sprinter 180i</option>
+                    <option value="10798">Station Wagon</option>
+                    <option value="10799">Verso</option>
+                    <option value="10800">Verso 1.6</option>
+                    <option value="10801">Verso 1.6 VVT-i</option>
+                    <option value="10802">Verso 1.8 Luna</option>
+                    <option value="10803">Verso 1.8 Luna Automatic</option>
+                    <option value="10804">Verso 1.8 VVT-i</option>
+                    <option value="10805">Verso 1.8 VVT-i Automatic</option>
+                    <option value="10806">Verso 1.8 VVT-i Luna</option>
+                    <option value="10807">Verso 1.8 VVT-i Luna Automatic</option>
+                    <option value="10808">Verso 160</option>
+                    <option value="10809">Verso 160 SX</option>
+                    <option value="10810">Verso 180 TX</option>
+                    <option value="10811">Verso 2.0 D-4D</option>
+                    <option value="10812">Verso 2.2 D-4D</option>
+                    <option value="10813">Verso 2.2 D-Cat</option>
+                    <option value="10814">Verso Automatic</option>
+                    <option value="10815">X 1.3</option>
+                    <option value="10816">X 1.3 Automatic</option>
+                    <option value="10817">XLE</option>
+                    <option value="10818">XLE Automatic</option>
+                    <option value="10819">XRS</option>
+                    <option value="10820">XRS Automatic</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="inline-field">
+                <label class=""> Year <span class="required-symbol">*</span>
+                  <select id="year_of_manufacture" class="control-input">
+                    <option value="" selected="selected">Please Select</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                    <option value="2009">2009</option>
+                    <option value="2008">2008</option>
+                    <option value="2007">2007</option>
+                    <option value="2006">2006</option>
+                    <option value="2005">2005</option>
+                    <option value="2004">2004</option>
+                    <option value="2003">2003</option>
+                    <option value="2002">2002</option>
+                    <option value="2001">2001</option>
+                    <option value="2000">2000</option>
+                    <option value="1999">1999</option>
+                    <option value="1998">1998</option>
+                    <option value="1997">1997</option>
+                    <option value="1996">1996</option>
+                    <option value="1995">1995</option>
+                    <option value="1994">1994</option>
+                    <option value="1993">1993</option>
+                    <option value="1992">1992</option>
+                    <option value="1991">1991</option>
+                    <option value="1990">1990</option>
+                    <option value="1989">1989</option>
+                    <option value="1988">1988</option>
+                    <option value="1987">1987</option>
+                    <option value="1986">1986</option>
+                    <option value="1985">1985</option>
+                    <option value="1984">1984</option>
+                    <option value="1983">1983</option>
+                    <option value="1982">1982</option>
+                    <option value="1981">1981</option>
+                    <option value="1980">1980</option>
+                    <option value="1979">1979</option>
+                    <option value="1978">1978</option>
+                    <option value="1977">1977</option>
+                    <option value="1976">1976</option>
+                    <option value="1975">1975</option>
+                    <option value="1974">1974</option>
+                    <option value="1973">1973</option>
+                    <option value="1972">1972</option>
+                    <option value="1971">1971</option>
+                    <option value="1970">1970</option>
+                    <option value="1969">1969</option>
+                    <option value="1968">1968</option>
+                    <option value="1967">1967</option>
+                    <option value="1966">1966</option>
+                    <option value="1965">1965</option>
+                    <option value="1964">1964</option>
+                    <option value="1963">1963</option>
+                    <option value="1962">1962</option>
+                    <option value="1961">1961</option>
+                    <option value="1960">1960</option>
+                    <option value="1959">1959</option>
+                    <option value="1958">1958</option>
+                    <option value="1957">1957</option>
+                    <option value="1956">1956</option>
+                    <option value="1955">1955</option>
+                    <option value="1954">1954</option>
+                    <option value="1953">1953</option>
+                    <option value="1952">1952</option>
+                    <option value="1951">1951</option>
+                    <option value="1950">1950</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div class="inline-form">
+              <div class="inline-field">
+                <label class=""> Mileage <span class="required-symbol">*</span>
+                  <input id="mileage" class="control-input">
+                </label>
+              </div>
+
+              <div class="inline-field">
+                <label class=""> Body Type <span class="required-symbol">*</span>
+                  <select id="body_type_id" class="control-input">
+                    <option value="" selected="selected">Please Select</option>
+                    <option value="2">Saloons</option>
+                    <option value="3">Hatchbacks</option>
+                    <option value="4">4 Wheel Drives &amp; SUVs</option>
+                    <option value="5">Station Wagons</option>
+                    <option value="6">Pickups</option>
+                    <option value="7">Motorbikes</option>
+                    <option value="8">Convertibles</option>
+                    <option value="9">Buses, Taxis and Vans</option>
+                    <option value="10">Trucks</option>
+                    <option value="11">Machinery and Tractors</option>
+                    <option value="12">Trailers</option>
+                    <option value="13">Minis</option>
+                    <option value="15">Coupes</option>
+                    <option value="16">Quad Bikes</option>
+                    <option value="14">Other</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div class="inline-form">
+              <div class="inline-field">
+                <label class=""> Transmission Type <span class="required-symbol">*</span>
+                  <select id="transmission_type_id" class="control-input">
+                    <option value="" selected="selected">Please Select</option>
+                    <option value="1">Manual</option>
+                    <option value="2">Automatic</option>
+                    <option value="3">Other</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="inline-field">
+                <label class=""> Condition <span class="required-symbol">*</span>
+                  <select id="condition_type_id" class="control-input" required="required">
+                    <option value="" selected="selected">Please Select</option>
+                    <option value="1">Brand New</option>
+                    <option value="2">Foreign Used</option>
+                    <option value="3">Locally Used</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class=""> Price <span class="required-symbol">*</span>
+                <div class="input-addon">
+                  <b>₦</b>
+                  <input id="price" class="control-input">
+                </div>
+              </label>
+            </div>
+
+            <div class="inline-form">
+              <div class="inline-field">
+                <label class=""> Fuel Type
+                  <select id="fuel_type_id" class="control-input">
+                    <option value="" selected="selected">Please Select</option>
+                    <option value="1">Petrol</option>
+                    <option value="2">Diesel</option>
+                    <option value="3">Hybrid</option>
+                    <option value="5">Diesel-Hybrid</option>
+                    <option value="6">Electric</option>
+                    <option value="4">Other</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="inline-field">
+                <label class=""> Engine size (cc)
+                  <input id="engine_size" class="control-input">
+                </label>
+              </div>
+            </div>
+
+            <div class="inline-form">
+              <div class="inline-field">
+                <label class=""> Interior
+                  <select id="interior_type_id" class="control-input">
+                    <option value="" selected="selected">Please Select</option>
+                    <option value="1">Cloth</option>
+                    <option value="2">Leather</option>
+                    <option value="3">Other</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="inline-field">
+                <label class=""> Colour Type
+                  <select id="colour_type_id" class="control-input">
+                    <option value="" selected="selected">Please Select</option>
+                    <option value="2">White</option>
+                    <option value="3">Silver</option>
+                    <option value="11">Green</option>
+                    <option value="12">Dark Green</option>
+                    <option value="15">Blue</option>
+                    <option value="16">Dark Blue</option>
+                    <option value="14">Brown</option>
+                    <option value="17">Black</option>
+                    <option value="1">Yellow</option>
+                    <option value="4">Red</option>
+                    <option value="5">Maroon</option>
+                    <option value="6">Purple</option>
+                    <option value="7">Pink</option>
+                    <option value="8">Orange</option>
+                    <option value="9">Grey</option>
+                    <option value="10">Dark Grey</option>
+                    <option value="13">Gold</option>
+                    <option value="19">Beige</option>
+                    <option value="20">Pearl</option>
+                    <option value="18">Other</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="description" class=""> Description
+                <textarea id="description" class="control-textarea" rows="5"></textarea>
+              </label>
+            </div>
+          </div>
+
+          <div class="tabpanel">
+            <h1 class="t-center">Select your vehicle features</h1>
+            <div class="row">
+              <div class="c-lg-4">
+                <p><input type="checkbox"> <span>Air Conditioning</span> </p>
+                <p><input type="checkbox"> <span>Airbags</span> </p>
+                <p><input type="checkbox"> <span>Alloy Wheels</span> </p>
+                <p><input type="checkbox"> <span>AM/FM Radio</span> </p>
+                <p><input type="checkbox"> <span>Anti-Lock Brakes</span> </p>
+                <p><input type="checkbox"> <span>Armrests</span> </p>
+                <p><input type="checkbox"> <span>Bullbar</span> </p>
+                <p><input type="checkbox"> <span>CD Player</span> </p>
+                <p><input type="checkbox"> <span>Cup Holders</span> </p>
+                <p><input type="checkbox"> <span>Electric Mirrors</span> </p>
+              </div>
+              <div class="c-lg-4">
+                <p><input type="checkbox"> <span>Air Conditioning</span> </p>
+                <p><input type="checkbox"> <span>Airbags</span> </p>
+                <p><input type="checkbox"> <span>Alloy Wheels</span> </p>
+                <p><input type="checkbox"> <span>AM/FM Radio</span> </p>
+                <p><input type="checkbox"> <span>Anti-Lock Brakes</span> </p>
+                <p><input type="checkbox"> <span>Armrests</span> </p>
+                <p><input type="checkbox"> <span>Bullbar</span> </p>
+                <p><input type="checkbox"> <span>CD Player</span> </p>
+                <p><input type="checkbox"> <span>Cup Holders</span> </p>
+                <p><input type="checkbox"> <span>Electric Mirrors</span> </p>
+              </div>
+              <div class="c-lg-4">
+                <p><input type="checkbox"> <span>Air Conditioning</span> </p>
+                <p><input type="checkbox"> <span>Airbags</span> </p>
+                <p><input type="checkbox"> <span>Alloy Wheels</span> </p>
+                <p><input type="checkbox"> <span>AM/FM Radio</span> </p>
+                <p><input type="checkbox"> <span>Anti-Lock Brakes</span> </p>
+                <p><input type="checkbox"> <span>Armrests</span> </p>
+                <p><input type="checkbox"> <span>Bullbar</span> </p>
+                <p><input type="checkbox"> <span>CD Player</span> </p>
+                <p><input type="checkbox"> <span>Cup Holders</span> </p>
+                <p><input type="checkbox"> <span>Electric Mirrors</span> </p>
+              </div>
+            </div>
+
+            <h1 class="t-center">Upload Photo(s)</h1>
+            <div class="field">
+              <label class=""> Upload Photo(s)
+                <input type="file" name="" id="" class="control-select">
+              </label>
+            </div>
+          </div>
+
+          <div class="tabpanel">
+            <h1 class="t-center">Your details</h1>
+            <div class="inline-form">
+              <div class="inline-field">
+                <label class=""> Your name <span class="required-symbol">*</span>
+                  <input id="" class="control-input">
+                </label>
+              </div>
+
+              <div class="inline-field">
+                <label class=""> Your email <span class="required-symbol">*</span>
+                  <input id="" class="control-input">
+                </label>
+              </div>
+            </div>
+            <div class="inline-form">
+              <div class="inline-field">
+                <label class=""> Country Code<span class="required-symbol">*</span>
+                  <select class="control-input" name="" id="" required="required">
+                    <option value="">Please Select</option>
+                    <option value="+93">Afghanistan (+93)</option>
+                    <option value="+355">Albania (+355)</option>
+                    <option value="+213">Algeria (+213)</option>
+                    <option value="+376">Andorra (+376)</option>
+                    <option value="+244">Angola (+244)</option>
+                    <option value="+1264">Anguilla (+1264)</option>
+                    <option value="+54">Argentina (+54)</option>
+                    <option value="+374">Armenia (+374)</option>
+                    <option value="+297">Aruba (+297)</option>
+                    <option value="+61">Australia (+61)</option>
+                    <option value="+43">Austria (+43)</option>
+                    <option value="+994">Azerbaijan (+994)</option>
+                    <option value="+973">Bahrain (+973)</option>
+                    <option value="+973">Bangladesh (+880)</option>
+                    <option value="+1246">Barbados (+1246)</option>
+                    <option value="+375">Belarus (+375)</option>
+                    <option value="+32">Belgium (+32)</option>
+                    <option value="+501">Belize (+501)</option>
+                    <option value="+229">Benin (+229)</option>
+                    <option value="+1441">Bermuda (+1441)</option>
+                    <option value="+975">Bhutan (+975)</option>
+                    <option value="+591">Bolivia (+591)</option>
+                    <option value="+267">Botswana (+267)</option>
+                    <option value="+55">Brazil (+55)</option>
+                    <option value="+359">Bulgaria (+359)</option>
+                    <option value="+226">Burkina Faso (+226)</option>
+                    <option value="+257">Burundi (+257)</option>
+                    <option value="+855">Cambodia (+855)</option>
+                    <option value="+237">Cameroon (+237)</option>
+                    <option value="+1">Canada (+1)</option>
+                    <option value="+238">Cape Verde (+238)</option>
+                    <option value="+1345">Cayman Islands (+1345)</option>
+                    <option value="+236">Central African Republic (+236)</option>
+                    <option value="+235">Chad (+235)</option>
+                    <option value="+56">Chile (+56)</option>
+                    <option value="+86">China (+86)</option>
+                    <option value="+57">Colombia (+57)</option>
+                    <option value="+269">Comoros (+269)</option>
+                    <option value="+242">Congo (+242)</option>
+                    <option value="+682">Cook Islands (+682)</option>
+                    <option value="+506">Costa Rica (+506)</option>
+                    <option value="+385">Croatia (+385)</option>
+                    <option value="+53">Cuba (+53)</option>
+                    <option value="+5999">Curaçao (+5999)</option>
+                    <option value="+357">Cyprus (+357)</option>
+                    <option value="+420">Czech Republic (+420)</option>
+                    <option value="+45">Denmark (+45)</option>
+                    <option value="+253">Djibouti (+253)</option>
+                    <option value="+1767">Dominica (+1767)</option>
+                    <option value="+1">Dominican Republic (+1)</option>
+                    <option value="+593">Ecuador (+593)</option>
+                    <option value="+20">Egypt (+20)</option>
+                    <option value="+503">El Salvador (+503)</option>
+                    <option value="+240">Equatorial Guinea (+240)</option>
+                    <option value="+372">Estonia (+372)</option>
+                    <option value="+251">Ethiopia (+251)</option>
+                    <option value="+500">Falkland Islands (+500)</option>
+                    <option value="+298">Faroe Islands (+298)</option>
+                    <option value="+679">Fiji (+679)</option>
+                    <option value="+358">Finland (+358)</option>
+                    <option value="+33">France (+33)</option>
+                    <option value="+594">French Guiana (+594)</option>
+                    <option value="+689">French Polynesia (+689)</option>
+                    <option value="+241">Gabon (+241)</option>
+                    <option value="+220">Gambia (+220)</option>
+                    <option value="+995">Georgia (+995)</option>
+                    <option value="+49">Germany (+49)</option>
+                    <option value="+233">Ghana (+233)</option>
+                    <option value="+350">Gibraltar (+350)</option>
+                    <option value="+30">Greece (+30)</option>
+                    <option value="+299">Greenland (+299)</option>
+                    <option value="+1473">Grenada (+1473)</option>
+                    <option value="+590">Guadeloupe (+590)</option>
+                    <option value="+1671">Guam (+1671)</option>
+                    <option value="+502">Guatemala (+502)</option>
+                    <option value="+44">Guernsey (+44)</option>
+                    <option value="+224">Guinea (+224)</option>
+                    <option value="+592">Guyana (+592)</option>
+                    <option value="+509">Haiti (+509)</option>
+                    <option value="+504">Honduras (+504)</option>
+                    <option value="+36">Hungary (+36)</option>
+                    <option value="+354">Iceland (+354)</option>
+                    <option value="+91">India (+91)</option>
+                    <option value="+62">Indonesia (+62)</option>
+                    <option value="+98">Iran (+98)</option>
+                    <option value="+964">Iraq (+964)</option>
+                    <option value="+353">Ireland (+353)</option>
+                    <option value="+44">Isle of Man (+44)</option>
+                    <option value="+972">Israel (+972)</option>
+                    <option value="+39">Italy (+39)</option>
+                    <option value="+1876">Jamaica (+1876)</option>
+                    <option value="+81">Japan (+81)</option>
+                    <option value="+44">Jersey (+44)</option>
+                    <option value="+962">Jordan (+962)</option>
+                    <option value="+7">Kazakhstan (+7)</option>
+                    <option value="+254">Kenya (+254)</option>
+                    <option value="+965">Kuwait (+965)</option>
+                    <option value="+996">Kyrgyzstan (+996)</option>
+                    <option value="+371">Latvia (+371)</option>
+                    <option value="+961">Lebanon (+961)</option>
+                    <option value="+266">Lesotho (+266)</option>
+                    <option value="+231">Liberia (+231)</option>
+                    <option value="+218">Libya (+218)</option>
+                    <option value="+423">Liechtenstein (+423)</option>
+                    <option value="+370">Lithuania (+370)</option>
+                    <option value="+352">Luxembourg (+352)</option>
+                    <option value="+853">Macau (+853)</option>
+                    <option value="+389">Macedonia (+389)</option>
+                    <option value="+261">Madagascar (+261)</option>
+                    <option value="+265">Malawi (+265)</option>
+                    <option value="+60">Malaysia (+60)</option>
+                    <option value="+960">Maldives (+960)</option>
+                    <option value="+223">Mali (+223)</option>
+                    <option value="+356">Malta (+356)</option>
+                    <option value="+596">Martinique (+596)</option>
+                    <option value="+222">Mauritania (+222)</option>
+                    <option value="+230">Mauritius (+230)</option>
+                    <option value="+52">Mexico (+52)</option>
+                    <option value="+373">Moldova (+373)</option>
+                    <option value="+976">Mongolia (+976)</option>
+                    <option value="+382">Montenegro (+382)</option>
+                    <option value="+1664">Montserrat (+1664)</option>
+                    <option value="+212">Morocco (+212)</option>
+                    <option value="+258">Mozambique (+258)</option>
+                    <option value="+95">Myanmar (+95)</option>
+                    <option value="+264">Namibia (+264)</option>
+                    <option value="+674">Nauru (+674)</option>
+                    <option value="+977">Nepal (+977)</option>
+                    <option value="+687">New Caledonia (+687)</option>
+                    <option value="+64">New Zealand (+64)</option>
+                    <option value="+505">Nicaragua (+505)</option>
+                    <option value="+227">Niger (+227)</option>
+                    <option value="+234" selected="selected">Nigeria (+234)</option>
+                    <option value="+47">Norway (+47)</option>
+                    <option value="+968">Oman (+968)</option>
+                    <option value="+92">Pakistan (+92)</option>
+                    <option value="+507">Panama (+507)</option>
+                    <option value="+675">Papua New Guinea (+675)</option>
+                    <option value="+595">Paraguay (+595)</option>
+                    <option value="+51">Peru (+51)</option>
+                    <option value="+63">Philippines (+63)</option>
+                    <option value="+48">Poland (+48)</option>
+                    <option value="+351">Portugal (+351)</option>
+                    <option value="+1">Puerto Rico (+1)</option>
+                    <option value="+974">Qatar (+974)</option>
+                    <option value="+262">Réunion (+262)</option>
+                    <option value="+40">Romania (+40)</option>
+                    <option value="+250">Rwanda (+250)</option>
+                    <option value="+378">San Marino (+378)</option>
+                    <option value="+966">Saudi Arabia (+966)</option>
+                    <option value="+221">Senegal (+221)</option>
+                    <option value="+381">Serbia (+381)</option>
+                    <option value="+248">Seychelles (+248)</option>
+                    <option value="+232">Sierra Leone (+232)</option>
+                    <option value="+65">Singapore (+65)</option>
+                    <option value="+421">Slovakia (+421)</option>
+                    <option value="+386">Slovenia (+386)</option>
+                    <option value="+677">Solomon Islands (+677)</option>
+                    <option value="+252">Somalia (+252)</option>
+                    <option value="+27">South Africa (+27)</option>
+                    <option value="+34">Spain (+34)</option>
+                    <option value="+94">Sri Lanka (+94)</option>
+                    <option value="+249">Sudan (+249)</option>
+                    <option value="+597">Suriname (+597)</option>
+                    <option value="+268">Swaziland (+268)</option>
+                    <option value="+46">Sweden (+46)</option>
+                    <option value="+41">Switzerland (+41)</option>
+                    <option value="+963">Syria (+963)</option>
+                    <option value="+886">Taiwan (+886)</option>
+                    <option value="+992">Tajikistan (+992)</option>
+                    <option value="+255">Tanzania (+255)</option>
+                    <option value="+66">Thailand (+66)</option>
+                    <option value="+228">Togo (+228)</option>
+                    <option value="+1868">Trinidad and Tobago (+1868)</option>
+                    <option value="+216">Tunisia (+216)</option>
+                    <option value="+90">Turkey (+90)</option>
+                    <option value="+993">Turkmenistan (+993)</option>
+                    <option value="+1649">Turks and Caicos Islands (+1649)</option>
+                    <option value="+256">Uganda (+256)</option>
+                    <option value="+380">Ukraine (+380)</option>
+                    <option value="+971">United Arab Emirates (+971)</option>
+                    <option value="+44">United Kingdom (+44)</option>
+                    <option value="+1">United States (+1)</option>
+                    <option value="+598">Uruguay (+598)</option>
+                    <option value="+998">Uzbekistan (+998)</option>
+                    <option value="+678">Vanuatu (+678)</option>
+                    <option value="+58">Venezuela (+58)</option>
+                    <option value="+84">Vietnam (+84)</option>
+                    <option value="+967">Yemen (+967)</option>
+                    <option value="+260">Zambia (+260)</option>
+                    <option value="+263">Zimbabwe (+263)</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="inline-field">
+                <label class=""> Phone Number <span class="required-symbol">*</span>
+                  <input id="" type="text" class="control-input">
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="left-right p-t-15">
+            <button id="create-ads-prev" onclick="nextPrev(-1)" class="btn btn-danger">Previous</button>
+            <button id="create-ads-next" onclick="nextPrev(1)" class="btn btn-leaf">Next</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <p> © 2019 Andela-AutoMart</p>
+  </footer>
+  <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+  <script src="./js/script.js"></script>
+</body>
