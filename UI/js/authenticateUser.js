@@ -36,6 +36,13 @@ function authenticateUser(userData, endpoint) {
           document.querySelector('.show-error').style.display = 'none';
         }, 2000);
       }
+    })
+    .catch((err) => {
+      document.querySelector('.show-error').style.display = 'block';
+      document.querySelector('#error-text').innerText = err;
+      setTimeout(() => {
+        document.querySelector('.show-error').style.display = 'none';
+      }, 2000);
     });
 }
 

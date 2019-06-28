@@ -31,9 +31,12 @@
         <li><a href="./create-ads.html" class="btn btn-leaf">Sell a car</a></li>
         <li class="dropdown">
 
-          <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">Paulot <svg class="lnr lnr-chevron-down">
+          <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">
+            <span id="username">Paulot</span>
+            <svg class="lnr lnr-chevron-down">
               <use xlink:href="#lnr-chevron-down"></use>
-            </svg></button>
+            </svg>
+          </button>
           <div id="myDropdown" class="dropdown-content">
             <a href="#"><svg class="lnr lnr-user">
                 <use xlink:href="#lnr-user"></use>
@@ -44,12 +47,12 @@
             <a href="#"><svg class="lnr lnr-phone">
                 <use xlink:href="#lnr-phone"></use>
               </svg> Contact Us</a>
-           <a href="index.html"><svg class="lnr lnr-power-switch">
+            <a href="index.html"><svg class="lnr lnr-power-switch">
                 <use xlink:href="#lnr-power-switch"></use>
               </svg></i> Logout</a>
           </div>
         </li>
-        <li><a class="t-white" href="./vehicles.html">Log Out</a></li>
+        <li id="logout"><a class="t-white" href="./vehicles.html">Log Out</a></li>
       </ul>
     </nav>
   </header>
@@ -253,4 +256,5 @@
   </footer>
   <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
   <script src="./js/script.js"></script>
+  <script src="./js/userDashbord.js"></script>
 </body>
