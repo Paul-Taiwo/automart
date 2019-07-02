@@ -1,8 +1,10 @@
-node_modules
+node_modules/
+.nyc_output
 .env
+build/
 package-lock.json
-.nyc_output/
-build
+.eslintignore
+coverage
 package-lock.json
 docs/package.json
 docs/README.md
