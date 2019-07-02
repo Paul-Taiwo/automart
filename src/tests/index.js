@@ -51,15 +51,27 @@ describe('Test API v1 Endpoint', () => {
     chai
       .request(app)
       .get('/api/v1/docs')
-      .set({
-        'Content-Type': 'multipart/form-data',
-        Accept: 'application/json',
-      })
       .end((err, res) => {
         expect(res.type).to.be.a('string');
         expect(res.statusCode).to.equal(200);
         expect(res.ok).to.equal(true);
         assert.strictEqual(res.type, 'text/html', 'Expect response to be a string');
+        assert.strictEqual(res.statusCode, 200, 'Status code should be 200');
+        assert.strictEqual(res.ok, true, 'Status message should be OK');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('should return the API doc json file', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/docs/swagger.json')
+      .end((err, res) => {
+        expect(res.type).to.be.equal('application/json');
+        expect(res.statusCode).to.equal(200);
+        expect(res.ok).to.equal(true);
+        assert.strictEqual(res.type, 'application/json', 'Expect response to be a string');
         assert.strictEqual(res.statusCode, 200, 'Status code should be 200');
         assert.strictEqual(res.ok, true, 'Status message should be OK');
         assert.isNull(err, 'Expect error to not exist');
