@@ -1169,7 +1169,7 @@ describe('Test for car AD endpoint', () => {
       .request(app)
       .get('/api/v1/car')
       .query({
-        owner: '1132675478',
+        owner: '1132675496',
       })
       .set({
         'Content-type': 'application/x-www-form-urlencoded',
