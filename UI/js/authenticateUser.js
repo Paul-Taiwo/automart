@@ -37,6 +37,7 @@ function authenticateUser(userData, endpoint) {
           document.querySelector('.show-error').style.display = 'none';
         }, 2000);
       }
+<<<<<<< HEAD
     })
     .catch((err) => {
       document.querySelector('.show-error').style.display = 'block';
@@ -44,6 +45,8 @@ function authenticateUser(userData, endpoint) {
       setTimeout(() => {
         document.querySelector('.show-error').style.display = 'none';
       }, 2000);
+=======
+>>>>>>> a16ba9cdf5fb162bccf366a2f38e4fe5f85d1533
     });
 }
 
