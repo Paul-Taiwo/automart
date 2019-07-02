@@ -303,4 +303,56 @@ describe('Test for update order price', () => {
         done();
       });
   });
+
+  it('Should return all orders of a specific owner', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/order')
+      .query({
+        owner: '1132675496',
+      })
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: token,
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.an('array');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.isArray(res.body.data, 'Data is not array');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
+
+  it('Should return a message if record is not found', (done) => {
+    chai
+      .request(app)
+      .get('/api/v1/order')
+      .query({
+        owner: '1132675499',
+      })
+      .set({
+        'Content-type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+        Authorization: token,
+      })
+      .end((err, res) => {
+        expect(res.statusCode).to.equal(200);
+        expect(res.body).to.be.an('object');
+        expect(res.body.data).to.be.equal('No record found');
+        expect(res.body.data).to.be.a('string');
+        assert.isObject(res.body, 'Response is not an object');
+        assert.strictEqual(res.statusCode, 200, 'Status code is not 200');
+        assert.isString(res.body.data, 'Data is not a string');
+        assert.strictEqual(res.body.data,
+          'No record found',
+          'Data is not equal to No record found');
+        assert.isNull(err, 'Expect error to not exist');
+        done();
+      });
+  });
 });
