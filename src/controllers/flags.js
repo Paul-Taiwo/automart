@@ -36,7 +36,7 @@ class Flag {
         },
       });
     } catch (err) {
-      error(err.stack);
+      // swallow error
     }
 
     return res.status(500).json({
