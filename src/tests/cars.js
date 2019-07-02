@@ -1216,7 +1216,6 @@ describe('Test for car AD endpoint', () => {
       });
   });
 
-
   it('Should return all cars if user is an Admin', (done) => {
     chai
       .request(app)

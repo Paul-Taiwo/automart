@@ -177,14 +177,14 @@
               <thead>
                 <tr>
                   <th class="num">ID</th>
-                  <th class="width-35">Name</th>
-                  <th class="width-15">Price</th>
-                  <th class="width-15">Price Offered</th>
+                  <th class="width-20">Status</th>
+                  <th class="width-20">Price</th>
+                  <th class="width-20">Price Offered</th>
                   <th>Action</th>
                 </tr>
               </thead>
 
-              <tbody>
+              <tbody id="all-orders">
 
                 <tr class="spinner-row">
                   <td colspan="5">
@@ -226,12 +226,12 @@
           <form method="POST" action="">
             <div class="field">
               <label class=""> Old Price <span class="required-symbol">*</span>
-                <input class="control-input" required="" name="old-price" type="text" value="">
+                <input class="control-input" required name="old-price" type="text" value="">
               </label>
             </div>
             <div class="field">
               <label class=""> New Price <span class="required-symbol">*</span>
-                <input class="control-input" required="" name="new-price" type="tel" value="">
+                <input class="control-input" required name="new-price" type="tel" value="">
               </label>
             </div>
 
@@ -252,12 +252,12 @@
           <form method="POST" action="">
             <div class="field">
               <label class="">Vehicle Price
-                <input class="control-input" required="" name="old-price" type="text" value="5,200,300" disabled>
+                <input class="control-input" required name="old-price" type="text" value="5,200,300" disabled>
               </label>
             </div>
             <div class="field">
               <label class="">Price Offered<span class="required-symbol">*</span>
-                <input class="control-input" required="" name="new-price" type="tel" value="">
+                <input class="control-input" required name="new-price" type="tel" value="">
               </label>
             </div>
 
@@ -274,7 +274,8 @@
   <footer class="footer">
     <p> © 2019 Andela-AutoMart</p>
   </footer>
-  <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+
+  <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js" type="text/javascript"></script>
   <script src="./js/script.js"></script>
   <script src="./js/userDashboard.js"></script>
 </body>

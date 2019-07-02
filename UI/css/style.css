@@ -57,6 +57,9 @@ a {
   font-size: 1.15em;
 }
 
+.f-l-cap {
+  text-transform: capitalize;
+}
 /* Spinner */
 .spinner {
   margin: 0 auto;
@@ -65,8 +68,8 @@ a {
 }
 
 .spinner>div {
-  width: 18px;
-  height: 18px;
+  width: 10px;
+  height: 10px;
   background-color: #333;
 
   border-radius: 100%;
@@ -1153,8 +1156,8 @@ th.width-15 {
   width: 15%;
 }
 
-th.width-35 {
-  width: 35%;
+th.width-20 {
+  width: 20%;
 }
 
 .del-record {

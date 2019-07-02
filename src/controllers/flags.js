@@ -1,4 +1,4 @@
-import { error } from 'fancy-log';
+
 import DB from '../database/dbconnection';
 import 'regenerator-runtime';
 
@@ -36,7 +36,7 @@ class Flag {
         },
       });
     } catch (err) {
-      error(err.stack);
+      // swallow error
     }
 
     return res.status(500).json({
