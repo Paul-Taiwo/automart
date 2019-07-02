@@ -2,10 +2,11 @@
 
 function authenticateUser(userData, endpoint) {
   const url = `https://automart1.herokuapp.com/api/v1/${endpoint}`;
+  const devUrl = `http://localhost:8080/api/v1/${endpoint}`;
   const defaultRole = 'user';
   let defaulPage = './dashboard.html';
 
-  fetch(url, {
+  fetch(devUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -36,7 +37,6 @@ function authenticateUser(userData, endpoint) {
           document.querySelector('.show-error').style.display = 'none';
         }, 2000);
       }
-<<<<<<< HEAD
     })
     .catch((err) => {
       document.querySelector('.show-error').style.display = 'block';
@@ -44,8 +44,6 @@ function authenticateUser(userData, endpoint) {
       setTimeout(() => {
         document.querySelector('.show-error').style.display = 'none';
       }, 2000);
-=======
->>>>>>> feature(sign-up): user can sign up
     });
 }
 
@@ -64,10 +62,6 @@ document.querySelector('#signupForm').addEventListener('submit', (e) => {
 
   authenticateUser(userData, endpoint);
 });
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> feature(sign-in): user can sign in
 
 document.querySelector('#loginForm').addEventListener('submit', (e) => {
   e.preventDefault();
@@ -79,8 +73,3 @@ document.querySelector('#loginForm').addEventListener('submit', (e) => {
 
   authenticateUser(userData, endpoint);
 });
-<<<<<<< HEAD
-=======
->>>>>>> feature(sign-up): user can sign up
-=======
->>>>>>> feature(sign-in): user can sign in

@@ -53,7 +53,7 @@
               </svg></i> Logout</a>
           </div>
         </li>
-        <li class="logout"><a class=" t-white">Log Out</a></li>
+        <li id="logOut" class="logout"><a class=" t-white">Log Out</a></li>
       </ul>
     </nav>
   </header>
@@ -117,8 +117,17 @@
                 </tr>
               </thead>
 
-              <tbody>
-
+              <tbody id="allAds">
+                <tr class="spinner-row">
+                  <td colspan="5">
+                    <div class="spinner">
+                      <div class="bounce1"></div>
+                      <div class="bounce2"></div>
+                      <div class="bounce3"></div>
+                    </div>
+                  </td>
+                </tr>
+<!--
                 <tr>
                   <td>100234</td>
                   <td>
@@ -148,7 +157,7 @@
                     <button class="btn btn-info b-t-r-0 b-b-r-0 btn-disabled">Edit Price</button>
                     <button class="btn btn-leaf b-t-l-0 b-b-l-0 btn-disabled">Sold</button>
                   </td>
-                </tr>
+                </tr> -->
 
               </tbody>
 
@@ -158,7 +167,7 @@
       </div>
     </div>
 
-    <h2>All Purchsed Order</h2>
+    <h2>All Purchased Order</h2>
     <div class="row">
       <div class="c-md-12 m-b-30">
         <div class="card">
@@ -177,7 +186,17 @@
 
               <tbody>
 
-                <tr>
+                <tr class="spinner-row">
+                  <td colspan="5">
+                    <div class="spinner">
+                      <div class="bounce1"></div>
+                      <div class="bounce2"></div>
+                      <div class="bounce3"></div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- <tr>
                   <td>100234</td>
                   <td>2010 Blue Toyota Highlander</td>
                   <td>
@@ -189,7 +208,7 @@
                   <td class="t-center del-record">
                     <button class="btn btn-info" onclick="reviewPrice()">Review Price</button>
                   </td>
-                </tr>
+                </tr> -->
 
               </tbody>
 
