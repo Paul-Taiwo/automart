@@ -1,4 +1,4 @@
-import { error } from 'fancy-log';
+
 import DB from '../database/dbconnection';
 import 'regenerator-runtime';
 
