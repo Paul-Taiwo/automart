@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Dancing+Script:700|Poppins" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
   <title>Auto Mart | No 1 Market Place for automobiles</title>
+  <script src="./js/utils.js"></script>
 </head>
 
 <body>
@@ -31,9 +32,12 @@
         <li><a href="./create-ads.html" class="btn btn-leaf">Sell a car</a></li>
         <li class="dropdown">
 
-          <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">Paulot <svg class="lnr lnr-chevron-down">
+          <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">
+            <span id="username">Paulot</span>
+            <svg class="lnr lnr-chevron-down">
               <use xlink:href="#lnr-chevron-down"></use>
-            </svg></button>
+            </svg>
+          </button>
           <div id="myDropdown" class="dropdown-content">
             <a href="#"><svg class="lnr lnr-user">
                 <use xlink:href="#lnr-user"></use>
@@ -44,12 +48,12 @@
             <a href="#"><svg class="lnr lnr-phone">
                 <use xlink:href="#lnr-phone"></use>
               </svg> Contact Us</a>
-           <a href="index.html"><svg class="lnr lnr-power-switch">
+            <a href="index.html" class="logout"><svg class="lnr lnr-power-switch">
                 <use xlink:href="#lnr-power-switch"></use>
               </svg></i> Logout</a>
           </div>
         </li>
-        <li><a class="t-white" href="./vehicles.html">Log Out</a></li>
+        <li id="logOut" class="logout"><a class=" t-white">Log Out</a></li>
       </ul>
     </nav>
   </header>
@@ -113,8 +117,17 @@
                 </tr>
               </thead>
 
-              <tbody>
-
+              <tbody id="allAds">
+                <tr class="spinner-row">
+                  <td colspan="5">
+                    <div class="spinner">
+                      <div class="bounce1"></div>
+                      <div class="bounce2"></div>
+                      <div class="bounce3"></div>
+                    </div>
+                  </td>
+                </tr>
+<!--
                 <tr>
                   <td>100234</td>
                   <td>
@@ -144,7 +157,7 @@
                     <button class="btn btn-info b-t-r-0 b-b-r-0 btn-disabled">Edit Price</button>
                     <button class="btn btn-leaf b-t-l-0 b-b-l-0 btn-disabled">Sold</button>
                   </td>
-                </tr>
+                </tr> -->
 
               </tbody>
 
@@ -154,7 +167,7 @@
       </div>
     </div>
 
-    <h2>All Purchsed Order</h2>
+    <h2>All Purchased Order</h2>
     <div class="row">
       <div class="c-md-12 m-b-30">
         <div class="card">
@@ -173,7 +186,17 @@
 
               <tbody>
 
-                <tr>
+                <tr class="spinner-row">
+                  <td colspan="5">
+                    <div class="spinner">
+                      <div class="bounce1"></div>
+                      <div class="bounce2"></div>
+                      <div class="bounce3"></div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- <tr>
                   <td>100234</td>
                   <td>2010 Blue Toyota Highlander</td>
                   <td>
@@ -185,7 +208,7 @@
                   <td class="t-center del-record">
                     <button class="btn btn-info" onclick="reviewPrice()">Review Price</button>
                   </td>
-                </tr>
+                </tr> -->
 
               </tbody>
 
@@ -253,4 +276,5 @@
   </footer>
   <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
   <script src="./js/script.js"></script>
+  <script src="./js/userDashboard.js"></script>
 </body>

@@ -2,10 +2,11 @@
 
 function authenticateUser(userData, endpoint) {
   const url = `https://automart1.herokuapp.com/api/v1/${endpoint}`;
+  const devUrl = `http://localhost:8080/api/v1/${endpoint}`;
   const defaultRole = 'user';
   let defaulPage = './dashboard.html';
 
-  fetch(url, {
+  fetch(devUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -36,6 +37,16 @@ function authenticateUser(userData, endpoint) {
           document.querySelector('.show-error').style.display = 'none';
         }, 2000);
       }
+<<<<<<< HEAD
+    })
+    .catch((err) => {
+      document.querySelector('.show-error').style.display = 'block';
+      document.querySelector('#error-text').innerText = err;
+      setTimeout(() => {
+        document.querySelector('.show-error').style.display = 'none';
+      }, 2000);
+=======
+>>>>>>> a16ba9cdf5fb162bccf366a2f38e4fe5f85d1533
     });
 }
 
