@@ -8,6 +8,14 @@
 const isDashboard = window.location.href.includes('dashboard.html');
 const token = localStorage.getItem('token');
 
+const redirect = () => {
+  document.querySelector('.message').style.display = 'block';
+  document.querySelector('.message h2').textContent = 'Not Authorized. Redirecting You to Homepage';
+  setTimeout(() => {
+    window.location.href = './index.html';
+  }, 2000);
+};
+
 const convertDate = (date) => {
   const dateObj = new Date(date);
   const formattedDate = new Intl.DateTimeFormat('en-GB').format(dateObj);
@@ -19,6 +27,12 @@ const formatPrice = price => new Intl.NumberFormat('en-NG', {
   style: 'currency',
   currency: 'NGN',
 }).format(price);
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (token === null) {
+    redirect();
+  }
+});
 
 const renderAds = (cars) => {
   const {
@@ -40,7 +54,7 @@ const renderAds = (cars) => {
   <button class="btn btn-leaf b-t-l-0 b-b-l-0">Sold</button>
   </td>`;
 
-  return tableBody.appendChild(row);
+  return document.querySelector('#allAds').appendChild(row);
 };
 
 const renderOrders = (order) => {
@@ -66,11 +80,11 @@ const renderOrders = (order) => {
 
 const getUserAds = (userId) => {
   const tableBody = document.querySelector('#allAds');
-  const url = `https://automart1.herokuapp.com/api/v1/car?owner=${userId}`;
-  // const devUrl = `http://localhost:8080/api/v1/car?owner=${userId}`;
+  // const url = `https://automart1.herokuapp.com/api/v1/car?owner=${userId}`;
+  const devUrl = 'http://localhost:8080/api/v1/car?owner=1132675470';
   const tableRow = document.createElement('tr');
 
-  fetch(url, {
+  fetch(devUrl, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -79,16 +93,20 @@ const getUserAds = (userId) => {
     .then(response => response.json())
     .then((res) => {
       if (res.data === 'No record found') {
+        document.querySelector('#total-ads').textContent = '0';
         document.querySelector('.spinner-row').style.display = 'none';
         tableRow.innerHTML = '<td class="t-center" colspan="5">No record found</td>';
+
         return tableBody.appendChild(tableRow);
       }
       document.querySelector('.spinner-row').style.display = 'none';
       const result = res.data;
+      document.querySelector('#total-ads').textContent = `(${result.length})`;
 
       return result.map(ad => renderAds(ad));
     })
     .catch((err) => {
+      console.log(err);
       document.querySelector('.spinner-row').style.display = 'none';
       tableRow.innerHTML = '<td class="t-center" colspan="5">An error occured. Try reloading the page</td>';
       return tableBody.appendChild(tableRow);
@@ -98,9 +116,10 @@ const getUserAds = (userId) => {
 const getUserOrders = (userId) => {
   const tableBody = document.querySelector('#all-orders');
   const tableRow = document.createElement('tr');
-  const url = `https://automart1.herokuapp.com/api/v1/order?owner=${userId}`;
+  // const url = `https://automart1.herokuapp.com/api/v1/order?owner=${userId}`;
+  const devUrl = `http://localhost:8080/api/v1/order?owner=${userId}`;
 
-  fetch(url, {
+  fetch(devUrl, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -111,6 +130,7 @@ const getUserOrders = (userId) => {
       if (res.data === 'No record found') {
         document.querySelector('#all-orders .spinner-row').style.display = 'none';
         tableRow.innerHTML = '<td class="t-center" colspan="5">No record found</td>';
+
         return tableBody.appendChild(tableRow);
       }
       document.querySelector('#all-orders .spinner-row').style.display = 'none';
