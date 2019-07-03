@@ -1,3 +1,4 @@
+// @codeCoverageIgnoreStart
 import { config } from 'dotenv';
 
 config();
@@ -19,3 +20,4 @@ switch (process.env.NODE_ENV) {
 }
 
 export default DBconfig;
+// @codeCoverageIgnoreEnd
