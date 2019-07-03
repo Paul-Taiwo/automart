@@ -80,11 +80,11 @@ const renderOrders = (order) => {
 
 const getUserAds = (userId) => {
   const tableBody = document.querySelector('#allAds');
-  // const url = `https://automart1.herokuapp.com/api/v1/car?owner=${userId}`;
-  const devUrl = 'http://localhost:8080/api/v1/car?owner=1132675470';
+  const url = `https://automart1.herokuapp.com/api/v1/car?owner=${userId}`;
+  // const devUrl = `http://localhost:8080/api/v1/car?owner=${userId}`;
   const tableRow = document.createElement('tr');
 
-  fetch(devUrl, {
+  fetch(url, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -106,7 +106,6 @@ const getUserAds = (userId) => {
       return result.map(ad => renderAds(ad));
     })
     .catch((err) => {
-      console.log(err);
       document.querySelector('.spinner-row').style.display = 'none';
       tableRow.innerHTML = '<td class="t-center" colspan="5">An error occured. Try reloading the page</td>';
       return tableBody.appendChild(tableRow);
@@ -116,10 +115,10 @@ const getUserAds = (userId) => {
 const getUserOrders = (userId) => {
   const tableBody = document.querySelector('#all-orders');
   const tableRow = document.createElement('tr');
-  // const url = `https://automart1.herokuapp.com/api/v1/order?owner=${userId}`;
-  const devUrl = `http://localhost:8080/api/v1/order?owner=${userId}`;
+  const url = `https://automart1.herokuapp.com/api/v1/order?owner=${userId}`;
+  // const devUrl = `http://localhost:8080/api/v1/order?owner=${userId}`;
 
-  fetch(devUrl, {
+  fetch(url, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
