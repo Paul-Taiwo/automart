@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=Dancing+Script:700|Poppins" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css">
-  <title>Auto Mart | No 1 Market Place for automobiles</title>
+  <title>Auto Mart - All car ADs</title>
 </head>
 
 <body>
@@ -21,8 +21,7 @@
     <nav class="navbar">
       <ul class="nav-list">
         <button type="button" id="hideMenu" onclick="closeSideMenu()"" class=" btn close-btn">
-          <svg
-            class="lnr lnr-cross">
+          <svg class="lnr lnr-cross">
             <use xlink:href="#lnr-cross"></use>
           </svg></button>
 
@@ -30,11 +29,13 @@
         <li><a class="t-white" href="./vehicles.html">See Cars</a></li>
         <li><a href="./create-ads.html" class="btn btn-leaf">Sell a car</a></li>
         <li class="dropdown">
-          
-          <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">Paulot <svg
-              class="lnr lnr-chevron-down">
+
+          <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">
+            <span id="username">Paulot</span>
+            <svg class="lnr lnr-chevron-down">
               <use xlink:href="#lnr-chevron-down"></use>
-            </svg></button>
+            </svg>
+          </button>
           <div id="myDropdown" class="dropdown-content">
             <a href="#"><svg class="lnr lnr-user">
                 <use xlink:href="#lnr-user"></use>
@@ -45,15 +46,16 @@
             <a href="#"><svg class="lnr lnr-phone">
                 <use xlink:href="#lnr-phone"></use>
               </svg> Contact Us</a>
-           <a href="index.html"><svg class="lnr lnr-power-switch">
+            <a href="index.html" class="logout"><svg class="lnr lnr-power-switch">
                 <use xlink:href="#lnr-power-switch"></use>
               </svg></i> Logout</a>
           </div>
         </li>
-        <li><a class="t-white" href="./vehicles.html">Log Out</a></li>
+        <li id="logOut" class="logout"><a class=" t-white">Log Out</a></li>
       </ul>
     </nav>
   </header>
+
 
   <div class="content-margin m-t-75">
     <h1 class="content-header">Cars for sale</h1>
@@ -989,9 +991,13 @@
               </div>
             </li>
           </ul>
+
+          <div id="pagination" class="t-center p-b-15">
+          </div>
         </section>
       </div>
     </div>
+
   </div>
 
   <footer class="footer">
@@ -999,5 +1005,6 @@
   </footer>
 
   <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+  <script src="./js/pagination.js"></script>
   <script src="./js/script.js"></script>
 </body>

@@ -80,11 +80,11 @@ const renderOrders = (order) => {
 
 const getUserAds = (userId) => {
   const tableBody = document.querySelector('#allAds');
-  const url = `https://automart1.herokuapp.com/api/v1/car?owner=${userId}`;
-  // const devUrl = `http://localhost:8080/api/v1/car?owner=${userId}`;
+  // const url = `https://automart1.herokuapp.com/api/v1/car?owner=${userId}`;
+  const devUrl = `http://localhost:8080/api/v1/car?owner=${userId}`;
   const tableRow = document.createElement('tr');
 
-  fetch(url, {
+  fetch(devUrl, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
@@ -115,10 +115,10 @@ const getUserAds = (userId) => {
 const getUserOrders = (userId) => {
   const tableBody = document.querySelector('#all-orders');
   const tableRow = document.createElement('tr');
-  const url = `https://automart1.herokuapp.com/api/v1/order?owner=${userId}`;
-  // const devUrl = `http://localhost:8080/api/v1/order?owner=${userId}`;
+  // const url = `https://automart1.herokuapp.com/api/v1/order?owner=${userId}`;
+  const devUrl = `http://localhost:8080/api/v1/order?owner=${userId}`;
 
-  fetch(url, {
+  fetch(devUrl, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
