@@ -347,7 +347,7 @@ a {
 
 .lnr-menu {
   fill: #ffffff;
-  font-size: 34px;
+  font-size: 28px;
 }
 
 .btn {
@@ -768,7 +768,7 @@ section.brand {
 }
 
 .vehicle-price {
-  font-size: 2em;
+  font-size: 1.6em;
 }
 
 .steps {
@@ -887,6 +887,7 @@ section.brand {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .all-cars-container,
@@ -932,9 +933,16 @@ section.brand {
   background-position: top;
 }
 
+.car-state {
+  width: 50px;
+  margin: 0.6em;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  background-color: #28a745;
+}
 .car-info {
   width: 36%;
-  padding: 4px 30px;
+  padding: 4px 0px 4px 16px;
   border-right: 1px solid #eee;
 }
 
@@ -943,7 +951,7 @@ section.brand {
 }
 
 .car-price {
-  padding: 8px 30px;
+  padding: 8px 10px;
 }
 
 .car-price a {
@@ -1378,6 +1386,10 @@ th.width-20 {
     margin-right: unset;
   }
 
+  .specific-header {
+    padding: 10px;
+  }
+
   .ads-action {
     padding: unset;
   }
@@ -1403,7 +1415,7 @@ th.width-20 {
   }
 
   .car-price a {
-    bottom: 28px;
+    bottom: 22px;
   }
 }
 
@@ -1436,12 +1448,19 @@ th.width-20 {
   .contact-svg {
     margin-bottom: 30px;
   }
+
+  .car-ads {
+    flex-wrap: nowrap;
+  }
 }
 
 @media only screen and (max-width: 768px) {
 
+  header h1 {
+    font-size: 1.9em;
+  }
   h1 {
-    font-size: 1.7em;
+    font-size: 1.6em;
   }
 
   section {
@@ -1492,7 +1511,7 @@ th.width-20 {
     border: none;
     color: #ffffff;
     float: right;
-    padding: 7px 0;
+    padding: 10px 0;
   }
 
   .close-btn {

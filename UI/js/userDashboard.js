@@ -80,11 +80,11 @@ const renderOrders = (order) => {
 
 const getUserAds = (userId) => {
   const tableBody = document.querySelector('#allAds');
-  // const url = `https://automart1.herokuapp.com/api/v1/car?owner=${userId}`;
-  const devUrl = `http://localhost:8080/api/v1/car?owner=${userId}`;
+  const url = `https://automart1.herokuapp.com/api/v1/car?owner=${userId}`;
+  // const devUrl = `http://localhost:8080/api/v1/car?owner=${userId}`;
   const tableRow = document.createElement('tr');
 
-  fetch(devUrl, {
+  fetch(url, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,
