@@ -8,8 +8,8 @@ import app from '../app';
 
 chai.use(chaiHttp);
 
-const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDk2LCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bG90cEBnbWFpbC5jb20iLCJhZGRyZXNzIjoiMTIsIEFkZXJpYmlnYmUiLCJpc19hZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NjIwNTU0NTQsImV4cCI6MTU2MjMwMDI1NH0.V7aLNMUwRbjn2kGBRf6ajLXPRoVjwckoyTQ1vs2KzgI';
-const adminToken = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDgwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bG90YUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRBV2RwM1hUdmc0dDZ0bC8zb1ZQYWsuWWhuSUhDNmprQmUyNk5GWk84YnFnVFBLSEROZUlnSyIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSIsImlzX2FkbWluIjp0cnVlfSwiaWF0IjoxNTYyMDU1MzM0LCJleHAiOjE1NjIzMDAxMzR9.YmsIYOLk3VdtdCtRixwa7gl8p2pq291b3niHVLfpywM';
+const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDYyLCJmaXJzdG5hbWUiOiJQYWJsbyIsImxhc3RuYW1lIjoiQW50b25pZGVzIiwiZW1haWwiOiJwYWJsby5hbnRvbmlkZXNAZXhhbXBsZS5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRwcU1WYnQ5SXhPQ05NOUdSSTVLZUZ1ZVByU3EvN29yTjlnQjFISDRUcE9SRW5RdWx4elR4QyIsImFkZHJlc3MiOiI3IHZhbiBhc2NoIHZhbiB3aWpja3NrYWRlLCB6dWlkcGxhcyBGbGV2b2xhbmQiLCJpc19hZG1pbiI6ZmFsc2V9LCJpYXQiOjE1NjI0NDU3MDAsImV4cCI6MTU2MjY5MDUwMH0.9Utru9NeBF7p04frYdISibVViCHlLPz2KpQzPjcX1BE';
+const adminToken = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDYwLCJmaXJzdG5hbWUiOiJNYWRzIiwibGFzdG5hbWUiOiJPbHNlbiIsImVtYWlsIjoibWFkcy5vbHNlbkBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiJDJhJDEwJGNpQ0paSG00T242YkxKbExUbzM4Ui5rZXhYZGdQVkRuZXpIV1BuWTBxeUxGODY0ZktackQuIiwiYWRkcmVzcyI6IjI3ODcgU2F2dsOmcmtzdmVqLCBTbmVydGluZ2UgSG92ZWRzdGFkZW4iLCJpc19hZG1pbiI6dHJ1ZX0sImlhdCI6MTU2MjQ0NTk5NCwiZXhwIjoxNTYyNjkwNzk0fQ.zNM4ioi20EWJvBTJMY2dQoV10VKuDpl8F11P9ZJrNRs';
 const invalidToken = 'Bearer engaF1bGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxMTMyNjc1NDYwLCJmaXJzdG5hbWUiOiJQYXVsIiwibGFzdG5hbWUiOiJUYWl3byIsImVtYWlsIjoiYXlvcGF1bG90QGdtYWlsLmNvbSIsImFkZHJlc3MiOiIxMiwgQWRlcmliaWdiZSIsImlzX2FkbWluIjpmYWxzZX0sImlhdCI6MTU2MDk0NjU0NiwiZXhwIjoxNTYxMTkxMzQ2fQ.BmqvWXxsR67XG6hePl7bsnj_bXM62sKWNbMnqBYbzQo';
 const file = readFileSync('src/test-img/car.png');
 const file2 = readFileSync('src/test-img/car2.jpg');
@@ -1169,7 +1169,7 @@ describe('Test for car AD endpoint', () => {
       .request(app)
       .get('/api/v1/car')
       .query({
-        owner: '1132675496',
+        owner: '1132675462',
       })
       .set({
         'Content-type': 'application/x-www-form-urlencoded',

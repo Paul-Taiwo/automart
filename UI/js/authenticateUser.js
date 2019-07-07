@@ -1,12 +1,12 @@
 /* eslint-disable no-undef */
 
 function authenticateUser(userData, endpoint) {
-  // const url = `https://automart1.herokuapp.com/api/v1/${endpoint}`;
-  const devUrl = `http://localhost:8080/api/v1/${endpoint}`;
+  const url = `https://automart1.herokuapp.com/api/v1/${endpoint}`;
+  // const devUrl = `http://localhost:8080/api/v1/${endpoint}`;
   const defaultRole = 'user';
   let defaulPage = './dashboard.html';
 
-  fetch(devUrl, {
+  fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

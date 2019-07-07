@@ -1,4 +1,6 @@
-/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/* eslint-env browser */
+
 const header = document.querySelector('header.header');
 let slideIndex = 1;
 let currentTab = 0;
@@ -175,10 +177,6 @@ const nextPrev = (n) => {
     document.querySelector('#create-ads-form').submit();
   }
   showCurrentTab(currentTab);
-};
-
-window.on = () => {
-  console.log('YEs');
 };
 
 if (document.querySelector('#view-vehicle')) {

@@ -1,5 +1,5 @@
 env:
-  global: # - PGTEST_URL=postgres://xextnteg:fCNLK30hKJMQCIqmAi65-Fu-cKV5mC09@raja.db.elephantsql.com:5432/xextnteg
+  global:
     - NODE_ENV=test
 
 
