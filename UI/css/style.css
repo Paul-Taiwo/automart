@@ -90,13 +90,6 @@ a {
   animation-delay: -0.16s;
 }
 
-/* No record */
-.no-record {
-  padding: 17px;
-  background-color: #ffffff;
-  display: none;
-}
-
 /* Padding */
 
 .p-0 {
@@ -1196,14 +1189,6 @@ section.brand {
   /* clip-path: url(#wave); */
 }
 
-#priceMax {
-  margin-bottom: 0;
-}
-
-#price-error {
-  visibility: hidden;
-}
-
 /* Tables */
 table {
   width: 100%;
@@ -1361,6 +1346,11 @@ th.width-20 {
   .hero-text p:nth-child(2) {
     margin-bottom: 8px;
   }
+
+  .car-price a {
+    position: unset;
+  }
+
 }
 
 /* Extra Small Devices, Phones */
@@ -1413,10 +1403,6 @@ th.width-20 {
 
   li.car-ads .car-image {
     width: 100%;
-  }
-
-  .car-price a {
-    position: unset;
   }
 
   div.car-info {
@@ -1574,26 +1560,7 @@ th.width-20 {
   }
 
   .filter-options {
-    display: block;
-    margin: 0 0 12px;
-    width: 100%;
-  }
-
-  .filter-body {
-    position: absolute;
-    top: 168px;
-    z-index: 2;
-    left: -231px;
-    transition: .7s ease-in;
-  }
-
-  .left {
-    left: 10%;
-  }
-
-  .filter-header h2 {
-    padding: 0 0 5px;
-    font-size: 16px;
+    display: none;
   }
 
   .all-cars {
