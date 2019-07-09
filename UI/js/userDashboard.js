@@ -92,6 +92,10 @@ const getUserAds = (userId) => {
   })
     .then(response => response.json())
     .then((res) => {
+      if (res.status === 401) {
+        window.location.href = './index.html';
+        localStorage.clear();
+      }
       if (res.data === 'No record found') {
         document.querySelector('#total-ads').textContent = '0';
         document.querySelector('.spinner-row').style.display = 'none';
@@ -115,10 +119,10 @@ const getUserAds = (userId) => {
 const getUserOrders = (userId) => {
   const tableBody = document.querySelector('#all-orders');
   const tableRow = document.createElement('tr');
-  // const url = `https://automart1.herokuapp.com/api/v1/order?owner=${userId}`;
-  const devUrl = `http://localhost:8080/api/v1/order?owner=${userId}`;
+  const url = `https://automart1.herokuapp.com/api/v1/order?owner=${userId}`;
+  // const devUrl = `http://localhost:8080/api/v1/order?owner=${userId}`;
 
-  fetch(devUrl, {
+  fetch(url, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${token}`,

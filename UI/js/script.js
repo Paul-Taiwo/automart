@@ -107,14 +107,6 @@ const closePurchase = () => {
   document.querySelector('#purchase-order.modal').style.display = 'none';
 };
 
-const plusSlides = (n) => {
-  showSlides(slideIndex += n);
-};
-
-const currentSlide = (n) => {
-  showSlides(slideIndex = n);
-};
-
 const showSlides = (n) => {
   const i = 0;
   const slides = document.querySelectorAll('.imgSlides');
@@ -177,6 +169,14 @@ const nextPrev = (n) => {
     document.querySelector('#create-ads-form').submit();
   }
   showCurrentTab(currentTab);
+};
+
+const plusSlides = (n) => {
+  showSlides(slideIndex += n);
+};
+
+const currentSlide = (n) => {
+  showSlides(slideIndex = n);
 };
 
 if (document.querySelector('#view-vehicle')) {
