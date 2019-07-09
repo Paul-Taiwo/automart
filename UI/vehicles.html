@@ -31,6 +31,7 @@
         <li class="dropdown">
 
           <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">
+            <span id="username"></span>
             <span id="username">Paulot</span>
             <svg class="lnr lnr-chevron-down">
               <use xlink:href="#lnr-chevron-down"></use>
@@ -59,898 +60,840 @@
 
   <div class="content-margin m-t-75">
     <h1 class="content-header">Cars for sale</h1>
+
     <div class="container">
       <div class="all-cars-container">
-        <aside class="filter-options">
-          <form action="" method="get">
-            <div class="filter-header">
-              <h2 class="t-center"><svg class="lnr lnr-funnel">
-                  <use xlink:href="#lnr-funnel"></use>
-                </svg> Filter</h2>
-            </div>
 
-            <button class="accordion">Make<svg class="lnr lnr-chevron-down">
-                <use xlink:href="#lnr-chevron-down"></use>
-              </svg></button>
-            <div class="accordion-content">
-              <div id="accMake" class="">
-                <ul class="checklist">
-                  <li>
-                    <a href="#">
-                      <label>
-                        Toyota <span>(4064)</span>
-                        <input type="checkbox" value="toyota">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Nissan <span>(179)</span>
-                        <input type="checkbox" value="nissan">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Audi <span>(30)</span>
-                        <input type="checkbox" value="audi">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Honda <span>(877)</span>
-                        <input type="checkbox" value="honda">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Volkswagen <span>(89)</span>
-                        <input type="checkbox" value="volkswagen">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Mercedes-Benz <span>(1321)</span>
-                        <input type="checkbox" value="mercedes-benz">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Land Rover <span>(271)</span>
-                        <input type="checkbox" value="land-rover">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        BMW <span>(81)</span>
-                        <input type="checkbox" value="bmw">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Acura <span>(335)</span>
-                        <input type="checkbox" value="acura">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Bentley <span>(5)</span>
-                        <input type="checkbox" value="bentley">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Cadillac <span>(6)</span>
-                        <input type="checkbox" value="cadillac">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        CHANGAN <span>(1)</span>
-                        <input type="checkbox" value="changan">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Chevrolet <span>(18)</span>
-                        <input type="checkbox" value="chevrolet">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Chrysler <span>(12)</span>
-                        <input type="checkbox" value="chrysler">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        CHTC <span>(1)</span>
-                        <input type="checkbox" value="chtc">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Citroen <span>(3)</span>
-                        <input type="checkbox" value="citroen">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Dodge <span>(19)</span>
-                        <input type="checkbox" value="dodge">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Ferrari <span>(3)</span>
-                        <input type="checkbox" value="ferrari">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Fiat <span>(1)</span>
-                        <input type="checkbox" value="fiat">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Ford <span>(274)</span>
-                        <input type="checkbox" value="ford">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        GMC <span>(6)</span>
-                        <input type="checkbox" value="gmc">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Hummer <span>(4)</span>
-                        <input type="checkbox" value="hummer">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Hyundai <span>(141)</span>
-                        <input type="checkbox" value="hyundai">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Infiniti <span>(48)</span>
-                        <input type="checkbox" value="infiniti">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Infinity <span>(1)</span>
-                        <input type="checkbox" value="infinity">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Isuzu <span>(2)</span>
-                        <input type="checkbox" value="isuzu">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        IVM <span>(1)</span>
-                        <input type="checkbox" value="ivm">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Jaguar <span>(15)</span>
-                        <input type="checkbox" value="jaguar">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Jeep <span>(26)</span>
-                        <input type="checkbox" value="jeep">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Kia <span>(79)</span>
-                        <input type="checkbox" value="kia">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Lamborghini <span>(1)</span>
-                        <input type="checkbox" value="lamborghini">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Lexus <span>(1581)</span>
-                        <input type="checkbox" value="lexus">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Lincoln <span>(1)</span>
-                        <input type="checkbox" value="lincoln">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Maserati <span>(1)</span>
-                        <input type="checkbox" value="maserati">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Mazda <span>(46)</span>
-                        <input type="checkbox" value="mazda">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Mercury <span>(3)</span>
-                        <input type="checkbox" value="mercury">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        MG <span>(1)</span>
-                        <input type="checkbox" value="mg">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Mini <span>(15)</span>
-                        <input type="checkbox" value="mini">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Mitsubishi <span>(48)</span>
-                        <input type="checkbox" value="mitsubishi">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Opel <span>(3)</span>
-                        <input type="checkbox" value="opel">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Peugeot <span>(32)</span>
-                        <input type="checkbox" value="peugeot">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Polaris <span>(2)</span>
-                        <input type="checkbox" value="polaris">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Pontiac <span>(18)</span>
-                        <input type="checkbox" value="pontiac">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Porsche <span>(32)</span>
-                        <input type="checkbox" value="porsche">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Renault <span>(3)</span>
-                        <input type="checkbox" value="renault">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Rolls Royce <span>(5)</span>
-                        <input type="checkbox" value="rolls-royce">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Rover <span>(2)</span>
-                        <input type="checkbox" value="rover">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Saturn <span>(1)</span>
-                        <input type="checkbox" value="saturn">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Skoda <span>(8)</span>
-                        <input type="checkbox" value="skoda">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Subaru <span>(3)</span>
-                        <input type="checkbox" value="subaru">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Suzuki <span>(5)</span>
-                        <input type="checkbox" value="suzuki">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        T-KING <span>(1)</span>
-                        <input type="checkbox" value="t-king">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Vauxhall <span>(1)</span>
-                        <input type="checkbox" value="vauxhall">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Volvo <span>(23)</span>
-                        <input type="checkbox" value="volvo">
-                      </label>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <button class="accordion">Body Type<svg class="lnr lnr-chevron-down">
-                <use xlink:href="#lnr-chevron-down"></use>
-              </svg></button>
-            <div class="accordion-content">
-              <div id="accbodyTypes" class="">
-                <ul class="checklist">
-                  <li>
-                    <a href="#">
-                      <label>
-                        Saloons
-                        <input class="" name="body-types" type="checkbox" value="saloons">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Hatchbacks
-                        <input class="" name="body-types" type="checkbox" value="hatchbacks">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Station Wagons
-                        <input class="" name="body-types" type="checkbox" value="station-wagons">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        4x4 SUVs
-                        <input class="" name="body-types" type="checkbox" value="suv-4x4">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Pickups
-                        <input class="" name="body-types" type="checkbox" value="pickups">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Minis
-                        <input class="" name="body-types" type="checkbox" value="minis">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Convertibles
-                        <input class="" name="body-types" type="checkbox" value="convertibles">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Coupes
-                        <input class="" name="body-types" type="checkbox" value="coupes">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Quad Bikes
-                        <input class="bodyTypeSecondary parent-bodyTypemotorbikes" name="body-types" type="checkbox"
-                          value="quad-bikes">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Tractors &amp; Machinery
-                        <input class="bodyTypeSecondary parent-bodyTypetrucks" name="body-types" type="checkbox"
-                          value="tractors">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Vans &amp; Buses
-                        <input class="bodyTypePrimary" id="bodyTypebuses-vans" name="body-types" type="checkbox"
-                          value="buses-vans">
-                      </label>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <button class="accordion">Year<svg class="lnr lnr-chevron-down">
-                <use xlink:href="#lnr-chevron-down"></use>
-              </svg></button>
-            <div class="accordion-content">
-              <div id="accYear" class="">
-                <div class="filters-section">
-                  <select id="yearFrom" class="control-select" name="year-from">
-                    <option selected="selected" value="">From</option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                    <option value="2018">2018</option>
-                    <option value="2017">2017</option>
-                    <option value="2016">2016</option>
-                    <option value="2015">2015</option>
-                    <option value="2014">2014</option>
-                    <option value="2013">2013</option>
-                    <option value="2012">2012</option>
-                    <option value="2011">2011</option>
-                    <option value="2010">2010</option>
-                    <option value="2009">2009</option>
-                    <option value="2008">2008</option>
-                    <option value="2007">2007</option>
-                    <option value="2006">2006</option>
-                    <option value="2005">2005</option>
-                    <option value="2004">2004</option>
-                    <option value="2003">2003</option>
-                    <option value="2002">2002</option>
-                    <option value="2001">2001</option>
-                    <option value="2000">2000</option>
-                    <option value="1999">1999</option>
-                    <option value="1998">1998</option>
-                    <option value="1997">1997</option>
-                    <option value="1996">1996</option>
-                    <option value="1995">1995</option>
-                    <option value="1994">1994</option>
-                    <option value="1993">1993</option>
-                    <option value="1992">1992</option>
-                    <option value="1991">1991</option>
-                    <option value="1990">1990</option>
-                    <option value="1989">1989</option>
-                    <option value="1988">1988</option>
-                    <option value="1987">1987</option>
-                    <option value="1986">1986</option>
-                    <option value="1985">1985</option>
-                    <option value="1984">1984</option>
-                    <option value="1983">1983</option>
-                    <option value="1982">1982</option>
-                    <option value="1981">1981</option>
-                    <option value="1980">1980</option>
-                    <option value="1979">1979</option>
-                    <option value="1978">1978</option>
-                    <option value="1977">1977</option>
-                    <option value="1976">1976</option>
-                    <option value="1975">1975</option>
-                    <option value="1974">1974</option>
-                    <option value="1973">1973</option>
-                    <option value="1972">1972</option>
-                    <option value="1971">1971</option>
-                    <option value="1970">1970</option>
-                    <option value="1969">1969</option>
-                    <option value="1968">1968</option>
-                    <option value="1967">1967</option>
-                    <option value="1966">1966</option>
-                    <option value="1965">1965</option>
-                    <option value="1964">1964</option>
-                    <option value="1963">1963</option>
-                    <option value="1962">1962</option>
-                    <option value="1961">1961</option>
-                    <option value="1960">1960</option>
-                    <option value="1959">1959</option>
-                    <option value="1958">1958</option>
-                    <option value="1957">1957</option>
-                    <option value="1956">1956</option>
-                    <option value="1955">1955</option>
-                    <option value="1954">1954</option>
-                    <option value="1953">1953</option>
-                    <option value="1952">1952</option>
-                    <option value="1951">1951</option>
-                    <option value="1950">1950</option>
-                  </select>
-                  <select id="yearTo" class="control-select" name="year-to">
-                    <option selected="selected" value="">To</option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>
-                    <option value="2018">2018</option>
-                    <option value="2017">2017</option>
-                    <option value="2016">2016</option>
-                    <option value="2015">2015</option>
-                    <option value="2014">2014</option>
-                    <option value="2013">2013</option>
-                    <option value="2012">2012</option>
-                    <option value="2011">2011</option>
-                    <option value="2010">2010</option>
-                    <option value="2009">2009</option>
-                    <option value="2008">2008</option>
-                    <option value="2007">2007</option>
-                    <option value="2006">2006</option>
-                    <option value="2005">2005</option>
-                    <option value="2004">2004</option>
-                    <option value="2003">2003</option>
-                    <option value="2002">2002</option>
-                    <option value="2001">2001</option>
-                    <option value="2000">2000</option>
-                    <option value="1999">1999</option>
-                    <option value="1998">1998</option>
-                    <option value="1997">1997</option>
-                    <option value="1996">1996</option>
-                    <option value="1995">1995</option>
-                    <option value="1994">1994</option>
-                    <option value="1993">1993</option>
-                    <option value="1992">1992</option>
-                    <option value="1991">1991</option>
-                    <option value="1990">1990</option>
-                    <option value="1989">1989</option>
-                    <option value="1988">1988</option>
-                    <option value="1987">1987</option>
-                    <option value="1986">1986</option>
-                    <option value="1985">1985</option>
-                    <option value="1984">1984</option>
-                    <option value="1983">1983</option>
-                    <option value="1982">1982</option>
-                    <option value="1981">1981</option>
-                    <option value="1980">1980</option>
-                    <option value="1979">1979</option>
-                    <option value="1978">1978</option>
-                    <option value="1977">1977</option>
-                    <option value="1976">1976</option>
-                    <option value="1975">1975</option>
-                    <option value="1974">1974</option>
-                    <option value="1973">1973</option>
-                    <option value="1972">1972</option>
-                    <option value="1971">1971</option>
-                    <option value="1970">1970</option>
-                    <option value="1969">1969</option>
-                    <option value="1968">1968</option>
-                    <option value="1967">1967</option>
-                    <option value="1966">1966</option>
-                    <option value="1965">1965</option>
-                    <option value="1964">1964</option>
-                    <option value="1963">1963</option>
-                    <option value="1962">1962</option>
-                    <option value="1961">1961</option>
-                    <option value="1960">1960</option>
-                    <option value="1959">1959</option>
-                    <option value="1958">1958</option>
-                    <option value="1957">1957</option>
-                    <option value="1956">1956</option>
-                    <option value="1955">1955</option>
-                    <option value="1954">1954</option>
-                    <option value="1953">1953</option>
-                    <option value="1952">1952</option>
-                    <option value="1951">1951</option>
-                    <option value="1950">1950</option>
-                  </select>
-                  <input class="btn btn-info" type="submit" value="Set">
+        <aside class="filter-options">
+
+          <div class="filter-header">
+            <h2 class="t-center"><svg class="lnr lnr-funnel">
+                <use xlink:href="#lnr-funnel"></use>
+              </svg> Filter</h2>
+          </div>
+
+          <form action="" method="get">
+
+            <div class="filter-body">
+              <button class="accordion">Make<svg class="lnr lnr-chevron-down">
+                  <use xlink:href="#lnr-chevron-down"></use>
+                </svg></button>
+              <div class="accordion-content">
+                <div id="accMake" class="">
+                  <ul data-type="manufacturer" class="checklist">
+                    <li>
+                      <a href="#">
+                        <label>
+                          Toyota <span>(4064)</span>
+                          <input type="checkbox" value="toyota">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Nissan <span>(179)</span>
+                          <input type="checkbox" value="nissan">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Audi <span>(30)</span>
+                          <input type="checkbox" value="audi">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Honda <span>(877)</span>
+                          <input type="checkbox" value="honda">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Volkswagen <span>(89)</span>
+                          <input type="checkbox" value="volkswagen">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Mercedes-Benz <span>(1321)</span>
+                          <input type="checkbox" value="mercedes-benz">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Land Rover <span>(271)</span>
+                          <input type="checkbox" value="land-rover">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          BMW <span>(81)</span>
+                          <input type="checkbox" value="bmw">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Acura <span>(335)</span>
+                          <input type="checkbox" value="acura">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Bentley <span>(5)</span>
+                          <input type="checkbox" value="bentley">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Cadillac <span>(6)</span>
+                          <input type="checkbox" value="cadillac">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          CHANGAN <span>(1)</span>
+                          <input type="checkbox" value="changan">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Chevrolet <span>(18)</span>
+                          <input type="checkbox" value="chevrolet">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Chrysler <span>(12)</span>
+                          <input type="checkbox" value="chrysler">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          CHTC <span>(1)</span>
+                          <input type="checkbox" value="chtc">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Citroen <span>(3)</span>
+                          <input type="checkbox" value="citroen">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Dodge <span>(19)</span>
+                          <input type="checkbox" value="dodge">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Ferrari <span>(3)</span>
+                          <input type="checkbox" value="ferrari">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Fiat <span>(1)</span>
+                          <input type="checkbox" value="fiat">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Ford <span>(274)</span>
+                          <input type="checkbox" value="ford">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          GMC <span>(6)</span>
+                          <input type="checkbox" value="gmc">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Hummer <span>(4)</span>
+                          <input type="checkbox" value="hummer">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Hyundai <span>(141)</span>
+                          <input type="checkbox" value="hyundai">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Infiniti <span>(48)</span>
+                          <input type="checkbox" value="infiniti">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Infinity <span>(1)</span>
+                          <input type="checkbox" value="infinity">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Isuzu <span>(2)</span>
+                          <input type="checkbox" value="isuzu">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          IVM <span>(1)</span>
+                          <input type="checkbox" value="ivm">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Jaguar <span>(15)</span>
+                          <input type="checkbox" value="jaguar">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Jeep <span>(26)</span>
+                          <input type="checkbox" value="jeep">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Kia <span>(79)</span>
+                          <input type="checkbox" value="kia">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Lamborghini <span>(1)</span>
+                          <input type="checkbox" value="lamborghini">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Lexus <span>(1581)</span>
+                          <input type="checkbox" value="lexus">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Lincoln <span>(1)</span>
+                          <input type="checkbox" value="lincoln">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Maserati <span>(1)</span>
+                          <input type="checkbox" value="maserati">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Mazda <span>(46)</span>
+                          <input type="checkbox" value="mazda">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Mercury <span>(3)</span>
+                          <input type="checkbox" value="mercury">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          MG <span>(1)</span>
+                          <input type="checkbox" value="mg">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Mini <span>(15)</span>
+                          <input type="checkbox" value="mini">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Mitsubishi <span>(48)</span>
+                          <input type="checkbox" value="mitsubishi">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Opel <span>(3)</span>
+                          <input type="checkbox" value="opel">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Peugeot <span>(32)</span>
+                          <input type="checkbox" value="peugeot">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Polaris <span>(2)</span>
+                          <input type="checkbox" value="polaris">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Pontiac <span>(18)</span>
+                          <input type="checkbox" value="pontiac">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Porsche <span>(32)</span>
+                          <input type="checkbox" value="porsche">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Renault <span>(3)</span>
+                          <input type="checkbox" value="renault">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Rolls Royce <span>(5)</span>
+                          <input type="checkbox" value="rolls-royce">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Rover <span>(2)</span>
+                          <input type="checkbox" value="rover">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Saturn <span>(1)</span>
+                          <input type="checkbox" value="saturn">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Skoda <span>(8)</span>
+                          <input type="checkbox" value="skoda">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Subaru <span>(3)</span>
+                          <input type="checkbox" value="subaru">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Suzuki <span>(5)</span>
+                          <input type="checkbox" value="suzuki">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          T-KING <span>(1)</span>
+                          <input type="checkbox" value="t-king">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Vauxhall <span>(1)</span>
+                          <input type="checkbox" value="vauxhall">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Volvo <span>(23)</span>
+                          <input type="checkbox" value="volvo">
+                        </label>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
-            </div>
-            <button class="accordion">Price<svg class="lnr lnr-chevron-down">
-                <use xlink:href="#lnr-chevron-down"></use>
-              </svg></button>
-            <div class="accordion-content">
-              <div id="accPrice" class="">
-                <div class="filters-section">
-                  <select id="priceMin" class="control-select" name="price-from">
-                    <option selected="selected" value="">Min(₦)</option>
-                    <option value="200000">₦200,000</option>
-                    <option value="500000">₦500,000</option>
-                    <option value="1000000">₦1,000,000</option>
-                    <option value="1500000">₦1,500,000</option>
-                    <option value="2000000">₦2,000,000</option>
-                    <option value="2500000">₦2,500,000</option>
-                    <option value="3000000">₦3,000,000</option>
-                    <option value="3500000">₦3,500,000</option>
-                    <option value="4000000">₦4,000,000</option>
-                    <option value="4500000">₦4,500,000</option>
-                    <option value="5000000">₦5,000,000</option>
-                    <option value="10000000">₦10,000,000</option>
-                  </select>
-                  <select id="priceMax" class="control-select" name="price-to">
-                    <option selected="selected" value="">Max(₦)</option>
-                    <option value="200000">₦200,000</option>
-                    <option value="500000">₦500,000</option>
-                    <option value="1000000">₦1,000,000</option>
-                    <option value="1500000">₦1,500,000</option>
-                    <option value="2000000">₦2,000,000</option>
-                    <option value="2500000">₦2,500,000</option>
-                    <option value="3000000">₦3,000,000</option>
-                    <option value="3500000">₦3,500,000</option>
-                    <option value="4000000">₦4,000,000</option>
-                    <option value="4500000">₦4,500,000</option>
-                    <option value="5000000">₦5,000,000</option>
-                    <option value="10000000">₦10,000,000</option>
-                  </select>
-                  <input class="btn btn-info" type="submit" value="Set">
+
+              <button class="accordion">Body Type<svg class="lnr lnr-chevron-down">
+                  <use xlink:href="#lnr-chevron-down"></use>
+                </svg></button>
+              <div class="accordion-content">
+                <div id="accbodyTypes" class="">
+                  <ul data-type="bodyType" class="checklist">
+                    <li>
+                      <a href="#">
+                        <label>
+                          Saloons
+                          <input class="" name="body-types" type="checkbox" value="saloons">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Hatchbacks
+                          <input class="" name="body-types" type="checkbox" value="hatchbacks">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Station Wagons
+                          <input class="" name="body-types" type="checkbox" value="station-wagons">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          4x4 SUVs
+                          <input class="" name="body-types" type="checkbox" value="suv-4x4">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Pickups
+                          <input class="" name="body-types" type="checkbox" value="pickups">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Minis
+                          <input class="" name="body-types" type="checkbox" value="minis">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Convertibles
+                          <input class="" name="body-types" type="checkbox" value="convertibles">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Coupes
+                          <input class="" name="body-types" type="checkbox" value="coupes">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Quad Bikes
+                          <input class="bodyTypeSecondary parent-bodyTypemotorbikes" name="body-types" type="checkbox"
+                            value="quad-bikes">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Tractors &amp; Machinery
+                          <input class="bodyTypeSecondary parent-bodyTypetrucks" name="body-types" type="checkbox"
+                            value="tractors">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Vans &amp; Buses
+                          <input class="bodyTypePrimary" id="bodyTypebuses-vans" name="body-types" type="checkbox"
+                            value="buses-vans">
+                        </label>
+                      </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
-            </div>
-            <button class="accordion">Condition<svg class="lnr lnr-chevron-down">
-                <use xlink:href="#lnr-chevron-down"></use>
-              </svg></button>
-            <div class="accordion-content">
-              <div id="accCondition" class="">
-                <ul class="checklist">
-                  <li>
-                    <a href="#">
-                      <label>
-                        Used
-                        <input name="conditions" type="checkbox" value="used">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Brand New
-                        <input name="conditions" type="checkbox" value="new">
-                      </label>
-                    </a>
-                  </li>
-                </ul>
+
+              <button class="accordion">Year<svg class="lnr lnr-chevron-down">
+                  <use xlink:href="#lnr-chevron-down"></use>
+                </svg></button>
+              <div class="accordion-content">
+                <div id="accYear" class="">
+                  <div class="filters-section">
+                    <select id="yearFrom" class="control-select" name="year-from">
+                      <option selected="selected" value="">Year</option>
+                      <option value="2020">2020</option>
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                      <option value="2017">2017</option>
+                      <option value="2016">2016</option>
+                      <option value="2015">2015</option>
+                      <option value="2014">2014</option>
+                      <option value="2013">2013</option>
+                      <option value="2012">2012</option>
+                      <option value="2011">2011</option>
+                      <option value="2010">2010</option>
+                      <option value="2009">2009</option>
+                      <option value="2008">2008</option>
+                      <option value="2007">2007</option>
+                      <option value="2006">2006</option>
+                      <option value="2005">2005</option>
+                      <option value="2004">2004</option>
+                      <option value="2003">2003</option>
+                      <option value="2002">2002</option>
+                      <option value="2001">2001</option>
+                      <option value="2000">2000</option>
+                      <option value="1999">1999</option>
+                      <option value="1998">1998</option>
+                      <option value="1997">1997</option>
+                      <option value="1996">1996</option>
+                      <option value="1995">1995</option>
+                      <option value="1994">1994</option>
+                      <option value="1993">1993</option>
+                      <option value="1992">1992</option>
+                      <option value="1991">1991</option>
+                      <option value="1990">1990</option>
+                      <option value="1989">1989</option>
+                      <option value="1988">1988</option>
+                      <option value="1987">1987</option>
+                      <option value="1986">1986</option>
+                      <option value="1985">1985</option>
+                      <option value="1984">1984</option>
+                      <option value="1983">1983</option>
+                      <option value="1982">1982</option>
+                      <option value="1981">1981</option>
+                      <option value="1980">1980</option>
+                      <option value="1979">1979</option>
+                      <option value="1978">1978</option>
+                      <option value="1977">1977</option>
+                      <option value="1976">1976</option>
+                      <option value="1975">1975</option>
+                      <option value="1974">1974</option>
+                      <option value="1973">1973</option>
+                      <option value="1972">1972</option>
+                      <option value="1971">1971</option>
+                      <option value="1970">1970</option>
+                      <option value="1969">1969</option>
+                      <option value="1968">1968</option>
+                      <option value="1967">1967</option>
+                      <option value="1966">1966</option>
+                      <option value="1965">1965</option>
+                      <option value="1964">1964</option>
+                      <option value="1963">1963</option>
+                      <option value="1962">1962</option>
+                      <option value="1961">1961</option>
+                      <option value="1960">1960</option>
+                      <option value="1959">1959</option>
+                      <option value="1958">1958</option>
+                      <option value="1957">1957</option>
+                      <option value="1956">1956</option>
+                      <option value="1955">1955</option>
+                      <option value="1954">1954</option>
+                      <option value="1953">1953</option>
+                      <option value="1952">1952</option>
+                      <option value="1951">1951</option>
+                      <option value="1950">1950</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-            </div>
-            <button class="accordion">Colour<svg class="lnr lnr-chevron-down">
-                <use xlink:href="#lnr-chevron-down"></use>
-              </svg></button>
-            <div class="accordion-content">
-              <div id="accColor" class="content">
-                <ul class="checklist">
-                  <li>
-                    <a href="#">
-                      <label>
-                        White
-                        <input name="colours" type="checkbox" value="white">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Silver
-                        <input name="colours" type="checkbox" value="silver">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Green
-                        <input name="colours" type="checkbox" value="green">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Blue
-                        <input name="colours" type="checkbox" value="blue">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Brown
-                        <input name="colours" type="checkbox" value="brown">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Black
-                        <input name="colours" type="checkbox" value="black">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Yellow
-                        <input name="colours" type="checkbox" value="yellow">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Red
-                        <input name="colours" type="checkbox" value="red">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Purple
-                        <input name="colours" type="checkbox" value="purple">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Pink
-                        <input name="colours" type="checkbox" value="pink">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Orange
-                        <input name="colours" type="checkbox" value="orange">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Gold
-                        <input name="colours" type="checkbox" value="gold">
-                      </label>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <label>
-                        Other
-                        <input name="colours" type="checkbox" value="other">
-                      </label>
-                    </a>
-                  </li>
-                </ul>
+
+              <button class="accordion">Price<svg class="lnr lnr-chevron-down">
+                  <use xlink:href="#lnr-chevron-down"></use>
+                </svg></button>
+              <div class="accordion-content">
+                <div id="accPrice" class="">
+                  <div class="filters-section">
+                    <select id="priceMin" class="control-select" name="price-from">
+                      <option selected="selected" value="">Min(₦)</option>
+                      <option value="200000">₦200,000</option>
+                      <option value="500000">₦500,000</option>
+                      <option value="1000000">₦1,000,000</option>
+                      <option value="1500000">₦1,500,000</option>
+                      <option value="2000000">₦2,000,000</option>
+                      <option value="2500000">₦2,500,000</option>
+                      <option value="3000000">₦3,000,000</option>
+                      <option value="3500000">₦3,500,000</option>
+                      <option value="4000000">₦4,000,000</option>
+                      <option value="4500000">₦4,500,000</option>
+                      <option value="5000000">₦5,000,000</option>
+                      <option value="10000000">₦10,000,000</option>
+                    </select>
+                    <select id="priceMax" class="control-select" name="price-to">
+                      <option selected="selected" value="">Max(₦)</option>
+                      <option value="200000">₦200,000</option>
+                      <option value="500000">₦500,000</option>
+                      <option value="1000000">₦1,000,000</option>
+                      <option value="1500000">₦1,500,000</option>
+                      <option value="2000000">₦2,000,000</option>
+                      <option value="2500000">₦2,500,000</option>
+                      <option value="3000000">₦3,000,000</option>
+                      <option value="3500000">₦3,500,000</option>
+                      <option value="4000000">₦4,000,000</option>
+                      <option value="4500000">₦4,500,000</option>
+                      <option value="5000000">₦5,000,000</option>
+                      <option value="10000000">₦10,000,000</option>
+                    </select>
+                    <p id="price-error" class="t-red">Error</p>
+                    <input class="btn btn-info" type="submit" value="Set">
+                  </div>
+                </div>
               </div>
+              <button class="accordion">Condition<svg class="lnr lnr-chevron-down">
+                  <use xlink:href="#lnr-chevron-down"></use>
+                </svg></button>
+              <div class="accordion-content">
+                <div id="accCondition" class="">
+                  <ul data-type="state" class="checklist">
+                    <li>
+                      <a href="#">
+                        <label>
+                          Used
+                          <input name="conditions" type="checkbox" value="used">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Brand New
+                          <input name="conditions" type="checkbox" value="new">
+                        </label>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <button class="accordion">Colour<svg class="lnr lnr-chevron-down">
+                  <use xlink:href="#lnr-chevron-down"></use>
+                </svg></button>
+              <div class="accordion-content">
+                <div id="accColor" class="content">
+                  <ul class="checklist">
+                    <li>
+                      <a href="#">
+                        <label>
+                          White
+                          <input name="colours" type="checkbox" value="white">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Silver
+                          <input name="colours" type="checkbox" value="silver">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Green
+                          <input name="colours" type="checkbox" value="green">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Blue
+                          <input name="colours" type="checkbox" value="blue">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Brown
+                          <input name="colours" type="checkbox" value="brown">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Black
+                          <input name="colours" type="checkbox" value="black">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Yellow
+                          <input name="colours" type="checkbox" value="yellow">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Red
+                          <input name="colours" type="checkbox" value="red">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Purple
+                          <input name="colours" type="checkbox" value="purple">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Pink
+                          <input name="colours" type="checkbox" value="pink">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Orange
+                          <input name="colours" type="checkbox" value="orange">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Gold
+                          <input name="colours" type="checkbox" value="gold">
+                        </label>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <label>
+                          Other
+                          <input name="colours" type="checkbox" value="other">
+                        </label>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
             </div>
           </form>
         </aside>
 
         <section class="all-cars">
           <ul id="ads-container" class="car-ads-container">
+            <div class="spinner">
+              <div class="bounce1"></div>
+              <div class="bounce2"></div>
+              <div class="bounce3"></div>
+            </div>
+            <li class="no-record t-center">No record found</li>
           </ul>
 
           <div id="pagination" class="t-center p-b-15">
