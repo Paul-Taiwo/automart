@@ -2,7 +2,6 @@
 /* eslint-env browser */
 
 const header = document.querySelector('header.header');
-let slideIndex = 1;
 let currentTab = 0;
 
 window.onscroll = () => {
@@ -107,50 +106,6 @@ const closePurchase = () => {
   document.querySelector('#purchase-order.modal').style.display = 'none';
 };
 
-const showSlides = (n) => {
-  const i = 0;
-  const slides = document.querySelectorAll('.imgSlides');
-  const thumbnails = document.querySelectorAll('.thumbnail');
-
-  if (n > slides.length) {
-    slideIndex = 1;
-  }
-  if (n < 1) {
-    slideIndex = slides.length;
-  }
-
-  slides.forEach((x) => {
-    x.style.display = 'none';
-  });
-
-  thumbnails.forEach((x) => {
-    x.className = x.className.replace(' active', '');
-  });
-
-  slides[slideIndex - 1].style.display = 'block';
-  thumbnails[slideIndex - 1].className += ' active';
-};
-
-const showCurrentTab = (n) => {
-  const tab = document.querySelectorAll('.tabpanel');
-
-  tab[n].style.display = 'block';
-
-  if (n == 0) {
-    document.querySelector('#create-ads-prev').style.display = 'none';
-  } else {
-    document.querySelector('#create-ads-prev').style.display = 'block';
-  }
-
-  if (n == (tab.length - 1)) {
-    document.querySelector('#create-ads-next').innerHTML = 'Submit';
-  } else {
-    document.querySelector('#create-ads-next').innerHTML = 'Next';
-  }
-
-  stepIndicator(n);
-};
-
 const stepIndicator = (n) => {
   const steps = document.querySelectorAll('.tablinks');
 
@@ -158,6 +113,26 @@ const stepIndicator = (n) => {
     x.className = x.className.replace(' active', '');
   });
   steps[n].className += ' active';
+};
+
+const showCurrentTab = (n) => {
+  const tab = document.querySelectorAll('.tabpanel');
+
+  tab[n].style.display = 'block';
+
+  if (n === 0) {
+    document.querySelector('#create-ads-prev').style.display = 'none';
+  } else {
+    document.querySelector('#create-ads-prev').style.display = 'block';
+  }
+
+  if (n === (tab.length - 1)) {
+    document.querySelector('#create-ads-next').innerHTML = 'Submit';
+  } else {
+    document.querySelector('#create-ads-next').innerHTML = 'Next';
+  }
+
+  stepIndicator(n);
 };
 
 const nextPrev = (n) => {
@@ -171,15 +146,4 @@ const nextPrev = (n) => {
   showCurrentTab(currentTab);
 };
 
-const plusSlides = (n) => {
-  showSlides(slideIndex += n);
-};
-
-const currentSlide = (n) => {
-  showSlides(slideIndex = n);
-};
-
-if (document.querySelector('#view-vehicle')) {
-  showSlides(slideIndex);
-}
 showCurrentTab(currentTab);

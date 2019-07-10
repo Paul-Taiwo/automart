@@ -21,19 +21,19 @@
     <nav class="navbar">
       <ul class="nav-list">
         <button type="button" id="hideMenu" onclick="closeSideMenu()"" class=" btn close-btn">
-          <svg
-            class="lnr lnr-cross">
+          <svg class="lnr lnr-cross">
             <use xlink:href="#lnr-cross"></use>
           </svg></button>
-
         <li><a class="t-white active" href="./dashboard.html">Home</a></li>
         <li><a class="t-white" href="./vehicles.html">See Cars</a></li>
         <li><a href="./create-ads.html" class="btn btn-leaf">Sell a car</a></li>
         <li class="dropdown">
-
-          <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">Paulot <svg class="lnr lnr-chevron-down">
+          <button id="toggleDropdown" onclick="toggleDropdown()" class="btns dropbtn">
+            <span id="username"></span>
+            <svg class="lnr lnr-chevron-down">
               <use xlink:href="#lnr-chevron-down"></use>
-            </svg></button>
+            </svg>
+          </button>
           <div id="myDropdown" class="dropdown-content">
             <a href="#"><svg class="lnr lnr-user">
                 <use xlink:href="#lnr-user"></use>
@@ -44,12 +44,12 @@
             <a href="#"><svg class="lnr lnr-phone">
                 <use xlink:href="#lnr-phone"></use>
               </svg> Contact Us</a>
-           <a href="index.html"><svg class="lnr lnr-power-switch">
+            <a href="index.html" class="logout"><svg class="lnr lnr-power-switch">
                 <use xlink:href="#lnr-power-switch"></use>
               </svg></i> Logout</a>
           </div>
         </li>
-        <li><a class="t-white" href="./vehicles.html">Log Out</a></li>
+        <li id="logOut" class="logout"><a class=" t-white">Log Out</a></li>
       </ul>
     </nav>
   </header>
@@ -62,56 +62,21 @@
       <div id="view-vehicle" class="specific-container">
         <div class="specific-header">
           <div class="listing-header">
-            <h1>2019 Toyota Camry SE Sedan</h1>
+            <h1 class="f-l-cap"></h1>
             <p><svg class="lnr lnr-map-marker">
                 <use xlink:href="#lnr-map-marker"></use>
               </svg>  Lagos</p>
-            <p><svg class="lnr lnr-calendar-full">
-                <use xlink:href="#lnr-calendar-full"></use>
-              </svg>  Added 3 days ago</p>
+            <p></p>
           </div>
           <div class="listing-price">
-            <h1>#2,200,200</h1>
+            <h1></h1>
             <p>Negotiable</p>
-            <p>REF-ID: 11ecylu</p>
+            <p></p>
           </div>
         </div>
         <div class="img-container">
-          <div class="imgSlides">
-            <div class="numbertext">1 / 6</div>
-            <img
-              src="https://pictures.dealer.com/v/victorytoyotascioncanton/0643/7d607a614ba466cb09182cdd96f5e6e7x.jpg?impolicy=resize&w=650"
-              style="width:100%">
-            </div>
-          <div class="imgSlides">
-            <div class="numbertext">2 / 6</div>
-            <img
-              src="https://pictures.dealer.com/v/victorytoyotascioncanton/1656/f42c0b4a637cc68c8f6e642ebce1ee1bx.jpg?impolicy=resize&amp;w=650"
-              style="width:100%">
-          </div>
-          <div class="imgSlides">
-            <div class="numbertext">3 / 6</div>
-            <img
-              src="https://pictures.dealer.com/v/victorytoyotascioncanton/0601/a079192b44ff18fd74fc0689088d04d6x.jpg?impolicy=resize&w=650"
-              style="width:100%">
-          </div>
-          <div class="imgSlides">
-            <div class="numbertext">4 / 6</div>
-            <img
-              src="https://pictures.dealer.com/v/victorytoyotascioncanton/0598/9516f695c7d70ad41c3fc5614078a7e4x.jpg?impolicy=resize&w=650"
-              style="width:100%">
-          </div>
-          <div class="imgSlides">
-            <div class="numbertext">5 / 6</div>
-            <img
-              src="https://pictures.dealer.com/v/victorytoyotascioncanton/1387/37071d90b4994d1d4cd6b4877dec14fbx.jpg?impolicy=resize&w=650"
-              style="width:100%">
-          </div>
-          <div class="imgSlides">
-            <div class="numbertext">6 / 6</div>
-            <img
-              src="https://pictures.dealer.com/v/victorytoyotascioncanton/1804/5c0b21a7402f7b18a5c74c048b750b86x.jpg?impolicy=resize&w=650"
-              style="width:100%">
+
+          <div id="ad-image">
           </div>
 
             <a class="prev" onclick="plusSlides(-1)"><svg class="lnr lnr-chevron-left"><use xlink:href="#lnr-chevron-left"></use></svg></a>
@@ -119,41 +84,6 @@
 
             <!-- Thumbnail images -->
             <div class="nf-row">
-              <div class="column">
-                <img class="thumbnail"
-                  src="https://pictures.dealer.com/v/victorytoyotascioncanton/0643/thumb_7d607a614ba466cb09182cdd96f5e6e7x.jpg"
-                  style="width:100%" onclick="currentSlide(1)" alt="Image 1">
-              </div>
-              <div class="column">
-                <img class="thumbnail"
-                  src="https://pictures.dealer.com/v/victorytoyotascioncanton/1656/thumb_f42c0b4a637cc68c8f6e642ebce1ee1bx.jpg"
-                  style="width:100%" onclick="currentSlide(2)"
-                  alt="Image 2">
-              </div>
-              <div class="column">
-                <img class="thumbnail"
-                  src="https://pictures.dealer.com/v/victorytoyotascioncanton/0601/thumb_a079192b44ff18fd74fc0689088d04d6x.jpg"
-                  style="width:100%" onclick="currentSlide(3)"
-                  alt="Image 3">
-              </div>
-              <div class="column">
-                <img class="thumbnail"
-                  src="https://pictures.dealer.com/v/victorytoyotascioncanton/0598/thumb_9516f695c7d70ad41c3fc5614078a7e4x.jpg"
-                  style="width:100%" onclick="currentSlide(4)"
-                  alt="Image 4">
-              </div>
-              <div class="column">
-                <img class="thumbnail"
-                  src="https://pictures.dealer.com/v/victorytoyotascioncanton/1387/thumb_37071d90b4994d1d4cd6b4877dec14fbx.jpg"
-                  style="width:100%" onclick="currentSlide(5)"
-                  alt="Image 5">
-              </div>
-              <div class="column">
-                <img class="thumbnail"
-                  src="https://pictures.dealer.com/v/victorytoyotascioncanton/1804/thumb_5c0b21a7402f7b18a5c74c048b750b86x.jpg"
-                  style="width:100%" onclick="currentSlide(6)"
-                  alt="Image 6">
-              </div>
               </div>
         </div>
         <div class="car-description">
@@ -315,5 +245,6 @@
     <p> © 2019 Andela-AutoMart</p>
   </footer>
   <script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+  <script src="./js/viewSpecific.js"></script>
   <script src="./js/script.js"></script>
 </body>
