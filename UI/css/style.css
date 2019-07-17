@@ -304,8 +304,7 @@ a {
   display: flex;
   margin-right: -15px;
   margin-left: -15px;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+  overflow: auto;
 }
 
 .container {
@@ -1070,7 +1069,7 @@ section.brand {
 
 .specific-container {
   border: 1px solid #eee;
-  width: 75%;
+  width: 69%;
   margin-right: 20px;
 }
 
@@ -1716,6 +1715,10 @@ th.width-20 {
 
   .card-content {
     text-align: left;
+  }
+
+  .seller {
+    width: 28%;
   }
 }
 

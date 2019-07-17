@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="car-state t-white f-l-cap">${state}</div>
         </div>
         <div class = "car-info" >
-          <h2>${manufacturer} ${model}</h2>
+          <h2 class="f-l-cap">${manufacturer} ${model}</h2>
           <p><svg class = "lnr lnr-map-marker">
               <use xlink: href = "#lnr-map-marker" ></use>
             </svg>Lagos</p>
@@ -108,16 +108,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Get all checkboxes and listen for a click event
   [].forEach.call(checkboxes, (checkbox) => {
     checkbox.addEventListener('click', (e) => {
-      const {
-        target,
-      } = e;
+      const { target } = e;
 
       // If target is checked, fetch the resource
       if (target.checked) {
         const query = target.value;
         const queryParameter = target.offsetParent.parentElement.attributes.getNamedItem('data-type').value;
-        const url = `https://automart1.herokuapp.com/api/v1/car?status=available&${queryParameter}=${query}`;
-        // const url = `http:localhost:8080/api/v1/car?status=available&${queryParameter}=${query}`;
+        // const url = `https://automart1.herokuapp.com/api/v1/car?status=available&${queryParameter}=${query}`;
+        const url = `http:localhost:8080/api/v1/car?status=available&${queryParameter}=${query}`;
 
         // Remove the no record message
         if (document.querySelector('li.no-record')) document.querySelector('li.no-record').style.display = 'none';
@@ -127,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
           elem.style.display = 'none';
         });
 
+        document.querySelector('.filter-body').classList.remove('left');
         // Display spinner
         document.querySelector('.spinner').style.display = 'block';
 
@@ -139,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
           .then(response => response.json())
           .then((res) => {
             target.checked = false;
-            document.querySelector('.filter-body').classList.remove('left');
 
 
             // If response status Code is 401, redirect user to index page
@@ -201,6 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elem.style.display = 'none';
       });
 
+      document.querySelector('.filter-body').classList.remove('left');
       // Display spinner
       document.querySelector('.spinner').style.display = 'block';
 
@@ -211,7 +210,6 @@ document.addEventListener('DOMContentLoaded', () => {
       })
         .then(response => response.json())
         .then((res) => {
-          document.querySelector('.filter-body').classList.remove('left');
           // If response status Code is 401, redirect user to index page
           if (res.status === 401) {
             localStorage.clear();

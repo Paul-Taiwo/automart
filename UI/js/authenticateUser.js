@@ -3,8 +3,8 @@
 function authenticateUser(userData, endpoint) {
   const url = `https://automart1.herokuapp.com/api/v1/${endpoint}`;
   // const devUrl = `http://localhost:8080/api/v1/${endpoint}`;
-  const defaultRole = 'user';
-  let defaulPage = './dashboard.html';
+  let defaultRole = 'user';
+  let defaultPage = './dashboard.html';
 
   fetch(url, {
     method: 'POST',
@@ -25,11 +25,11 @@ function authenticateUser(userData, endpoint) {
         localStorage.setItem('address', data.address);
 
         if (data.is_admin) {
-          defaulPage = 'admin';
-          defaulPage = '../admin/index.html';
+          defaultRole = 'admin';
+          defaultPage = '../UI/admin/index.html';
         }
         localStorage.setItem('role', defaultRole);
-        window.location.href = defaulPage;
+        window.location.href = defaultPage;
       } else {
         document.querySelector('.show-error').style.display = 'block';
         document.querySelector('#error-text').innerText = res.error;

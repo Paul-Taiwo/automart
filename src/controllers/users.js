@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { error } from 'fancy-log';
+import { info, error } from 'fancy-log';
 import DB from '../database/dbconnection';
 import 'regenerator-runtime';
 
@@ -9,6 +9,8 @@ class Users {
     const { email, password } = req.body;
     let { firstname, lastname, address } = req.body;
     let isAdmin;
+
+    info('=====CreateUSerObject>>>>', req.body);
 
     // Remove unnecessary spaces
     firstname = firstname.trim().replace(/\s+/g, '');
@@ -75,7 +77,7 @@ class Users {
 
   static async login(req, res) {
     const { email, password } = req.body;
-
+    info('=====CreateUSerObject>>>>', req.body);
     try {
       // Check if email is present in Users Table
       const result = await DB.query('SELECT * FROM users WHERE email = $1', [`${email}`]);
