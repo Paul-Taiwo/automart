@@ -114,8 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (target.checked) {
         const query = target.value;
         const queryParameter = target.offsetParent.parentElement.attributes.getNamedItem('data-type').value;
-        const url = `https://automart1.herokuapp.com/api/v1/car?status=available&${queryParameter}=${query}`;
-        // const url = `http:localhost:8080/api/v1/car?status=available&${queryParameter}=${query}`;
+        // const url = `https://automart1.herokuapp.com/api/v1/car?status=available&${queryParameter}=${query}`;
+        const url = `http:localhost:8080/api/v1/car?status=available&${queryParameter}=${query}`;
 
         // Remove the no record message
         if (document.querySelector('li.no-record')) document.querySelector('li.no-record').style.display = 'none';

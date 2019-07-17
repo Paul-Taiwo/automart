@@ -3,6 +3,9 @@
 /* eslint-disable no-param-reassign */
 /* eslint-env browser */
 
+const token = localStorage.getItem('token');
+const carId = localStorage.getItem('carId');
+const firstname = localStorage.getItem('firstname');
 let slideIndex = 1;
 
 const showSlides = (n) => {
@@ -38,10 +41,6 @@ const currentSlide = (n) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  const token = localStorage.getItem('token');
-  const carId = localStorage.getItem('carId');
-  const firstname = localStorage.getItem('firstname');
-
   // Display Username
   document.querySelector('#username').textContent = firstname;
   const convertDate = (date) => {
@@ -118,4 +117,34 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   fetchSpecific(carId);
+
+  document.querySelector('#abuse_submit').addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const name = document.querySelector('input[name=name]').value;
+    const phone = document.querySelector('input[name=abuse_mobile_number]').value;
+    const email = document.querySelector('input[type=email]').value;
+    const abuseType = document.querySelector('#abuse_type_id').value;
+    const comment = document.querySelector('#abuse_comment').value;
+
+    const report = {
+      carId: `${carId}`,
+      reason: `${abuseType}`,
+      description: `${comment}`,
+    };
+
+    fetch('https://automart1.herokuapp.com/api/v1/flag/report', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(report),
+    })
+      .then(response => response.json())
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(err => err);
+  });
 });

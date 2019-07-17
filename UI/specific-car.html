@@ -163,29 +163,30 @@
           <form method="POST" action="">
             <div class="field">
               <label class=""> Name <span class="required-symbol">*</span>
-                <input class="control-input" required="" name="name" type="text" value="">
+                <input class="control-input" name="name" type="text" value="" required>
               </label>
             </div>
             <div class="field">
               <label class=""> Phone Number <span class="required-symbol">*</span>
-                <input class="control-input" required="" name="abuse_mobile_number" type="tel" value="">
+                <input class="control-input" name="abuse_mobile_number" type="tel" value="" required>
               </label>
             </div>
             <div class="field">
               <label class=""> Email
-                <input class="control-input" name="email" type="email" placeholder="e.g jaccky@gmail.com" value="">
+                <input class="control-input" name="email" type="email" placeholder="e.g jaccky@gmail.com" value=""
+                  required>
               </label>
             </div>
             <label for="">Abuse Type<span class="required-symbol">*</span></label>
-            <select class="control-select" required="" id="abuse_type_id" name="abuse_type_id">
+            <select class="control-select" id="abuse_type_id" name="abuse_type_id" required>
               <option value="" selected="selected">Select...</option>
-              <option value="1">Other</option>
-              <option value="2">Offensive</option>
-              <option value="3">Fraudulent/Misleading</option>
-              <option value="4">Poorly Classified</option>
-              <option value="5">Missing Images</option>
-              <option value="6">Vehicle Sold</option>
-              <option value="7">Content Violation</option>
+              <option value="other">Other</option>
+              <option value="offensive">Offensive</option>
+              <option value="fradulent/misleading">Fraudulent/Misleading</option>
+              <option value="poorly classified">Poorly Classified</option>
+              <option value="missing images">Missing Images</option>
+              <option value="vehicle sold">Vehicle Sold</option>
+              <option value="content violation">Content Violation</option>
             </select>
             <div class="field">
               <label class=""> Comments <textarea id="abuse_comment" class="control-textarea" name="comment" cols="50"
